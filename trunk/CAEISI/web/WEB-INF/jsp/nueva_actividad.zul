@@ -1,0 +1,20 @@
+<grid>
+    <columns>
+        <column label="Codigo Actividad" />
+        <column label="Nombre Actividad" />
+        <column label="Numero Actividad" />
+        <column label="Tipo Actividad" />
+        <column label="Modificar" />
+        <column label="Eliminar" />
+    </columns>
+    <rows>
+        <row>
+            <label value="XXXXX" />
+            <label value="XXXXX" />
+            <label value="99999" />
+            <label value="XXXXX" />
+            <button label="Modificar" onClick="" />
+            <button label="Eliminar" onClick="" />	
+        </row>
+    </rows>
+</grid>
