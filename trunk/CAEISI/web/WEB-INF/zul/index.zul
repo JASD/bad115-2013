@@ -1,0 +1,23 @@
+<html:form id="f_login" name="login" action="j_spring_security_check" method="POST"
+           xmlns:html="native">
+    <grid>
+        <rows>
+            <row>User: <textbox id="u" name="j_username"/></row>
+            <row>Password: <textbox id="p" type="password" name="j_password"/></row>
+            <row spans="2">
+                <hbox>
+                    <button type="submit" label="Acceder" />
+                    <label id="error"/>
+                </hbox>
+            </row>
+        </rows>
+    </grid>
+    <zscript > 
+        String parameter = Executions.getCurrent().getParameter("error");
+        if(parameter!=null){
+            if(parameter.equals("1")){
+                error.setValue("Usuario o Contraseña Incorrecto");
+            }
+        }
+    </zscript>
+</html:form>
