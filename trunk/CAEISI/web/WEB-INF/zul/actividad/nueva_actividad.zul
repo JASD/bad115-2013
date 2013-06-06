@@ -1,0 +1,41 @@
+<tablelayout>
+    <tablechildren>
+        <panel>
+            <panelchildren>
+                <label value="Nueva Actividad" />
+            </panelchildren>
+        </panel>
+    </tablechildren>
+    <tablechildren>
+        <panel>
+            <panelchildren>
+                <label value="Codigo de Actividad" />
+                <textbox />
+            </panelchildren>
+        </panel>
+    </tablechildren>
+    <tablechildren>
+        <panel>
+            <panelchildren>
+                <label value="Nombre de Actividad" />
+                <textbox />
+            </panelchildren>
+        </panel>
+    </tablechildren>
+    <tablechildren>
+        <panel>
+            <panelchildren>
+                <label value="Numero de horas" />
+                <textbox />
+            </panelchildren>
+        </panel>
+    </tablechildren>
+    <tablechildren>
+        <panel>
+            <panelchildren>
+                <label value="Tipo de Actividad" />
+                <textbox />
+            </panelchildren>
+        </panel>
+    </tablechildren>
+</tablelayout>

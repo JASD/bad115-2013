@@ -18,3 +18,7 @@
         </row>
     </rows>
 </grid>
+<button label="Guardar" onClick="">
+</button>
+<button label="Cancelar" onClick="">
+</button>
