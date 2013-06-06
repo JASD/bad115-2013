@@ -12,6 +12,7 @@
     <!-- Scans the classpath of this application for @Components to deploy as beans -->
     <context:component-scan base-package="sv.fia.eisi.controladores" />
 
+
     <!-- Configures the @Controller programming model -->
     <mvc:annotation-driven/>
     <bean class="org.springframework.web.servlet.mvc.support.ControllerClassNameHandlerMapping"/>
@@ -24,15 +25,15 @@
     <bean id="urlMapping" class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping">
         <property name="mappings">
             <props>
-                <prop key="index.htm">indexController</prop>
+                <prop key="index.html">indexController</prop>
             </props>
         </property>
     </bean>
 
     <bean id="viewResolver"
           class="org.springframework.web.servlet.view.InternalResourceViewResolver"
-          p:prefix="/WEB-INF/jsp/"
-          p:suffix="" />
+          p:prefix="/WEB-INF/zul/"
+          p:suffix=".zul" />
 
     <!--
     The index controller.
