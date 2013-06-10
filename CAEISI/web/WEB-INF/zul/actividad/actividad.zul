@@ -1,24 +1,45 @@
-<grid>
-    <columns>
-        <column label="Codigo Actividad" />
-        <column label="Nombre Actividad" />
-        <column label="Numero Actividad" />
-        <column label="Tipo Actividad" />
-        <column label="Modificar" />
-        <column label="Eliminar" />
-    </columns>
-    <rows>
-        <row>
-            <label value="XXXXX" />
-            <label value="XXXXX" />
-            <label value="99999" />
-            <label value="XXXXX" />
-            <button label="Modificar" onClick="" />
-            <button label="Eliminar" onClick="" />	
-        </row>
-    </rows>
-</grid>
-<button label="Guardar" onClick="">
-</button>
-<button label="Cancelar" onClick="">
-</button>
+<zk>
+    <grid apply="sv.fia.eisi.controladores.ActividadController">
+        <auxhead>
+            <auxheader label="Actividades" colspan="5" rowspan="1" />
+        </auxhead>
+        <columns>
+            <column>Codigo de actividad</column>
+            <column>Nombre de actividad</column>
+            <column>Numero de horas</column>
+            <column>Tipo de actividad</column>
+        </columns>
+        <rows>
+            <row>
+                <label>codigo</label>
+                <label>nombre</label>
+                <label>horas</label>
+                <label>tipo</label>
+            </row>
+            <row>
+                <label>as</label>
+                <label>d</label>
+                <label>fs</label>
+                <label>fds</label>
+            </row>
+            <row>
+                <label>dsgte</label>
+                <label>wet</label>
+                <label>fsgtf</label>
+                <label>sfr</label>
+            </row>
+            <row>
+                <label>teg</label>
+                <label>bcxv</label>
+                <label>xcvfdf</label>
+                <label>bgfdcv</label>
+            </row>
+            <row>
+                <label>fgfsrr</label>
+                <label>cxefcsc</label>
+                <label>fdgxf</label>
+                <label>ferddvc</label>
+            </row>
+        </rows> 
+    </grid>
+</zk>
