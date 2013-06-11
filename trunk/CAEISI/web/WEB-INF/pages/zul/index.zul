@@ -1,0 +1,31 @@
+<?page id="index" title="Administración Carga Académica"?>
+<window id="loginwin" 
+        title="Acceso al sistema" 
+        border="normal" width="500px" 
+        position="center" mode="overlapped">
+    <html style="color:red" if="${not empty param.login_error}">
+      <![CDATA[
+        Your login attempt was not successful, try again.<br/><br/>
+        Reason: ${SPRING_SECURITY_LAST_EXCEPTION.message}
+       ]]>
+    </html>
+    <image id="logo_eisi" src="/public/img/eisi.jpg" width=""  height=""/>
+    <groupbox closable="false">
+        <caption>Login</caption>
+        <h:form id="f" name="f" action="j_spring_security_check" method="POST"
+                xmlns:h="native">
+            <grid>
+                <rows>
+                    <row>Usuario: <textbox id="u" name="j_username"/></row>
+                    <row>Contraseña: <textbox id="p" type="password" name="j_password"/></row>
+                   
+                    <row spans="2">
+                        <hbox>
+                            <h:input type="submit" value="Acceder"/>
+                        </hbox>
+                    </row>
+                </rows>
+            </grid>
+        </h:form>
+    </groupbox>
+</window>

@@ -43,8 +43,7 @@
         <security:form-login 
             login-page="/index.html" always-use-default-target="true"
             default-target-url="/home.html" 
-            authentication-failure-url="/index.html?error=1" />
-
+            authentication-failure-url="/index.html?login_error=1" />
         <!--  Especifica el tipo de autenticación:-->
         <security:http-basic />
 
@@ -57,7 +56,6 @@
         <security:logout 
             invalidate-session="true"
             logout-success-url="/index.html"  />
-        <security:remember-me/>
     </security:http>
 
     <!-- Gestión de usuarios mediante un proveedor de servicios de usuarios: -->
