@@ -32,7 +32,7 @@
                 </div>
             </north>
             <!-- Sidebar -->
-            <west width="180px" border="0" flex="true" splittable="true"
+            <west width="180px" border="0" hflex="true" splittable="true"
                   margins="0,5,0,0">
                 <vlayout spacing="0" >
                     <panel width="100%" border="normal"

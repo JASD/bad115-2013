@@ -4,37 +4,49 @@
  */
 package sv.fia.eisi.repositorios;
 
+import java.util.List;
+import org.hibernate.SessionFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
-import sv.fia.eisi.entidades.Actividad;
+import org.springframework.transaction.annotation.Transactional;
+import sv.fia.eisi.entidades.Curso;
 
 /**
  *
- * @author admin
+ * @author Antonio
  */
 @Repository
-public class ActividadDAO extends AbstractDAO<Actividad> {
+public class CursoDAO extends AbstractDAO<Curso> {
 
-    public ActividadDAO() {
-        super(Actividad.class);
+    @Autowired
+    private SessionFactory sessionFactory;
+
+    public CursoDAO() {
+        super(Curso.class);
     }
 
     @Override
-    public String create(Actividad entity) {
+    public String create(Curso entity) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public String edit(Actividad entity) {
+    public String edit(Curso entity) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public String delete(Actividad entity) {
+    public String delete(Curso entity) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public Actividad find(Object id) {
+    public Curso find(Object id) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+    
+    public List<Curso> findActives() {
+        return (List<Curso>) sessionFactory.getCurrentSession()
+                .getNamedQuery("Curso.findActives").list();
     }
 }
