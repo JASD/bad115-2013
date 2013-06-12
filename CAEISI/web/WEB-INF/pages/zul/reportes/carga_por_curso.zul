@@ -1,5 +1,5 @@
-<?xml version="1.0" encoding="UTF-8"?>
-
-<zk xmlns="http://www.zkoss.org/2005/zul">
-
-</zk>
+<?page id="crv" title="Carga Curso CAEISI"?>
+<?init class="org.zkoss.zk.ui.util.Composition" arg0="/WEB-INF/pages/templates/template.zul" ?>
+<window self="@{define(body)}" title='Carga Académica por Curso'>
+    
+</window>

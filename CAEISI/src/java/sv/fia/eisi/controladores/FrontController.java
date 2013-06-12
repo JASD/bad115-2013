@@ -55,6 +55,36 @@ public class FrontController {
         return new ModelAndView("/carga_academica/asignar_horarios");
     }
 
+    @RequestMapping(value = "/docente/actualizar")
+    public ModelAndView actualizarDocente(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        return new ModelAndView("/docentes/actualizar");
+    }
+
+    @RequestMapping(value = "/docente/nuevo")
+    public ModelAndView agregarDocente(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        return new ModelAndView("/docentes/nuevo");
+    }
+
+    @RequestMapping(value = "/grp-acad/crear")
+    public ModelAndView crearGrupoAcad(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        return new ModelAndView("/grupos_academicos/crear");
+    }
+
+    @RequestMapping(value = "/grp-acad/deshabilitar")
+    public ModelAndView deshabilitarGrupoAcad(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        return new ModelAndView("/grupos_academicos/deshabilitar");
+    }
+
+    @RequestMapping(value = "/grp-acad/habilitar")
+    public ModelAndView habilitarGrupoAcad(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        return new ModelAndView("/grupos_academicos/habilitar");
+    }
+
     @RequestMapping(value = "/mantenimiento/actividad")
     public ModelAndView verActividades(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -67,33 +97,93 @@ public class FrontController {
         return new ModelAndView("/mantenimiento/actividades/nueva_actividad");
     }
 
-    @RequestMapping(value = "/docentes/actualizar")
-    public ModelAndView actualizarDocente(HttpServletRequest request, HttpServletResponse response)
+    @RequestMapping(value = "/mantenimiento/conocimiento")
+    public ModelAndView verConocimientos(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        return new ModelAndView("/docentes/actualizar");
+        return new ModelAndView("/mantenimiento/conocimientos/conocimientos");
     }
 
-    @RequestMapping(value = "/docentes/nuevo")
-    public ModelAndView agregarDocente(HttpServletRequest request, HttpServletResponse response)
+    @RequestMapping(value = "/mantenimiento/conocimiento/nuevo")
+    public ModelAndView agregarConocimientos(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        return new ModelAndView("/docentes/nuevo");
+        return new ModelAndView("/mantenimiento/conocimientos/nuevo");
     }
 
-    @RequestMapping(value = "/grupo-acad/nuevo")
-    public ModelAndView crearGrupoAcademico(HttpServletRequest request, HttpServletResponse response)
+    @RequestMapping(value = "/mantenimiento/curso")
+    public ModelAndView verCursos(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        return new ModelAndView("/grupos_academicos/crear");
+        return new ModelAndView("/mantenimiento/cursos/cursos");
     }
 
-    @RequestMapping(value = "/grupo-acad/deshabilitar")
-    public ModelAndView deshabilitarGrupoAcademico(HttpServletRequest request, HttpServletResponse response)
+    @RequestMapping(value = "/mantenimiento/curso/nuevo")
+    public ModelAndView agregarCurso(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        return new ModelAndView("/grupos_academicos/deshabilitar");
+        return new ModelAndView("/mantenimiento/cursos/nuevo");
     }
 
-    @RequestMapping(value = "/grupo-acad/habilitar")
-    public ModelAndView habilitarGrupoAcademico(HttpServletRequest request, HttpServletResponse response)
+    @RequestMapping(value = "/mantenimiento/grp-admin/nuevo")
+    public ModelAndView crearGrupoAdmin(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        return new ModelAndView("/grupos_academicos/habilitar");
+        return new ModelAndView("/mantenimiento/grupos_administrativos/crear");
+    }
+
+    @RequestMapping(value = "/mantenimiento/grp-admin/habilitar")
+    public ModelAndView habilitarGrupoAdmin(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        return new ModelAndView("/mantenimiento/grupos_administrativos/habilitar");
+    }
+
+    @RequestMapping(value = "/mantenimiento/grp-admin/deshabilitar")
+    public ModelAndView deshabilitarGrupoAdmin(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        return new ModelAndView("/mantenimiento/grupos_administrativos/deshabilitar");
+    }
+
+    @RequestMapping(value = "/mantenimiento/horarios")
+    public ModelAndView verHorarios(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        return new ModelAndView("/mantenimiento/horarios/horarios");
+    }
+
+    @RequestMapping(value = "/mantenimiento/locales")
+    public ModelAndView verLocales(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        return new ModelAndView("/mantenimiento/locales/locales");
+    }
+
+    @RequestMapping(value = "/reportes/carga-ciclo")
+    public ModelAndView verCargaCiclo(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        return new ModelAndView("/reportes/carga_por_ciclo");
+    }
+
+    @RequestMapping(value = "/reportes/carga-curso")
+    public ModelAndView verCargaCurso(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        return new ModelAndView("/reportes/carga_por_curso");
+    }
+
+    @RequestMapping(value = "/reportes/carga-docente")
+    public ModelAndView verCargaDocente(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        return new ModelAndView("/reportes/carga_por_docente");
+    }
+
+    @RequestMapping(value = "/seguridad/bitacora")
+    public ModelAndView verBitacoraEventos(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        return new ModelAndView("/seguridad/bitacora_eventos/bitacora");
+    }
+
+    @RequestMapping(value = "/seguridad/usuarios")
+    public ModelAndView verUsuarios(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        return new ModelAndView("/seguridad/usuarios/usuarios");
+    }
+
+    @RequestMapping(value = "/seguridad/usuarios/nuevo")
+    public ModelAndView crearUsuarios(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        return new ModelAndView("/seguridad/usuarios/nuevo");
     }
 }

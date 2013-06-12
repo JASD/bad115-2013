@@ -52,71 +52,71 @@
                                 <menu label="Grupos Académicos">
                                     <menupopup>
                                         <menuitem label="Crear Grupo" 
-                                                  onClick="alert(self.label)"/>
+                                                  href="/grp-acad/crear.html"/>
                                         <menuitem label="Habilitar Grupos" 
-                                                  onClick="alert(self.label)"/>
+                                                  href="/grp-acad/habilitar.html"/>
                                         <menuitem label="Deshabilitar Grupos" 
-                                                  onClick="alert(self.label)"/>
+                                                  href="/grp-acad/deshabilitar.html"/>
                                     </menupopup>
                                 </menu>
                                 <menu label="Reportes" >
                                     <menupopup>
                                         <menuitem label="Carga Académica Ciclo" 
-                                                  onClick="alert(self.label)"/>
+                                                  href="/reportes/carga-ciclo.html"/>
                                         <menuitem label="Carga Académica Curso" 
-                                                  onClick="alert(self.label)"/>
+                                                  href="/reportes/carga-curso.html"/>
                                         <menuitem label="Carga Académica Docente" 
-                                                  onClick="alert(self.label)"/>
+                                                  href="/reportes/carga-docente.html"/>
                                     </menupopup>
                                 </menu>
                                 <menu label="Docentes">
                                     <menupopup>
                                         
                                         <menuitem label="Registrar Nuevo" 
-                                                  onClick="alert(self.label)"/>
+                                                  href="/docente/nuevo.html"/>
                                         <menuitem label="Actualizar Datos" 
-                                                  onClick="alert(self.label)"/>
+                                                  href="/docente/actualizar.html"/>
                                       
                                     </menupopup>
                                 </menu>
                                 <menu label="Administración">
                                     <menupopup>
                                         <menuitem label="Modificar Fechas de Ciclo" 
-                                                  onClick="alert(self.label)"/>
+                                                  href="/administracion/modificar-ciclo.html"/>
                                         <menuitem label="Cerrar Ciclo Vigente" 
-                                                  onClick="alert(self.label)"/>
+                                                  href="/administracion/cerrar-ciclo.html"/>
                                     </menupopup>
                                 </menu>
                                 <menu label="Mantenimiento">
                                     <menupopup>
                                         <menuitem label="Actividades" 
-                                                  href="/actividad.html"/>
+                                                  href="/mantenimiento/actividad.html"/>
                                         <menuitem label="Cursos" 
-                                                  onClick="alert(self.label)"/>
+                                                  href="/mantenimiento/curso.html"/>
                                         <menu label="Grupos Administrativos">
                                             <menupopup>
                                                 <menuitem label="Crear Grupo" 
-                                                          onClick="alert(self.label)"/>
+                                                          href="/mantenimiento/grp-admin/nuevo.html"/>
                                                 <menuitem label="Habilitar Grupos" 
-                                                          onClick="alert(self.label)"/>
+                                                          href="/mantenimiento/grp-admin/habilitar.html"/>
                                                 <menuitem label="Deshabilitar Grupos" 
-                                                          onClick="alert(self.label)"/>
+                                                          href="/mantenimiento/grp-admin/deshabilitar.html"/>
                                             </menupopup>
                                         </menu>
                                         <menuitem label="Conocimientos" 
-                                                  onClick="alert(self.label)"/>
+                                                  href="/mantenimiento/conocimiento.html"/>
                                         <menuitem label="Locales" 
-                                                  onClick="alert(self.label)"/>
+                                                  href="/mantenimiento/locales.html"/>
                                         <menuitem label="Horarios" 
-                                                  onClick="alert(self.label)"/>
+                                                  href="/mantenimiento/horarios.html"/>
                                     </menupopup>
                                 </menu>
                                 <menu label="Seguridad">
                                     <menupopup>
                                         <menuitem label="Usuarios" 
-                                                  onClick="alert(self.label)"/>
+                                                  href="/seguridad/usuarios.html"/>
                                         <menuitem label="Bitácora de Eventos" 
-                                                  onClick="alert(self.label)"/>
+                                                  href="/seguridad/bitacora.html"/>
                                     </menupopup>
                                 </menu>
                             </menubar>

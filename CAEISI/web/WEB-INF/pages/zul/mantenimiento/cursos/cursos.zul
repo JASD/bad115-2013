@@ -1,5 +1,5 @@
-<?page id="crv" title="Cerrar Ciclo CAEISI"?>
+<?page id="crv" title="Nuevo Curso CAEISI"?>
 <?init class="org.zkoss.zk.ui.util.Composition" arg0="/WEB-INF/pages/templates/template.zul" ?>
-<window self="@{define(body)}" title='Cerrar Ciclo'>
+<window self="@{define(body)}" title='Registrar Nuevo Curso'>
     
 </window>

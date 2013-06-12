@@ -1,5 +1,5 @@
-<?page id="crv" title="Bienvenido CAEISI"?>
+<?page id="crv" title="Asignar Coordinación CAEISI"?>
 <?init class="org.zkoss.zk.ui.util.Composition" arg0="/WEB-INF/pages/templates/template.zul" ?>
-<window self="@{define(body)}" title='Bienvenido al Sistema'>
+<window self="@{define(body)}" title='Asignar Coordinación de Cursos'>
     
 </window>
