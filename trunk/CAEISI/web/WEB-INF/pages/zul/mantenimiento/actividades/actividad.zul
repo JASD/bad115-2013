@@ -13,38 +13,12 @@
             <column>Numero de horas</column>
             <column>Tipo de actividad</column>
         </columns>
-        <rows>
-            <row>
-                <label>codigo</label>
-                <label>nombre</label>
-                <label>horas</label>
-                <label>tipo</label>
-            </row>
-            <row>
-                <label>as</label>
-                <label>d</label>
-                <label>fs</label>
-                <label>fds</label>
-            </row>
-            <row>
-                <label>dsgte</label>
-                <label>wet</label>
-                <label>fsgtf</label>
-                <label>sfr</label>
-            </row>
-            <row>
-                <label>teg</label>
-                <label>bcxv</label>
-                <label>xcvfdf</label>
-                <label>bgfdcv</label>
-            </row>
-            <row>
-                <label>fgfsrr</label>
-                <label>cxefcsc</label>
-                <label>fdgxf</label>
-                <label>ferddvc</label>
-            </row>
-        </rows> 
+        <template name="model">
+            <label>${activityList.codigoActividad}</label>
+            <label>${activityList.nombreActividad}</label>
+            <label>${activityList.numeroHoras}</label>
+            <label>${activityList.tipoActividad}</label>
+        </template>
     </grid>
     
 </window>
