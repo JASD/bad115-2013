@@ -16,11 +16,11 @@ public abstract class AbstractDAO<T> {
         this.entityClass = entityClass;
     }
 
-    public abstract void create(T entity);
+    public abstract String create(T entity);
 
-    public abstract void edit(T entity);
+    public abstract String edit(T entity);
 
-    public abstract void delete(T entity);
+    public abstract String delete(T entity);
 
     public abstract T find(Object id);
 }

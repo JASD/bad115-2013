@@ -1,5 +1,62 @@
 <?page id="crv" title="Nuevo Grupo Académico CAEISI"?>
 <?init class="org.zkoss.zk.ui.util.Composition" arg0="/WEB-INF/pages/templates/template.zul" ?>
 <window self="@{define(body)}" title='Nuevo Grupo Académico'>
-    
+    <vlayout>
+        <zscript><![CDATA[
+    String selectedPosition = "end_before";
+]]>
+        </zscript>
+        <grid apply="sv.fia.eisi.controladores.GrupoAcademicoController">
+            <columns>
+                <column align="right" hflex="min"/>
+                <column/>
+            </columns>
+           
+            <rows>
+                <row>
+                    <cell sclass="row-title">Seleccione un curso :</cell>
+                    <cell>
+                        <listbox id="cursos" mold="select" width="200px" 
+                                 emptyMessage="No se encontraron cursos">
+                            <template name="model">
+                                <listitem label="${each}" />
+                            </template>
+                        </listbox>
+                    </cell>
+                </row>
+                <row>
+                    <cell sclass="row-title">Código Grupo :</cell>
+                    <cell>
+                        <textbox id="codigo" maxlength="8"
+                                 constraint="no empty: Ingrese un código" width="200px"/>
+                    </cell>
+                </row>
+                
+                <row>
+                    <cell sclass="row-title">Número de Grupo :</cell>
+                    <cell>
+                       <spinner id="numero" constraint="no negative,no zero" />
+                    </cell>
+                </row>
+                <row>
+                    <cell sclass="row-title">Tema :</cell>
+                    <cell>
+                        <textbox id="tema" multiline="true" hflex="1" maxlength="128"
+                                 width="200px"  onClick='temaPop.open(self,selectedPosition)'/>
+                    </cell>
+                </row>
+                
+            </rows>
+           
+        </grid>
+         <popup id="temaPop" width="150px">
+                <groupbox closable="true">
+                    <caption>Información</caption>
+                    <html><![CDATA[ Aplica para trabajos de graduación ]]></html>
+                </groupbox>
+            </popup>
+        <hlayout>
+            <button id="guardarGrupoAcad" label="Guardar"/>
+        </hlayout>
+    </vlayout>
 </window>

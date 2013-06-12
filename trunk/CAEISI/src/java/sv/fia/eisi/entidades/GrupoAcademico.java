@@ -28,6 +28,7 @@ import javax.validation.constraints.Size;
 @NamedQueries({
     @NamedQuery(name = "GrupoAcademico.findAll", query = "SELECT g FROM GrupoAcademico g")})
 public class GrupoAcademico implements Serializable {
+
     private static final long serialVersionUID = 1L;
     @Id
     @Basic(optional = false)

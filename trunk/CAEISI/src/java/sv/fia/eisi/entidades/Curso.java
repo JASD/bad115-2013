@@ -29,8 +29,10 @@ import javax.validation.constraints.Size;
 @Entity
 @Table(name = "curso")
 @NamedQueries({
-    @NamedQuery(name = "Curso.findAll", query = "SELECT c FROM Curso c")})
+    @NamedQuery(name = "Curso.findAll", query = "SELECT c FROM Curso c"),
+    @NamedQuery(name = "Curso.findActives", query = "SELECT c FROM Curso c WHERE c.estaActivoCurso = true")})
 public class Curso implements Serializable {
+
     private static final long serialVersionUID = 1L;
     @Id
     @Basic(optional = false)
@@ -148,7 +150,6 @@ public class Curso implements Serializable {
 
     @Override
     public String toString() {
-        return "sv.fia.eisi.entidades.Curso[ codigoCurso=" + codigoCurso + " ]";
+        return codigoCurso;
     }
-    
 }

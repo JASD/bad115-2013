@@ -25,17 +25,17 @@ public class UsuarioDAO extends AbstractDAO<Usuario> {
     }
 
     @Override
-    public void create(Usuario entity) {
+    public String create(Usuario entity) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public void edit(Usuario entity) {
+    public String edit(Usuario entity) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public void delete(Usuario entity) {
+    public String delete(Usuario entity) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
