@@ -31,6 +31,7 @@ public class GrupoAcademicoDAO extends AbstractDAO<GrupoAcademico> {
                 .getString("InsertarGrupoAcademico");
         Query q = sessionFactory.getCurrentSession()
                 .createSQLQuery(call);
+        q.setString("tipo", entity.getGrupo().getTipoGrupo().toUpperCase());
         q.setString("codigo", entity.getCodigoGrupo());
         q.setString("curso", entity.getCodigoCurso().getCodigoCurso());
         q.setShort("numero", entity.getNumeroGrupoAcademico());

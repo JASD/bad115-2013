@@ -10,11 +10,13 @@ import org.zkoss.zk.ui.select.annotation.Listen;
 import org.zkoss.zk.ui.select.annotation.Wire;
 import org.zkoss.zk.ui.select.annotation.WireVariable;
 import org.zkoss.zk.ui.util.Clients;
+import org.zkoss.zul.Combobox;
 import org.zkoss.zul.ListModelList;
 import org.zkoss.zul.Listbox;
 import org.zkoss.zul.Spinner;
 import org.zkoss.zul.Textbox;
 import sv.fia.eisi.entidades.Curso;
+import sv.fia.eisi.entidades.Grupo;
 import sv.fia.eisi.entidades.GrupoAcademico;
 import sv.fia.eisi.servicios.CursoService;
 import sv.fia.eisi.servicios.GrupoAcademicoService;
@@ -33,6 +35,8 @@ public class GrupoAcademicoController extends SelectorComposer<Component> {
     private Textbox tema;
     @Wire
     private Spinner numero;
+    @Wire
+    private Combobox tipo;
     @WireVariable
     private CursoService cursoService;
     @WireVariable
@@ -46,7 +50,10 @@ public class GrupoAcademicoController extends SelectorComposer<Component> {
 
     @Listen("onClick=#guardarGrupoAcad")
     public void guardarGrupoAcademico() {
+        Grupo nuevo = new Grupo();
+        nuevo.setTipoGrupo((String) tipo.getSelectedItem().getValue());
         GrupoAcademico ga = new GrupoAcademico();
+        ga.setGrupo(nuevo);
         ga.setCodigoGrupo(codigo.getValue());
         ga.setCodigoCurso((Curso) cursos.getSelectedItem().getValue());
         ga.setNumeroGrupoAcademico(numero.getValue().shortValue());

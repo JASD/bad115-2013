@@ -25,6 +25,18 @@
                     </cell>
                 </row>
                 <row>
+                    <cell sclass="row-title">Tipo de Grupo :</cell>
+                    <cell>
+                        <combobox id="tipo">
+                            <comboitem label="Teórico" value="TEO"/>
+                            <comboitem label="Discusión" value="DISC"/>
+                            <comboitem label="Laboratorio" value="LAB"/>
+                            <comboitem label="Tesis" value="TESIS"/>
+                            <comboitem label="Investigación" value="INVEST"/>
+                        </combobox>
+                    </cell>
+                </row>
+                <row>
                     <cell sclass="row-title">Código Grupo :</cell>
                     <cell>
                         <textbox id="codigo" maxlength="8"
@@ -35,7 +47,7 @@
                 <row>
                     <cell sclass="row-title">Número de Grupo :</cell>
                     <cell>
-                       <spinner id="numero" constraint="no negative,no zero" />
+                        <spinner id="numero" constraint="no negative,no zero" />
                     </cell>
                 </row>
                 <row>
@@ -49,12 +61,12 @@
             </rows>
            
         </grid>
-         <popup id="temaPop" width="150px">
-                <groupbox closable="true">
-                    <caption>Información</caption>
-                    <html><![CDATA[ Aplica para trabajos de graduación ]]></html>
-                </groupbox>
-            </popup>
+        <popup id="temaPop" width="150px">
+            <groupbox closable="true">
+                <caption>Información</caption>
+                <html><![CDATA[ Aplica para trabajos de graduación ]]></html>
+            </groupbox>
+        </popup>
         <hlayout>
             <button id="guardarGrupoAcad" label="Guardar"/>
         </hlayout>
