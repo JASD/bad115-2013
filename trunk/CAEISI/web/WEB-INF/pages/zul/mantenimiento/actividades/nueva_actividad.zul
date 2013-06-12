@@ -1,45 +1,5 @@
 <?page id="crv" title="Nueva Actividad CAEISI"?>
 <?init class="org.zkoss.zk.ui.util.Composition" arg0="/WEB-INF/pages/templates/template.zul" ?>
 <window self="@{define(body)}" title='Actividades'>
-    <tablelayout>
-        <tablechildren>
-            <panel>
-                <panelchildren>
-                    <label value="Nueva Actividad" />
-                </panelchildren>
-            </panel>
-        </tablechildren>
-        <tablechildren>
-            <panel>
-                <panelchildren>
-                    <label value="Codigo de Actividad" />
-                    <textbox />
-                </panelchildren>
-            </panel>
-        </tablechildren>
-        <tablechildren>
-            <panel>
-                <panelchildren>
-                    <label value="Nombre de Actividad" />
-                    <textbox />
-                </panelchildren>
-            </panel>
-        </tablechildren>
-        <tablechildren>
-            <panel>
-                <panelchildren>
-                    <label value="Numero de horas" />
-                    <textbox />
-                </panelchildren>
-            </panel>
-        </tablechildren>
-        <tablechildren>
-            <panel>
-                <panelchildren>
-                    <label value="Tipo de Actividad" />
-                    <textbox />
-                </panelchildren>
-            </panel>
-        </tablechildren>
-    </tablelayout>
+
 </window>
