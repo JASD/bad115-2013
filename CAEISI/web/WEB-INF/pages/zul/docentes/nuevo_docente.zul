@@ -1,0 +1,111 @@
+<?page id="crv" title="Nuevo Grupo Académico CAEISI"?>
+<?init class="org.zkoss.zk.ui.util.Composition" arg0="/WEB-INF/pages/templates/template.zul" ?>
+<window self="@{define(body)}" title='Nuevo Docente'>
+    <vlayout>
+        <zscript><![CDATA[
+    String selectedPosition = "end_before";
+]]>
+        </zscript>
+        <grid apply="sv.fia.eisi.controladores.GrupoAcademicoController">
+            <columns>
+                <column align="right" hflex="min"/>
+                <column/>
+            </columns>
+           
+            <rows>
+                <row>
+                    <cell sclass="row-title">N° ISSS :</cell>
+                    <cell>
+                        <listbox id="cursos" mold="select" width="200px" 
+                                 emptyMessage="No se encontraron Numeros de ISSS">
+                            <template name="model">
+                                <listitem label="${each}" />
+                            </template>
+                        </listbox>
+                    </cell>
+                </row>
+                <row>
+                    <cell sclass="row-title">Numero ISSS :</cell>
+                    <cell>
+                        <textbox id="isss" maxlength="40"
+                                 constraint="no empty: Ingrese el Numero de ISSS" width="200px"/>
+                    </cell>
+                </row>
+                
+                <row>
+                    <cell sclass="row-title">Primer Nombre :</cell>
+                    <cell>
+                        <textbox id="primer" maxlength="40"
+                                 constraint="no empty: Ingrese el Primer Nombre" width="200px"/>
+                    </cell>
+                </row>
+                <row>
+                    <cell sclass="row-title">Segundo Nombre :</cell>
+                    <cell>
+                        <textbox id="segundo" maxlength="40"
+                                 width="200px"/>
+                    </cell>
+                </row>
+                
+                <row>
+                    <cell sclass="row-title">Primer Apellido :</cell>
+                    <cell>
+                        <textbox id="primerapellido" maxlength="40"
+                                 constraint="no empty: Ingrese el Primer Apellido" width="200px"/>
+                    </cell>
+                </row>
+                
+                
+                <row>
+                    <cell sclass="row-title">Segundo Apellido :</cell>
+                    <cell>
+                        <textbox id="segundoapellido" maxlength="40"
+                                 width="200px"/>
+                    </cell>
+                </row>
+                
+                <row>
+                    <cell sclass="row-title">Grado Académico :</cell>
+                    <cell>
+                        <textbox id="grado" maxlength="40"
+                                 constraint="no empty: Ingrese el Grado Académico" width="200px"/>
+                    </cell>
+                </row>
+                
+                <row>
+                    <cell sclass="row-title">Categoría :</cell>
+                    <cell>
+                        <spinner id="categoria"  constraint="no negative,no zero, min 1, max 3" />
+                    </cell>
+                </row>
+                
+                              
+                                
+                <row>
+                    <cell sclass="row-title">Tipo de Contratación :</cell>
+                    <cell>
+                        <combobox id="tipo">
+                            <comboitem label="Completo" value="com"/>
+                            <comboitem label="Medio" value="med"/>
+                            <comboitem label="Cuarto" value="cua"/>
+                        </combobox>
+                    </cell>
+                </row> 
+                
+                  
+                <row>
+                    <cell sclass="row-title">Correo Eléctronico :</cell>
+                    <cell>
+                        <textbox id="correo" maxlength="50"
+                                 constraint="no empty: Ingrese el Correo Eléctronico" width="200px"/>
+                    </cell>
+                </row>  
+            </rows>
+           
+        </grid>
+        
+        <hlayout>
+            <button id="guardarGrupoAcad" label="Guardar"/>
+        </hlayout>
+    </vlayout>
+</window>
