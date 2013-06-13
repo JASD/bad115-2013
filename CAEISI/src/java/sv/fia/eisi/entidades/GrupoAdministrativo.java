@@ -43,7 +43,7 @@ public class GrupoAdministrativo implements Serializable {
     @Column(name = "objetivo_grupo_administrativo")
     private String objetivoGrupoAdministrativo;
     @JoinColumn(name = "codigo_grupo", referencedColumnName = "codigo_grupo", insertable = false, updatable = false)
-    @OneToOne(optional = false, fetch = FetchType.LAZY)
+    @OneToOne(optional = false, fetch = FetchType.EAGER)
     private Grupo grupo;
 
     public GrupoAdministrativo() {
