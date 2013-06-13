@@ -1,5 +1,61 @@
 <?page id="crv" title="Nuevo Grupo Administrativo CAEISI"?>
 <?init class="org.zkoss.zk.ui.util.Composition" arg0="/WEB-INF/pages/templates/template.zul" ?>
 <window self="@{define(body)}" title='Nuevo Grupo Administrativo'>
-    
+    <vlayout>
+        <zscript><![CDATA[
+    String selectedPosition = "end_before";
+]]>
+        </zscript>
+        <grid apply="sv.fia.eisi.controladores.GrupoAdministrativoController">
+            <columns>
+                <column align="right" hflex="min"/>
+                <column/>
+            </columns>
+           
+            <rows>
+                <row>
+                    <cell sclass="row-title">Tipo de Grupo :</cell>
+                    <cell>
+                        <combobox id="tipo" constraint="no empty: Elija un Tipo">
+                            <comboitem label="Comisión" value="COMISION"/>
+                            <comboitem label="Comité" value="COMITE"/>
+                        </combobox>
+                    </cell>
+                </row>
+                <row>
+                    <cell sclass="row-title">Código Grupo :</cell>
+                    <cell>
+                        <textbox id="codigo" maxlength="8"
+                                 constraint="no empty: Ingrese un código" width="200px"/>
+                    </cell>
+                </row>
+                
+                <row>
+                    <cell sclass="row-title">Nombre Grupo :</cell>
+                    <cell>
+                        <textbox id="nombre" maxlength="64"
+                                 constraint="no empty: Ingrese un Nombre" width="200px"/>
+                    </cell>
+                </row>
+                <row>
+                    <cell sclass="row-title">Objetivo :</cell>
+                    <cell>
+                        <textbox id="objetivo" multiline="true" hflex="1" maxlength="128"
+                                 width="200px"  onClick='temaPop.open(self,selectedPosition)'/>
+                    </cell>
+                </row>
+                
+            </rows>
+           
+        </grid>
+        <popup id="temaPop" width="150px">
+            <groupbox closable="true">
+                <caption>Información</caption>
+                <html><![CDATA[ Especifique el Objetivo del Grupo ]]></html>
+            </groupbox>
+        </popup>
+        <hlayout>
+            <button id="guardarGrupoAdmin" label="Guardar"/>
+        </hlayout>
+    </vlayout>
 </window>

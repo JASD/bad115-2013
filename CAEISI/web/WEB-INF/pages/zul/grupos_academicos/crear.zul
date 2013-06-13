@@ -16,18 +16,17 @@
                 <row>
                     <cell sclass="row-title">Seleccione un curso :</cell>
                     <cell>
-                        <listbox id="cursos" mold="select" width="200px" 
-                                 emptyMessage="No se encontraron cursos">
+                        <combobox id="cursos" constraint="no empty: Elija un Curso">
                             <template name="model">
-                                <listitem label="${each}" />
+                                <comboitem label="${each}" />
                             </template>
-                        </listbox>
+                        </combobox>
                     </cell>
                 </row>
                 <row>
                     <cell sclass="row-title">Tipo de Grupo :</cell>
                     <cell>
-                        <combobox id="tipo">
+                        <combobox id="tipo" constraint="no empty: Elija un Tipo">
                             <comboitem label="Teórico" value="TEO"/>
                             <comboitem label="Discusión" value="DISC"/>
                             <comboitem label="Laboratorio" value="LAB"/>
@@ -47,7 +46,7 @@
                 <row>
                     <cell sclass="row-title">Número de Grupo :</cell>
                     <cell>
-                        <spinner id="numero" constraint="no negative,no zero" />
+                        <spinner id="numero" constraint="no negative,no zero,no empty" />
                     </cell>
                 </row>
                 <row>
