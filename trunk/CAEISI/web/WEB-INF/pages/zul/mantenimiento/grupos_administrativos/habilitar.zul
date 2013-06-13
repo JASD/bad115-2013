@@ -1,5 +1,24 @@
-<?page id="crv" title="Habilitar Grupo Administrativo CAEISI"?>
+<?page id="crv" title="Grupos Administrativos Disponibles CAEISI"?>
 <?init class="org.zkoss.zk.ui.util.Composition" arg0="/WEB-INF/pages/templates/template.zul" ?>
-<window self="@{define(body)}" title='Habilitar Grupo Administrativo'>
-    
+<window self="@{define(body)}" title='Habilitar Grupo Académico'>
+    <auxhead>
+        <auxheader colspan="5" label="Grupos Académicos Disponibles" style="text-align:center"/>
+    </auxhead>
+    <grid id="gruposDes"  apply="sv.fia.eisi.controladores.GrupoAdministrativoHController"
+          mold="paging" pageSize="10" emptyMessage="Información no disponible">
+        <columns sizable="true">
+            <column hflex="10" label="Código" />
+            <column hflex="10" label="Tipo" />
+            <column hflex="20" label="Nombre" />
+            <column hflex="40" label="Objetivo" />
+        </columns>
+        <template name="model">
+            <row>
+                <label value="${each.codigoGrupo}"/>
+                <label value="${each.grupo.tipoGrupo}"/>
+                <label value="${each.nombreGrupoAdministrativo}"/>
+                <label value="${each.objetivoGrupoAdministrativo}"/>
+            </row>
+        </template>
+    </grid>
 </window>

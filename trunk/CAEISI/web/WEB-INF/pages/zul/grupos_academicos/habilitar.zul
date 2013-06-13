@@ -1,8 +1,8 @@
-<?page id="crv" title="Habilitar Grupo Académico CAEISI"?>
+<?page id="crv" title="Grupos Académicos Disponibles CAEISI"?>
 <?init class="org.zkoss.zk.ui.util.Composition" arg0="/WEB-INF/pages/templates/template.zul" ?>
 <window self="@{define(body)}" title='Habilitar Grupo Académico'>
     <auxhead>
-        <auxheader colspan="5" label="Grupos Académicos Deshabilitados" style="text-align:center"/>
+        <auxheader colspan="5" label="Grupos Académicos Disponibles" style="text-align:center"/>
     </auxhead>
     <grid id="gruposDes"  apply="sv.fia.eisi.controladores.GrupoAcademicoHController"
           mold="paging" pageSize="10" emptyMessage="Información no disponible">

@@ -64,7 +64,7 @@ public class GrupoAdministrativoDAO extends AbstractDAO<GrupoAdministrativo> {
     public List<GrupoAdministrativo> findForEnable() {
 
         return (List<GrupoAdministrativo>) sessionFactory.getCurrentSession()
-                .getNamedQuery("GrupoAdministrativo.findHabilitar").list();
+                .getNamedQuery("GrupoAdministrativo.findAll").list();
 
     }
 }
