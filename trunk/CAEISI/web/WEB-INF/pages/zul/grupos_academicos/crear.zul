@@ -14,7 +14,7 @@
            
             <rows>
                 <row>
-                    <cell sclass="row-title">Seleccione un curso :</cell>
+                    <cell sclass="row-title">Seleccione un curso:</cell>
                     <cell>
                         <combobox id="cursos" constraint="no empty: Elija un Curso">
                             <template name="model">
