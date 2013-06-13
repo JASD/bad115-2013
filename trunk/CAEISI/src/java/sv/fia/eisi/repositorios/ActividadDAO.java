@@ -4,15 +4,21 @@
  */
 package sv.fia.eisi.repositorios;
 
+import java.util.List;
+import org.hibernate.SessionFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import sv.fia.eisi.entidades.Actividad;
 
 /**
  *
- * @author admin
+ * @author Mario Sanchez
  */
 @Repository
 public class ActividadDAO extends AbstractDAO<Actividad> {
+
+    @Autowired
+    private SessionFactory sessionFactory;
 
     public ActividadDAO() {
         super(Actividad.class);
@@ -36,5 +42,9 @@ public class ActividadDAO extends AbstractDAO<Actividad> {
     @Override
     public Actividad find(Object id) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    public List<Actividad> getActivities() {
+        return (List<Actividad>) sessionFactory.getCurrentSession().getNamedQuery("Actividad.findAll").list();
     }
 }

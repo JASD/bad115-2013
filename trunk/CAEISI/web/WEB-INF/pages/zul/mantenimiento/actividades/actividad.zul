@@ -14,10 +14,10 @@
             <column>Tipo de actividad</column>
         </columns>
         <template name="model">
-            <label>${activityList.codigoActividad}</label>
-            <label>${activityList.nombreActividad}</label>
-            <label>${activityList.numeroHoras}</label>
-            <label>${activityList.tipoActividad}</label>
+            <label>${each.codigoActividad}</label>
+            <label>${each.nombreActividad}</label>
+            <label>${each.numeroHoras}</label>
+            <label>${each.tipoActividad}</label>
         </template>
     </grid>
     
