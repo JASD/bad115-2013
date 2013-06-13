@@ -45,12 +45,8 @@ public class GrupoAcademicoHController extends SelectorComposer<Component> {
         int posicion = row.getIndex();
         GrupoAcademico ga = (GrupoAcademico) gruposDes.getModel()
                 .getElementAt(posicion);
-        Boolean estado = (Boolean) check.getValue();
-        if (estado == null) {
-            ga.getGrupo().setEstaCerradoGrupo(Boolean.valueOf(false));
-        } else {
-            ga.getGrupo().setEstaCerradoGrupo(estado);
-        }
+        Boolean estado = (Boolean) check.isChecked();
+        ga.getGrupo().setEstaCerradoGrupo(estado);
         String message = null;
         String type = null;
         try {
