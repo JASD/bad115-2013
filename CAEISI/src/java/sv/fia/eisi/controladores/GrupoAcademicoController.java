@@ -57,7 +57,12 @@ public class GrupoAcademicoController extends SelectorComposer<Component> {
         ga.setCodigoGrupo(codigo.getValue());
         ga.setCodigoCurso((Curso) cursos.getSelectedItem().getValue());
         ga.setNumeroGrupoAcademico(numero.getValue().shortValue());
-        ga.setTemaGrupoAcademico(tema.getValue());
+        String t = tema.getValue();
+        if (t.equals("")) {
+            ga.setTemaGrupoAcademico(null);
+        } else {
+            ga.setTemaGrupoAcademico(tema.getValue());
+        }
         String message = null;
         String type = null;
         try {
