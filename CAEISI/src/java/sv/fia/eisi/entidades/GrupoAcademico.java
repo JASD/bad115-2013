@@ -27,9 +27,9 @@ import javax.validation.constraints.Size;
 @Table(name = "grupo_academico")
 @NamedQueries({
     @NamedQuery(name = "GrupoAcademico.findAll", query = "SELECT g FROM GrupoAcademico g"),
-    @NamedQuery(name = "GrupoAcademico.findActives", 
+    @NamedQuery(name = "GrupoAcademico.findHabilitar", 
         query = "SELECT g FROM GrupoAcademico g "
-        + "WHERE g.grupo.estaCerradoGrupo = TRUE AND g.grupo.tipoGrupo <> 'TESIS'")})
+        + "WHERE g.grupo.tipoGrupo <> 'TESIS'")})
 public class GrupoAcademico implements Serializable {
 
     private static final long serialVersionUID = 1L;
