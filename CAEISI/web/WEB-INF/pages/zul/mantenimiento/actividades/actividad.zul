@@ -1,6 +1,10 @@
 <?page id="crv" title="Actividades CAEISI"?>
 <?init class="org.zkoss.zk.ui.util.Composition" arg0="/WEB-INF/pages/templates/template.zul" ?>
 <window self="@{define(body)}" title='Actividades'>
+    <hbox>
+        <button label="Nueva Actividad" onClick="" style="margin:10px;">
+        </button>
+    </hbox>
     
     <grid apply="sv.fia.eisi.controladores.ActividadController" 
           id="activityList">
