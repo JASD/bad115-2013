@@ -4,6 +4,7 @@
  */
 package sv.fia.eisi.servicios;
 
+import java.util.List;
 import java.util.ResourceBundle;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -30,5 +31,21 @@ public class GrupoAcademicoService {
         } else {
             throw new Exception(status);
         }
+    }
+    
+    @Transactional
+    public String actualizarGrupoAcademico(GrupoAcademico ga) throws Exception {
+        String status = grupoAcademicoDAO.edit(ga);
+        if (status.equals("OK")) {
+            return ResourceBundle.getBundle("/messages")
+                    .getString("GrupoAcademicoActualizado");
+        } else {
+            throw new Exception(status);
+        }
+    }
+
+    @Transactional(readOnly = true)
+    public List<GrupoAcademico> obtenerGruposDisponibles() {
+        return grupoAcademicoDAO.findForEnable();
     }
 }

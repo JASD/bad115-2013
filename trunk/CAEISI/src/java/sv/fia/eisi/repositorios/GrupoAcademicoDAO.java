@@ -4,6 +4,7 @@
  */
 package sv.fia.eisi.repositorios;
 
+import java.util.List;
 import java.util.ResourceBundle;
 import org.hibernate.Query;
 import org.hibernate.SessionFactory;
@@ -41,7 +42,13 @@ public class GrupoAcademicoDAO extends AbstractDAO<GrupoAcademico> {
 
     @Override
     public String edit(GrupoAcademico entity) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        String call = ResourceBundle.getBundle("/procedures")
+                .getString("ActualizarGrupoAcademico");
+        Query q = sessionFactory.getCurrentSession()
+                .createSQLQuery(call);
+        q.setString("codigo", entity.getCodigoGrupo());
+        q.setBoolean("estado", entity.getGrupo().getEstaCerradoGrupo());
+        return (String) q.uniqueResult();
     }
 
     @Override
@@ -52,5 +59,12 @@ public class GrupoAcademicoDAO extends AbstractDAO<GrupoAcademico> {
     @Override
     public GrupoAcademico find(Object id) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+    
+    public List<GrupoAcademico> findForEnable(){
+        
+        return (List<GrupoAcademico>) sessionFactory.getCurrentSession()
+                .getNamedQuery("GrupoAcademico.findHabilitar").list();
+    
     }
 }

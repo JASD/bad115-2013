@@ -73,12 +73,6 @@ public class FrontController {
         return new ModelAndView("/grupos_academicos/crear");
     }
 
-    @RequestMapping(value = "/grp-acad/deshabilitar")
-    public ModelAndView deshabilitarGrupoAcad(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        return new ModelAndView("/grupos_academicos/deshabilitar");
-    }
-
     @RequestMapping(value = "/grp-acad/habilitar")
     public ModelAndView habilitarGrupoAcad(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
