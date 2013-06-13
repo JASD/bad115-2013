@@ -26,7 +26,10 @@ import javax.validation.constraints.Size;
 @Entity
 @Table(name = "grupo_academico")
 @NamedQueries({
-    @NamedQuery(name = "GrupoAcademico.findAll", query = "SELECT g FROM GrupoAcademico g")})
+    @NamedQuery(name = "GrupoAcademico.findAll", query = "SELECT g FROM GrupoAcademico g"),
+    @NamedQuery(name = "GrupoAcademico.findActives", 
+        query = "SELECT g FROM GrupoAcademico g "
+        + "WHERE g.grupo.estaCerradoGrupo = TRUE AND g.grupo.tipoGrupo <> 'TESIS'")})
 public class GrupoAcademico implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -44,10 +47,10 @@ public class GrupoAcademico implements Serializable {
     @Column(name = "tema_grupo_academico")
     private String temaGrupoAcademico;
     @JoinColumn(name = "codigo_grupo", referencedColumnName = "codigo_grupo", insertable = false, updatable = false)
-    @OneToOne(optional = false, fetch = FetchType.LAZY)
+    @OneToOne(optional = false, fetch = FetchType.EAGER)
     private Grupo grupo;
     @JoinColumn(name = "codigo_curso", referencedColumnName = "codigo_curso")
-    @ManyToOne(optional = false, fetch = FetchType.LAZY)
+    @ManyToOne(optional = false, fetch = FetchType.EAGER)
     private Curso codigoCurso;
 
     public GrupoAcademico() {
@@ -126,5 +129,4 @@ public class GrupoAcademico implements Serializable {
     public String toString() {
         return "sv.fia.eisi.entidades.GrupoAcademico[ codigoGrupo=" + codigoGrupo + " ]";
     }
-    
 }
