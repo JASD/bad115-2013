@@ -126,13 +126,7 @@ public class FrontController {
             throws ServletException, IOException {
         return new ModelAndView("/mantenimiento/grupos_administrativos/habilitar");
     }
-
-    @RequestMapping(value = "/mantenimiento/grp-admin/deshabilitar")
-    public ModelAndView deshabilitarGrupoAdmin(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        return new ModelAndView("/mantenimiento/grupos_administrativos/deshabilitar");
-    }
-
+    
     @RequestMapping(value = "/mantenimiento/horarios")
     public ModelAndView verHorarios(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {

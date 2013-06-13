@@ -55,8 +55,6 @@
                                                   href="/grp-acad/crear.html"/>
                                         <menuitem label="Habilitar Grupos" 
                                                   href="/grp-acad/habilitar.html"/>
-                                        <menuitem label="Deshabilitar Grupos" 
-                                                  href="/grp-acad/deshabilitar.html"/>
                                     </menupopup>
                                 </menu>
                                 <menu label="Reportes" >
@@ -99,8 +97,6 @@
                                                           href="/mantenimiento/grp-admin/nuevo.html"/>
                                                 <menuitem label="Habilitar Grupos" 
                                                           href="/mantenimiento/grp-admin/habilitar.html"/>
-                                                <menuitem label="Deshabilitar Grupos" 
-                                                          href="/mantenimiento/grp-admin/deshabilitar.html"/>
                                             </menupopup>
                                         </menu>
                                         <menuitem label="Conocimientos" 
