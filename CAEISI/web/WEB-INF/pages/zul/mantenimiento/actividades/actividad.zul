@@ -2,20 +2,20 @@
 <?init class="org.zkoss.zk.ui.util.Composition" arg0="/WEB-INF/pages/templates/template.zul" ?>
 <window self="@{define(body)}" title='Actividades'>
     <hbox>
-        <button label="Nueva Actividad" onClick="" style="margin:10px;">
-        </button>
+        <button label="Nueva Actividad" style="margin:10px;" />
     </hbox>
     
     <grid apply="sv.fia.eisi.controladores.ActividadController" 
-          id="activityList">
+          id="activityList" style="margin:10px;">
         <auxhead>
             <auxheader label="Actividades" colspan="5" rowspan="1" />
         </auxhead>
         <columns>
-            <column>Codigo de actividad</column>
-            <column>Nombre de actividad</column>
-            <column>Numero de horas</column>
-            <column>Tipo de actividad</column>
+            <column hflex="1">Codigo de actividad</column>
+            <column hflex="2">Nombre de actividad</column>
+            <column hflex="1">Numero de horas</column>
+            <column hflex="1">Tipo de actividad</column>
+            <column hflex="1">Actualizar</column>
         </columns>
         <template name="model">
             <row>
@@ -23,6 +23,9 @@
                 <label value="${each.nombreActividad}" />
                 <label value="${each.numeroHoras}" />
                 <label value="${each.tipoActividad}" />
+                <div style="text-align:center;">
+                    <button label="" image="/public/img/pensil.png" />
+                </div>
             </row>            
         </template>
     </grid>
