@@ -93,6 +93,19 @@
                                  constraint="no empty: Ingrese el Correo Eléctronico" width="200px"/>
                     </cell>
                 </row>  
+                
+                <row>
+                    <cell sclass="row-title">Departamento :</cell>
+                    <cell>
+                        <combobox id="depto">
+                            <comboitem label="TRABAJOS DE GRADUACION" value="TRGRA"/>
+                            <comboitem label="ADMINISTRACION" value="ADMIN"/>
+                            <comboitem label="DESARROLLO DE SISTEMAS" value="DESSI"/>
+                            <comboitem label="PROGRAMACION Y MANEJO DE DATOS" value="PROGR"/>
+                            <comboitem label="COMUNICACIONES Y CIENCIAS DE LA COMPUTACION" value="COMUN"/>
+                        </combobox>
+                    </cell>
+                </row>
             </rows>
            
         </grid>
