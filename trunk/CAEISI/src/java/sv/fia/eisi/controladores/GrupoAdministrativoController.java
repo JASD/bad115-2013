@@ -11,62 +11,51 @@ import org.zkoss.zk.ui.select.annotation.Wire;
 import org.zkoss.zk.ui.select.annotation.WireVariable;
 import org.zkoss.zk.ui.util.Clients;
 import org.zkoss.zul.Combobox;
-import org.zkoss.zul.ListModelList;
-import org.zkoss.zul.Listbox;
-import org.zkoss.zul.Spinner;
 import org.zkoss.zul.Textbox;
-import sv.fia.eisi.entidades.Curso;
 import sv.fia.eisi.entidades.Grupo;
-import sv.fia.eisi.entidades.GrupoAcademico;
-import sv.fia.eisi.servicios.CursoService;
-import sv.fia.eisi.servicios.GrupoAcademicoService;
+import sv.fia.eisi.entidades.GrupoAdministrativo;
+import sv.fia.eisi.servicios.GrupoAdministrativoService;
 
 /**
  *
  * @author Antonio
  */
-public class GrupoAcademicoController extends SelectorComposer<Component> {
-
-    @Wire
-    private Combobox cursos;
+public class GrupoAdministrativoController extends SelectorComposer<Component> {
+    
     @Wire
     private Textbox codigo;
     @Wire
-    private Textbox tema;
-    @Wire
-    private Spinner numero;
+    private Textbox objetivo;
     @Wire
     private Combobox tipo;
+    @Wire
+    private Textbox nombre;
     @WireVariable
-    private CursoService cursoService;
-    @WireVariable
-    private GrupoAcademicoService grupoAcademicoService;
-
+    private GrupoAdministrativoService grupoAdministrativoService;
+    
     @Override
     public void doAfterCompose(Component comp) throws Exception {
         super.doAfterCompose(comp);
-        cursos.setModel(new ListModelList<Curso>(cursoService.findActives()));
     }
-
-    @Listen("onClick=#guardarGrupoAcad")
+    
+    @Listen("onClick=#guardarGrupoAdmin")
     public void guardarGrupoAcademico() {
         Grupo nuevo = new Grupo();
         nuevo.setTipoGrupo((String) tipo.getSelectedItem().getValue());
-        GrupoAcademico ga = new GrupoAcademico();
+        GrupoAdministrativo ga = new GrupoAdministrativo();
         ga.setGrupo(nuevo);
+        ga.setNombreGrupoAdministrativo(nombre.getValue());
         ga.setCodigoGrupo(codigo.getValue());
-        ga.setCodigoCurso((Curso) cursos.getSelectedItem().getValue());
-        ga.setNumeroGrupoAcademico(numero.getValue().shortValue());
-        String t = tema.getValue();
-        if (t.equals("")) {
-            ga.setTemaGrupoAcademico(null);
+        String obj = objetivo.getValue();
+        if (obj.equals("")) {
+            ga.setObjetivoGrupoAdministrativo(null);
         } else {
-            ga.setTemaGrupoAcademico(tema.getValue().toUpperCase());
+            ga.setObjetivoGrupoAdministrativo(obj.toUpperCase());
         }
         String message = null;
         String type = null;
         try {
-            message = grupoAcademicoService.guardarGrupoAcademico(ga);
+            message = grupoAdministrativoService.guardarGrupoAdministrativo(ga);
             type = Clients.NOTIFICATION_TYPE_INFO;
         } catch (Exception ex) {
             message = ex.getMessage();

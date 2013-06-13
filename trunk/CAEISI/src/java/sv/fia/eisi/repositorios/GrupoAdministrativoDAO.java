@@ -10,61 +10,61 @@ import org.hibernate.Query;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
-import sv.fia.eisi.entidades.GrupoAcademico;
+import sv.fia.eisi.entidades.GrupoAdministrativo;
 
 /**
  *
  * @author Antonio
  */
 @Repository
-public class GrupoAcademicoDAO extends AbstractDAO<GrupoAcademico> {
+public class GrupoAdministrativoDAO extends AbstractDAO<GrupoAdministrativo> {
 
     @Autowired
     private SessionFactory sessionFactory;
 
-    public GrupoAcademicoDAO() {
-        super(GrupoAcademico.class);
+    public GrupoAdministrativoDAO() {
+        super(GrupoAdministrativo.class);
     }
 
     @Override
-    public String create(GrupoAcademico entity) {
+    public String create(GrupoAdministrativo entity) {
         String call = ResourceBundle.getBundle("/procedures")
-                .getString("InsertarGrupoAcademico");
+                .getString("InsertarGrupoAdministrativo");
         Query q = sessionFactory.getCurrentSession()
                 .createSQLQuery(call);
         q.setString("tipo", entity.getGrupo().getTipoGrupo().toUpperCase());
         q.setString("codigo", entity.getCodigoGrupo().toUpperCase());
-        q.setString("curso", entity.getCodigoCurso().getCodigoCurso());
-        q.setShort("numero", entity.getNumeroGrupoAcademico());
-        q.setString("tema", entity.getTemaGrupoAcademico());
+        q.setString("nombre", entity.getNombreGrupoAdministrativo().toUpperCase());
+        q.setString("objetivo", entity.getObjetivoGrupoAdministrativo().toUpperCase());
         return (String) q.uniqueResult();
     }
 
     @Override
-    public String edit(GrupoAcademico entity) {
+    public String edit(GrupoAdministrativo entity) {
         String call = ResourceBundle.getBundle("/procedures")
-                .getString("ActualizarGrupoAcademico");
+                .getString("ActualizarGrupoAdministrativo");
         Query q = sessionFactory.getCurrentSession()
                 .createSQLQuery(call);
         q.setString("codigo", entity.getCodigoGrupo());
-        q.setBoolean("estado", entity.getGrupo().getEstaCerradoGrupo());
+        q.setString("nombre", entity.getNombreGrupoAdministrativo().toUpperCase());
+        q.setString("objetivo", entity.getObjetivoGrupoAdministrativo().toUpperCase());
         return (String) q.uniqueResult();
     }
 
     @Override
-    public String delete(GrupoAcademico entity) {
+    public String delete(GrupoAdministrativo entity) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public GrupoAcademico find(Object id) {
+    public GrupoAdministrativo find(Object id) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
-    
-    public List<GrupoAcademico> findForEnable(){
-        
-        return (List<GrupoAcademico>) sessionFactory.getCurrentSession()
-                .getNamedQuery("GrupoAcademico.findHabilitar").list();
-    
+
+    public List<GrupoAdministrativo> findForEnable() {
+
+        return (List<GrupoAdministrativo>) sessionFactory.getCurrentSession()
+                .getNamedQuery("GrupoAdministrativo.findHabilitar").list();
+
     }
 }
