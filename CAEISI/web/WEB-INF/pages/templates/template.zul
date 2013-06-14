@@ -87,8 +87,14 @@
                                 </menu>
                                 <menu label="Mantenimiento">
                                     <menupopup>
-                                        <menuitem label="Actividades" 
-                                                  href="/mantenimiento/actividad.html"/>
+                                        <menu label="Actividades">
+                                            <menupopup>                                                
+                                                <menuitem label="Crear actividades" 
+                                                          href="/mantenimiento/actividad/nueva.html"/>
+                                                <menuitem label="Mostrar actividades" 
+                                                            href="/mantenimiento/actividad.html"/>
+                                            </menupopup>
+                                        </menu>                                        
                                         <menuitem label="Cursos" 
                                                   href="/mantenimiento/curso.html"/>
                                         <menu label="Grupos Administrativos">
