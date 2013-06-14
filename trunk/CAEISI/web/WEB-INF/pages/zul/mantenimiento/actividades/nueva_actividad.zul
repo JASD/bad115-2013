@@ -1,5 +1,16 @@
 <?page id="crv" title="Nueva Actividad CAEISI"?>
 <?init class="org.zkoss.zk.ui.util.Composition" arg0="/WEB-INF/pages/templates/template.zul" ?>
 <window self="@{define(body)}" title='Actividades'>
-
+    <vlayout>
+        <grid apply="sv.fia.eisi.controladores.AvtividadHController">
+            <rows>
+                <row>
+                    <cell>Codigo de la Actividad</cell>
+                    <cell>
+                        <textbox id="codActivity" maxlength="5"/>
+                    </cell>
+                </row>
+            </rows>           
+        </grid>
+    </vlayout>
 </window>
