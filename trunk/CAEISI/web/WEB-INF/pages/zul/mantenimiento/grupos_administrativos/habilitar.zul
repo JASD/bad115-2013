@@ -1,8 +1,8 @@
 <?page id="crv" title="Grupos Administrativos Disponibles CAEISI"?>
 <?init class="org.zkoss.zk.ui.util.Composition" arg0="/WEB-INF/pages/templates/template.zul" ?>
-<window self="@{define(body)}" title='Habilitar Grupo Académico'>
+<window self="@{define(body)}" title='Habilitar Grupo Administrativo'>
     <auxhead>
-        <auxheader colspan="5" label="Grupos Académicos Disponibles" style="text-align:center"/>
+        <auxheader colspan="5" label="Grupos Administrativos Disponibles" style="text-align:center"/>
     </auxhead>
     <grid id="gruposDes"  apply="sv.fia.eisi.controladores.GrupoAdministrativoHController"
           mold="paging" pageSize="10" emptyMessage="Información no disponible">
@@ -11,13 +11,18 @@
             <column hflex="10" label="Tipo" />
             <column hflex="20" label="Nombre" />
             <column hflex="40" label="Objetivo" />
+            <column hflex="15" label="Cerrado" />
+            <column hflex="15" label="Guardar" style="text-align:center"/>
         </columns>
         <template name="model">
             <row>
                 <label value="${each.codigoGrupo}"/>
                 <label value="${each.grupo.tipoGrupo}"/>
-                <label value="${each.nombreGrupoAdministrativo}"/>
-                <label value="${each.objetivoGrupoAdministrativo}"/>
+                <textbox value="${each.nombreGrupoAdministrativo}" inplace="true"
+                         width="250px" constraint="no empty: Ingrese un Nombre"/>
+                <textbox value="${each.objetivoGrupoAdministrativo}" inplace="true" width="350px"/>
+                <checkbox checked="${each.grupo.estaCerradoGrupo}"/>
+                <button image="/public/img/tick.png" disabled="true"/>
             </row>
         </template>
     </grid>

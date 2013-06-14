@@ -34,8 +34,19 @@ public class GrupoAdministrativoService {
     }
 
     @Transactional
-    public String actualizarGrupoAcademico(GrupoAdministrativo ga) throws Exception {
+    public String actualizarGrupoAdministrativo(GrupoAdministrativo ga) throws Exception {
         String status = grupoAdministrativoDAO.edit(ga);
+        if (status.equals("OK")) {
+            return ResourceBundle.getBundle("/messages")
+                    .getString("GrupoAdministrativoActualizado");
+        } else {
+            throw new Exception(status);
+        }
+    }
+
+    @Transactional
+    public String actualizarEstadoGrupoAdministrativo(GrupoAdministrativo ga) throws Exception {
+        String status = grupoAdministrativoDAO.actualizarEstado(ga);
         if (status.equals("OK")) {
             return ResourceBundle.getBundle("/messages")
                     .getString("GrupoAdministrativoActualizado");

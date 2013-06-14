@@ -39,7 +39,7 @@ public class GrupoAcademicoHController extends SelectorComposer<Component> {
     }
 
     @Listen("onCheck = checkbox")
-    public void cambiarEstadoCurso(Event e) {
+    public void cambiarEstadoGrupo(Event e) {
         Checkbox check = (Checkbox) e.getTarget();
         Row row = (Row) e.getTarget().getParent();
         int posicion = row.getIndex();
@@ -59,7 +59,5 @@ public class GrupoAcademicoHController extends SelectorComposer<Component> {
             Clients.showNotification(message,
                     type, this.getSelf(), "top_center", 2000, true);
         }
-
-
     }
 }

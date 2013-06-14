@@ -14,20 +14,9 @@
            
             <rows>
                 <row>
-                    <cell sclass="row-title">N° ISSS :</cell>
-                    <cell>
-                        <listbox id="cursos" mold="select" width="200px" 
-                                 emptyMessage="No se encontraron Numeros de ISSS">
-                            <template name="model">
-                                <listitem label="${each}" />
-                            </template>
-                        </listbox>
-                    </cell>
-                </row>
-                <row>
                     <cell sclass="row-title">Numero ISSS :</cell>
                     <cell>
-                        <textbox id="isss" maxlength="40"
+                        <textbox id="isss" maxlength="10"
                                  constraint="no empty: Ingrese el Numero de ISSS" width="200px"/>
                     </cell>
                 </row>
@@ -35,14 +24,14 @@
                 <row>
                     <cell sclass="row-title">Primer Nombre :</cell>
                     <cell>
-                        <textbox id="primer" maxlength="40"
+                        <textbox id="primer" maxlength="64"
                                  constraint="no empty: Ingrese el Primer Nombre" width="200px"/>
                     </cell>
                 </row>
                 <row>
                     <cell sclass="row-title">Segundo Nombre :</cell>
                     <cell>
-                        <textbox id="segundo" maxlength="40"
+                        <textbox id="segundo" maxlength="64"
                                  width="200px"/>
                     </cell>
                 </row>
@@ -50,7 +39,7 @@
                 <row>
                     <cell sclass="row-title">Primer Apellido :</cell>
                     <cell>
-                        <textbox id="primerapellido" maxlength="40"
+                        <textbox id="primerapellido" maxlength="64"
                                  constraint="no empty: Ingrese el Primer Apellido" width="200px"/>
                     </cell>
                 </row>
@@ -59,7 +48,7 @@
                 <row>
                     <cell sclass="row-title">Segundo Apellido :</cell>
                     <cell>
-                        <textbox id="segundoapellido" maxlength="40"
+                        <textbox id="segundoapellido" maxlength="64"
                                  width="200px"/>
                     </cell>
                 </row>
@@ -67,7 +56,7 @@
                 <row>
                     <cell sclass="row-title">Grado Académico :</cell>
                     <cell>
-                        <textbox id="grado" maxlength="40"
+                        <textbox id="grado" maxlength="32"
                                  constraint="no empty: Ingrese el Grado Académico" width="200px"/>
                     </cell>
                 </row>
@@ -75,7 +64,11 @@
                 <row>
                     <cell sclass="row-title">Categoría :</cell>
                     <cell>
-                        <spinner id="categoria"  constraint="no negative,no zero, min 1, max 3" />
+                        <combobox id="categoria">
+                            <comboitem label="Profesor Universitario I" value="PUI"/>
+                            <comboitem label="Profesor Universitario II" value="PUII"/>
+                            <comboitem label="Profesor Universitario III" value="PUIII"/>
+                        </combobox>
                     </cell>
                 </row>
                 
@@ -96,7 +89,7 @@
                 <row>
                     <cell sclass="row-title">Correo Eléctronico :</cell>
                     <cell>
-                        <textbox id="correo" maxlength="50"
+                        <textbox id="correo" maxlength="32"
                                  constraint="no empty: Ingrese el Correo Eléctronico" width="200px"/>
                     </cell>
                 </row>  

@@ -43,7 +43,7 @@ public class GrupoAcademicoDAO extends AbstractDAO<GrupoAcademico> {
     @Override
     public String edit(GrupoAcademico entity) {
         String call = ResourceBundle.getBundle("/procedures")
-                .getString("ActualizarGrupoAcademico");
+                .getString("ActualizarEstadoGrupo");
         Query q = sessionFactory.getCurrentSession()
                 .createSQLQuery(call);
         q.setString("codigo", entity.getCodigoGrupo());
