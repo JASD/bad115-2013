@@ -35,7 +35,7 @@ public class GrupoAdministrativoDAO extends AbstractDAO<GrupoAdministrativo> {
         q.setString("tipo", entity.getGrupo().getTipoGrupo().toUpperCase());
         q.setString("codigo", entity.getCodigoGrupo().toUpperCase());
         q.setString("nombre", entity.getNombreGrupoAdministrativo().toUpperCase());
-        q.setString("objetivo", entity.getObjetivoGrupoAdministrativo().toUpperCase());
+        q.setString("objetivo", entity.getObjetivoGrupoAdministrativo());
         return (String) q.uniqueResult();
     }
 
@@ -48,6 +48,16 @@ public class GrupoAdministrativoDAO extends AbstractDAO<GrupoAdministrativo> {
         q.setString("codigo", entity.getCodigoGrupo());
         q.setString("nombre", entity.getNombreGrupoAdministrativo().toUpperCase());
         q.setString("objetivo", entity.getObjetivoGrupoAdministrativo().toUpperCase());
+        return (String) q.uniqueResult();
+    }
+    
+    public String actualizarEstado(GrupoAdministrativo entity) {
+        String call = ResourceBundle.getBundle("/procedures")
+                .getString("ActualizarEstadoGrupo");
+        Query q = sessionFactory.getCurrentSession()
+                .createSQLQuery(call);
+        q.setString("codigo", entity.getCodigoGrupo());
+        q.setBoolean("estado", entity.getGrupo().getEstaCerradoGrupo());
         return (String) q.uniqueResult();
     }
 
