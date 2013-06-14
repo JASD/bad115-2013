@@ -10,7 +10,26 @@
                         <textbox id="codActivity" maxlength="5"/>
                     </cell>
                 </row>
+                <row>
+                    <cell>Nombre de la Actividad</cell>
+                    <cell>
+                        <textbox id="nomActivity" maxlength="5"/>
+                    </cell>
+                </row>
+                <row>
+                    <cell>Numero de horas</cell>
+                    <cell>
+                        <spinner id="horasActivity" />
+                    </cell>
+                </row>
+                <row>
+                    <cell>Tipo de la Actividad</cell>
+                    <cell>
+                        <textbox id="tipoActivity" maxlength="5"/>
+                    </cell>
+                </row>
             </rows>           
         </grid>
+        <button label="Guardar actividad" onClick=""/>
     </vlayout>
 </window>
