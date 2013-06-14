@@ -2,7 +2,7 @@
 <?init class="org.zkoss.zk.ui.util.Composition" arg0="/WEB-INF/pages/templates/template.zul" ?>
 <window self="@{define(body)}" title='Actividades'>
     <vlayout>
-        <grid apply="sv.fia.eisi.controladores.AvtividadHController">
+        <grid apply="sv.fia.eisi.controladores.ActividadHController">
             <rows>
                 <row>
                     <cell>Codigo de la Actividad</cell>
