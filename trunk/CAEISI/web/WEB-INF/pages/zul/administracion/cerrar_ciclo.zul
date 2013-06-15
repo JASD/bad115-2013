@@ -1,5 +1,36 @@
 <?page id="crv" title="Cerrar Ciclo CAEISI"?>
 <?init class="org.zkoss.zk.ui.util.Composition" arg0="/WEB-INF/pages/templates/template.zul" ?>
 <window self="@{define(body)}" title='Cerrar Ciclo'>
-    
+    <vlayout>
+        <zscript><![CDATA[
+    String selectedPosition = "end_before";
+]]>
+        </zscript>
+        <grid apply="sv.fia.eisi.controladores.CerrarCicloController">
+            <columns>
+                <column align="left" hflex="min"/>
+                <column/>
+            </columns>
+           
+            <rows>
+                <row>
+                    <html>
+                        <h1>ADVERTENCIA:</h1>
+                        <p>Cerrar el Ciclo Academico conlleva a las siguientes implicaciones: </p>
+                        <ul> 
+                            <li>Se cerrar&#225; el Ciclo Academico en curso </li>
+                            <li>No podra modificar el Ciclo Academico en curso</li> 
+                            <li>Se habilitar&#225; un nuevo Ciclo Academico</li>
+                        </ul>
+                        <p>Tome en cuenta estas consideraciones antes de Cerrar el Ciclo Academico en curso.</p> 
+                    </html>
+                </row>
+            </rows>
+           
+        </grid>
+        
+        <hlayout>
+            <button id="cerrarCicloAcad" label="Cerrar Ciclo"/>
+        </hlayout>
+    </vlayout>
 </window>
