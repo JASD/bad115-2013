@@ -1,47 +1,61 @@
 <?page id="crv" title="Modificar Ciclo CAEISI"?>
 <?init class="org.zkoss.zk.ui.util.Composition" arg0="/WEB-INF/pages/templates/template.zul" ?>
 
- 
-            <window self="@{define(body)}" title="Modificar Ciclo">
-                
-                         
-                <grid style="clear:right;float:left; margin:10px">
-                    <auxhead>
-                        <auxheader style="text-align:center" 
-                                     colspan="7"  label="Modificar Ciclo"/>
-                    </auxhead>
-                    
-                    <columns>
-                        <column hflex="5">Año</column>
-                        <column hflex="4">N° Ciclo</column>
-                         <column hflex="4"></column>
-                        <column hflex="4">Fecha Inicio</column>
-                        <column hflex="4">Fecha Fin</column>
-                        <column hflex="10">Opciones</column>
-                     </columns>
-                    <rows>
-            <row>
-                <combobox model="@load(vm.contributorTitles)"
-                    selectedItem="@bind(vm.selectedContributor.title)"  width="99%" />
-                <combobox readonly="true" model="@load(vm.contributorTitles)" width="99%" >
-                    <comboitem label="1"/>
-                    <comboitem label="2"/>
-                 
-                </combobox>   
-                <button style="margin:20px 20px 10px 10px;clear:center;float:left"
-                          label="Consultar"/> 
-                <datebox style="float:right" constraint="no empty" id="db0" cols="12" format="short "  mold="rounded" />
-                <datebox style="float:right" constraint="no empty"  format="short"/>
-                <a href="k" 
-                           style="color: #66CCFF;margin-right:10px">
-                            <label value="Modificar" style="font-size:16px" />
-                        </a>
-            </row>
-            <row>
-                
-            </row>
-        </rows>
-                </grid>
-            </window>
+<window self="@{define(body)}" title='Modificar Ciclo'>
+    <vlayout>
+        <zscript><![CDATA[
+    String selectedPosition = "end_before";
+]]>
+        </zscript>
+        <grid apply="sv.fia.eisi.controladores.CicloController" >
+            <columns>
+                <column align="right" hflex="min"/>
+                <column/>
+            </columns>
            
-
+            <rows>
+                <row>
+                    <cell sclass="row-title">Año:</cell>
+                        <cell>
+                        <textbox id="anyo" maxlength="8" value="${each}" readonly="true"
+                                 constraint="no empty: Ingrese un Año" width="200px"/>
+                        </cell>
+                    
+                </row>
+                <row>
+                    <cell sclass="row-title">Numero Cicclo :</cell>
+                    
+                        <cell>
+                        <textbox id="numero" maxlength="8" value="${each}" readonly="true"
+                                 constraint="no empty: Ingrese numero ciclo" width="200px"/>
+                        </cell>
+                  </row>
+                <row>
+                    <cell sclass="row-title">Fecha Inicio :</cell>
+                    <cell>
+                        <datebox style="float:left" constraint="no empty" 
+                                 id="fechaini"  format="short "  mold="rounded" />
+                    </cell>
+                </row>
+                
+                <row>
+                    <cell sclass="row-title">Fecha FIn :</cell>
+                    <cell>
+                        <datebox id="fechafin" style="float:left" constraint="no empty"  
+                                 format="short" mold="rounded"/>
+                    </cell>
+                </row>
+                
+            </rows>
+           
+        </grid>
+        
+        <hlayout>
+            <button id="guardarCicloAcad" label="Guardar"/>
+        </hlayout>
+    </vlayout>
+</window>
+ 
+            
+                
+            
