@@ -4,7 +4,6 @@
  */
 package sv.fia.eisi.servicios;
 
-import java.util.List;
 import java.util.ResourceBundle;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -14,7 +13,7 @@ import sv.fia.eisi.repositorios.CicloAcademicoDAO;
 
 /**
  *
- * @author Antonio
+ * @author Ever
  */
 @Service
 public class CicloService {
@@ -32,7 +31,7 @@ public class CicloService {
             throw new Exception(status);
         }
     }
-    
+
     @Transactional
     public String actualizarCicloAcademico(Ciclo ca) throws Exception {
         String status = cicloAcademicoDAO.edit(ca);
@@ -44,15 +43,23 @@ public class CicloService {
         }
     }
 
-     @Transactional(readOnly = true)
-    public  String findUltimo() {
+    @Transactional(readOnly = true)
+    public String findUltimo() {
         return cicloAcademicoDAO.findUltimo().toString();
     }
-     
+
     @Transactional(readOnly = true)
-     public  String findUltimoN() {
+    public String findUltimoN() {
         return cicloAcademicoDAO.findUltimoN().toString();
-    } 
-     
-    
+    }
+
+    @Transactional(readOnly = true)
+    public String findUltimoFechaf() {
+        return cicloAcademicoDAO.findUltimoFechaf().toString();
+    }
+
+    @Transactional(readOnly = true)
+    public String findUltimoFechai() {
+        return cicloAcademicoDAO.findUltimoFechai().toString();
+    }
 }
