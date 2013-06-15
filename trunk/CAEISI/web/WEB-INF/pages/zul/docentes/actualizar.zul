@@ -11,26 +11,24 @@
             <auxheader label="Docentes" colspan="5" rowspan="1" />
         </auxhead>
         <columns>
-            <column hflex="4">N° ISSS</column>
+       
             <column hflex="9">Nombre</column>
             <column hflex="9">Apellido</column>
-            <column hflex="6">Grado Académico</column>
             <column hflex="5">Categoría</column>
-            <column hflex="6">Tipo Contratación</column>
-            <column hflex="9">Correo Eléctronico</column>
             <column hflex="8">Departamento</column>
+            <column hflex="6">Grado Académico</column>
+            <column hflex="3">Estado</column>
             <column hflex="4">Actualizar</column>
         </columns>
         <template name="model">
             <row>
-                <label value="${each.isss}" />
+             
                 <label value="${each.nombre}" />
                 <label value="${each.apellido}" />
-                <label value="${each.grado}" />
                 <label value="${each.categoria}" />
-                <label value="${each.tipo}" />
-                <label value="${each.correo}" />
-                <label value="${each.depto}" />
+                <label value="${each.depto}" />                       
+                <label value="${each.grado}" />
+                <label value="${each.estado}" /> 
                 <div style="text-align:center;">
                     <button label="" image="/public/img/pencil.png" />
                 </div>
