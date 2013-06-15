@@ -30,7 +30,9 @@ import javax.validation.constraints.NotNull;
 @NamedQueries({
     @NamedQuery(name = "Ciclo.findAll", query = "SELECT c FROM Ciclo c"),
     @NamedQuery(name = "Ciclo.ultimo", query = "SELECT c.cicloPK.anoCiclo FROM Ciclo c WHERE c.estadoCiclo='1'"),
-    @NamedQuery(name = "CicloNumero.ultimo", query = "SELECT c.cicloPK.numeroCiclo FROM Ciclo c WHERE c.estadoCiclo='1'")})
+    @NamedQuery(name = "CicloNumero.ultimo", query = "SELECT c.cicloPK.numeroCiclo FROM Ciclo c WHERE c.estadoCiclo='1'"),
+    @NamedQuery(name = "CicloFechaf.ultimo", query = "SELECT c.fechaFinCiclo FROM Ciclo c WHERE c.estadoCiclo='1'"),
+    @NamedQuery(name = "CicloFechai.ultimo", query = "SELECT c.fechaInicioCiclo FROM Ciclo c WHERE c.estadoCiclo='1'")})
 public class Ciclo implements Serializable {
     private static final long serialVersionUID = 1L;
     @EmbeddedId 
