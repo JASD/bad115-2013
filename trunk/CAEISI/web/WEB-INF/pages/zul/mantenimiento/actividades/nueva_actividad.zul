@@ -1,35 +1,41 @@
 <?page id="crv" title="Nueva Actividad CAEISI"?>
 <?init class="org.zkoss.zk.ui.util.Composition" arg0="/WEB-INF/pages/templates/template.zul" ?>
-<window self="@{define(body)}" title='Actividades'>
+<window self="@{define(body)}" title='Nueva Actividad'>
     <vlayout>
         <grid apply="sv.fia.eisi.controladores.ActividadHController">
+            <columns>
+                <column align="right" hflex="min" />
+                <column />
+            </columns>
             <rows>
                 <row>
-                    <cell>Codigo de la Actividad</cell>
+                    <cell>Codigo de la Actividad:</cell>
                     <cell>
-                        <textbox id="codActivity" maxlength="5"/>
+                        <textbox id="codActivity" maxlength="5" constraint="no empty:Ingrese un codigo"/>
                     </cell>
                 </row>
                 <row>
-                    <cell>Nombre de la Actividad</cell>
+                    <cell>Nombre de la Actividad:</cell>
                     <cell>
-                        <textbox id="nomActivity" maxlength="5"/>
+                        <textbox id="nomActivity" maxlength="64" constraint="no empty:Ingrese el nombre"/>
                     </cell>
                 </row>
                 <row>
-                    <cell>Numero de horas</cell>
+                    <cell>Numero de horas:</cell>
                     <cell>
-                        <spinner id="horasActivity" />
+                        <spinner id="horasActivity" constraint="no negative,no zero,no empty" />
                     </cell>
                 </row>
                 <row>
-                    <cell>Tipo de la Actividad</cell>
+                    <cell>Tipo de la Actividad:</cell>
                     <cell>
-                        <textbox id="tipoActivity" maxlength="5"/>
+                        <textbox id="tipoActivity" maxlength="16" constraint="no empty:Ingrese un tipo" />
                     </cell>
                 </row>
             </rows>           
         </grid>
-        <button label="Guardar actividad" onClick=""/>
+        <hlayout>
+            <button label="Guardar actividad" id="guardarActividad" />
+        </hlayout>        
     </vlayout>
 </window>

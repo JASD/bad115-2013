@@ -24,7 +24,7 @@
                 <label value="${each.numeroHoras}" />
                 <label value="${each.tipoActividad}" />
                 <div style="text-align:center;">
-                    <button label="" image="/public/img/pensil.png" />
+                    <button label="" image="/public/img/pencil.png" />
                 </div>
             </row>            
         </template>
