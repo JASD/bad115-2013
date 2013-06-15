@@ -106,6 +106,30 @@
                         </combobox>
                     </cell>
                 </row>
+                
+                <row>
+                    <cell sclass="row-title">Cargo :</cell>
+                    <cell>
+                        <textbox id="cargo" maxlength="9"
+                                 width="200px"/>
+                    </cell>
+                </row>
+                
+                <row>
+                    <cell sclass="row-title">Usuario :</cell>
+                    <cell>
+                        <textbox id="usuar" maxlength="16"
+                                 width="200px"/>
+                    </cell>
+                </row>
+                <row>
+                    <cell sclass="row-title">Contraseña :</cell>
+                    <cell>
+                        <textbox id="contra" maxlength="128"
+                                 width="200px"/>
+                    </cell>
+                </row>
+                
             </rows>
            
         </grid>
