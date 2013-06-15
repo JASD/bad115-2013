@@ -16,20 +16,20 @@
             <rows>
                 <row>
                     <cell sclass="row-title">Año:</cell>
-                        <cell>
+                    <cell>
                         <textbox id="anyo" maxlength="8" value="${each}" readonly="true"
                                  constraint="no empty: Ingrese un Año" width="200px"/>
-                        </cell>
+                    </cell>
                     
                 </row>
                 <row>
                     <cell sclass="row-title">Numero Cicclo :</cell>
                     
-                        <cell>
+                    <cell>
                         <textbox id="numero" maxlength="8" value="${each}" readonly="true"
                                  constraint="no empty: Ingrese numero ciclo" width="200px"/>
-                        </cell>
-                  </row>
+                    </cell>
+                </row>
                 <row>
                     <cell sclass="row-title">Fecha Inicio :</cell>
                     <cell>
