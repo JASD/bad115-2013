@@ -4,7 +4,6 @@
  */
 package sv.fia.eisi.repositorios;
 
-import java.math.BigInteger;
 import java.util.List;
 import java.util.ResourceBundle;
 import org.hibernate.Query;
@@ -43,7 +42,7 @@ public class CicloAcademicoDAO extends AbstractDAO<Ciclo> {
         q.setShort("numero", entity.getCicloPK().getNumeroCiclo());
         q.setDate("fechaini", entity.getFechaInicioCiclo());
         q.setDate("fechafin", entity.getFechaFinCiclo());
-        
+
         return (String) q.uniqueResult();
     }
 
@@ -56,21 +55,31 @@ public class CicloAcademicoDAO extends AbstractDAO<Ciclo> {
     public Ciclo find(Object id) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
-    
-    public List<Ciclo> findForEnable(){
-        
+
+    public List<Ciclo> findForEnable() {
+
         return (List<Ciclo>) sessionFactory.getCurrentSession()
                 .getNamedQuery("Ciclo.findall").list();
-    
+
     }
-    
+
     public List<Ciclo> findUltimo() {
         return (List<Ciclo>) sessionFactory.getCurrentSession()
                 .getNamedQuery("Ciclo.ultimo").list();
     }
-    
+
     public List<Ciclo> findUltimoN() {
         return (List<Ciclo>) sessionFactory.getCurrentSession()
                 .getNamedQuery("CicloNumero.ultimo").list();
+    }
+
+    public List<Ciclo> findUltimoFechaf() {
+        return (List<Ciclo>) sessionFactory.getCurrentSession()
+                .getNamedQuery("CicloFechaf.ultimo").list();
+    }
+
+    public List<Ciclo> findUltimoFechai() {
+        return (List<Ciclo>) sessionFactory.getCurrentSession()
+                .getNamedQuery("CicloFechai.ultimo").list();
     }
 }
