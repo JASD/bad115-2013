@@ -26,12 +26,14 @@ import javax.validation.constraints.NotNull;
  * @author antonio
  */
 @Entity
-@Table(name = "ciclo")
+@Table(name = "ciclo") 
 @NamedQueries({
-    @NamedQuery(name = "Ciclo.findAll", query = "SELECT c FROM Ciclo c")})
+    @NamedQuery(name = "Ciclo.findAll", query = "SELECT c FROM Ciclo c"),
+    @NamedQuery(name = "Ciclo.ultimo", query = "SELECT c.cicloPK.anoCiclo FROM Ciclo c WHERE c.estadoCiclo='1'"),
+    @NamedQuery(name = "CicloNumero.ultimo", query = "SELECT c.cicloPK.numeroCiclo FROM Ciclo c WHERE c.estadoCiclo='1'")})
 public class Ciclo implements Serializable {
     private static final long serialVersionUID = 1L;
-    @EmbeddedId
+    @EmbeddedId 
     protected CicloPK cicloPK;
     @Basic(optional = false)
     @NotNull
