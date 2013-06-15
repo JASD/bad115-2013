@@ -5,6 +5,8 @@
 package sv.fia.eisi.repositorios;
 
 import java.util.List;
+import java.util.ResourceBundle;
+import org.hibernate.Query;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -26,7 +28,13 @@ public class ActividadDAO extends AbstractDAO<Actividad> {
 
     @Override
     public String create(Actividad entity) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        String call = ResourceBundle.getBundle("/procedures").getString("InsertarActividad");
+        Query q = sessionFactory.getCurrentSession().createSQLQuery(call);
+        q.setString("codigo", entity.getCodigoActividad().toUpperCase());
+        q.setString("nombre", entity.getNombreActividad().toUpperCase());
+        q.setShort("horas", entity.getNumeroHoras());
+        q.setString("tipo", entity.getTipoActividad().toUpperCase());
+        return (String) q.uniqueResult();
     }
 
     @Override
