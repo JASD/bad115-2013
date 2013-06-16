@@ -23,17 +23,17 @@
                 <row>
                     <cell>Numero de horas:</cell>
                     <cell>
-                        <spinner id="horasActivity" constraint="no negative,no zero,no empty" />
+                        <spinner id="horasActivity" constraint="no negative,no empty" />
                     </cell>
                 </row>
                 <row>
                     <cell>Tipo de la Actividad:</cell>
                     <cell>
                         <combobox id="tipoActivity" constraint="no empty:Elija un tipo">
-		     		<comboitem label="Administrativo" value="ADMINISTRATIVA" />
-                                <comboitem label="Académico" value="ACADEMICA" />
-                                <comboitem label="Coordinación" value="COORDINATIVA" />
-	                </combobox>
+                            <comboitem label="Administrativo" value="ADMINISTRATIVA" />
+                            <comboitem label="Académico" value="ACADEMICA" />
+                            <comboitem label="Coordinación" value="COORDINATIVA" />
+                        </combobox>
                     </cell>
                 </row>
             </rows>           
