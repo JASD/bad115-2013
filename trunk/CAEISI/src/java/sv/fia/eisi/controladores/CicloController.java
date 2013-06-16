@@ -19,6 +19,8 @@ import sv.fia.eisi.servicios.CicloService;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -38,19 +40,23 @@ public class CicloController extends SelectorComposer<Component> {
     private CicloService cicloService;
 
     @Override
-    public void doAfterCompose(Component comp) throws Exception {
-        super.doAfterCompose(comp);
-        String fechaUltimaFin = cicloService.findUltimoFechaf().replace("[", "").replace("]", "");
-        String fechaUltimaIn = cicloService.findUltimoFechai().replace("[", "").replace("]", "");
-        anyo.setValue(cicloService.findUltimo().replace("[", "").replace("]", ""));
-        numero.setValue(cicloService.findUltimoN().replace("[", "").replace("]", ""));
+    public void doAfterCompose(Component comp) {
+        try {
+            super.doAfterCompose(comp);
+            String fechaUltimaFin = cicloService.findUltimoFechaf().replace("[", "").replace("]", "");
+            String fechaUltimaIn = cicloService.findUltimoFechai().replace("[", "").replace("]", "");
+            anyo.setValue(cicloService.findUltimo().replace("[", "").replace("]", ""));
+            numero.setValue(cicloService.findUltimoN().replace("[", "").replace("]", ""));
 
-        if (!(fechaUltimaIn.equals("null"))) {
-            fechaini.setValue(getDate(fechaUltimaIn));
-        }
+            if (!(fechaUltimaIn.equals("null"))) {
+                fechaini.setValue(getDate(fechaUltimaIn));
+            }
 
-        if (!(fechaUltimaFin.equals("null"))) {
-            fechafin.setValue(getDate(fechaUltimaFin));
+            if (!(fechaUltimaFin.equals("null"))) {
+                fechafin.setValue(getDate(fechaUltimaFin));
+            }
+        } catch (Exception ex) {
+            Logger.getLogger(CicloController.class.getName()).log(Level.SEVERE, null, ex);
         }
 
 
