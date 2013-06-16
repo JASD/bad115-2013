@@ -25,7 +25,7 @@
                          constraint="no empty:Ingrese un Nombre" width="300px" />
                 <spinner value="${each.numeroHoras}" constraint="no zero,no empty,no negative" />
                 <label value="${each.tipoActividad}" />                
-                <button id="actualizarActivity" image="/public/img/tick.png" disabled="true" />
+                <button image="/public/img/tick.png" disabled="true" />
             </row>            
         </template>
     </grid>
