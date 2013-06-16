@@ -1,5 +1,18 @@
 <?page id="crv" title="Bienvenido CAEISI"?>
 <?init class="org.zkoss.zk.ui.util.Composition" arg0="/WEB-INF/pages/templates/template.zul" ?>
 <window self="@{define(body)}" title='Bienvenido al Sistema'>
-    
+    <html>
+        <h2>BIENVENID@S AL SISTEMA DE ADMINISTRACION DE CARGA ACADEMICA-CAESI</h2>
+        <P>El sistema de administración de carga académica es un sistemas que automatizará el proceso
+        de asignar carga académica a los docentes de la EISI.</P>
+
+        <p>La Administracion de Carga Academica implica: 
+        <br/>Manejar un perfil básico de docentes que podrá ser completado por el administrado o por el 
+        mismo docente, el control básico de las materias, proveer un catálogo  de áreas de conocimiento 
+        que asociará a los docente y a las materias, controlar de manera básica  los grupos teóricos y 
+        de laboratorio para cada ciclo así como sus horarios y aulas donde se imparta cada materia, 
+        diferenciar entre actividades concarga académica con sus respectivas horas y actividades sin carga 
+        académica.</p>
+        
+    </html>
 </window>
