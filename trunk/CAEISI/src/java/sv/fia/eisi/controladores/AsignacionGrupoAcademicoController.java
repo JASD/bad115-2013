@@ -44,7 +44,7 @@ public class AsignacionGrupoAcademicoController extends SelectorComposer<Compone
         actividades.setModel(new ListModelList<Actividad>(actividadService
                 .obtenerActividadesAcademicas()));
         grupos.setModel(new ListModelList<GrupoAcademico>(
-                grupoAcademicoService.obtenerGruposDisponibles()));
+                grupoAcademicoService.obtenerGruposActivos()));
     }
     
     

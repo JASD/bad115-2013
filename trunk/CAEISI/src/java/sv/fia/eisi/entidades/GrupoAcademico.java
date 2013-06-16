@@ -32,7 +32,7 @@ import javax.validation.constraints.Size;
             + "WHERE g.grupo.tipoGrupo <> 'TESIS'"),
     @NamedQuery(name = "GrupoAcademico.findAsignar",
             query = "SELECT g FROM GrupoAcademico g "
-            + "WHERE g.grupo.tipoGrupo <> 'TESIS'")})
+            + "WHERE g.grupo.estaCerradoGrupo = FALSE")})
 public class GrupoAcademico implements Serializable {
 
     private static final long serialVersionUID = 1L;
