@@ -32,6 +32,7 @@
                         <combobox id="tipoActivity" constraint="no empty:Elija un tipo">
 		     		<comboitem label="Administrativo" value="ADMINISTRATIVA" />
                                 <comboitem label="Academico" value="ACADEMICA" />
+                                <comboitem label="Coordinacion" value="COORDINATIVA" />
 	                </combobox>
                     </cell>
                 </row>
