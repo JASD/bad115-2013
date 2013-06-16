@@ -29,6 +29,7 @@ import javax.validation.constraints.NotNull;
 @Table(name = "ciclo") 
 @NamedQueries({
     @NamedQuery(name = "Ciclo.findAll", query = "SELECT c FROM Ciclo c"),
+    @NamedQuery(name = "Ciclo.actual", query = "SELECT c FROM Ciclo c WHERE c.estadoCiclo = TRUE"),
     @NamedQuery(name = "Ciclo.ultimo", query = "SELECT c.cicloPK.anoCiclo FROM Ciclo c WHERE c.estadoCiclo='1'"),
     @NamedQuery(name = "CicloNumero.ultimo", query = "SELECT c.cicloPK.numeroCiclo FROM Ciclo c WHERE c.estadoCiclo='1'"),
     @NamedQuery(name = "CicloFechaf.ultimo", query = "SELECT c.fechaFinCiclo FROM Ciclo c WHERE c.estadoCiclo='1'"),

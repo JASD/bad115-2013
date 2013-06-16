@@ -8,6 +8,7 @@ import java.util.ResourceBundle;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import sv.fia.eisi.entidades.Ciclo;
 import sv.fia.eisi.repositorios.CerrarCicloDAO;
 
 /**
@@ -29,5 +30,11 @@ public class CerrarCicloService {
         } else {
             throw new Exception(status);
         }
+    }
+    
+    @Transactional(readOnly = true)
+    public Ciclo obtenerCicloActual(){
+    
+        return cerrarCicloDAO.obtenerActual();
     }
 }
