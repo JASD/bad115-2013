@@ -54,4 +54,9 @@ public class CerrarCicloDAO extends AbstractDAO<Ciclo> {
     public Ciclo find(Object id) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
+    
+    public Ciclo obtenerActual(){
+        return (Ciclo) sessionFactory.getCurrentSession()
+                .getNamedQuery("Ciclo.actual").uniqueResult();
+    }
 }

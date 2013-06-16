@@ -125,13 +125,24 @@
                         </panelchildren>
                     </panel>
                     <panel width="100%" border="normal"
-                           title="Información del Ciclo Vigente">
+                           title="Información del Ciclo Vigente" 
+                           apply="sv.fia.eisi.controladores.HomeController">
                         <panelchildren>
-                            <html>
-								<![CDATA[ <ul> <li>Año</li>
-								<li>Número</li> <li>Fecha Inicio</li>
-								<li>Fecha Fin</li> </ul> ]]>
-                            </html>
+                            <separator spacing="20px" />
+                            <label value="Año:" style="font-weight:bold"/>
+                            <label id="anio" />
+                            
+                            <separator spacing="20px" />
+                            <label value="Ciclo:" style="font-weight:bold"/>
+                            <label id="ciclo" />
+                            
+                            <separator spacing="20px" />
+                            <label value="Fecha Inicio:" style="font-weight:bold"/>
+                            <label id="fechain" />
+                            <separator spacing="20px" />
+                            
+                            <label value="Fecha Fin:" style="font-weight:bold"/>
+                            <label id="fechafin" />
                         </panelchildren>
                     </panel>
                
