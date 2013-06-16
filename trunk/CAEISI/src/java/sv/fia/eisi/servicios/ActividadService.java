@@ -38,12 +38,26 @@ public class ActividadService {
     }
 
     @Transactional
-    public String actualizarActividad(Actividad a) throws Exception{
-       String status=actividadDAO.edit(a);
+    public String actualizarActividad(Actividad a) throws Exception {
+        String status = actividadDAO.edit(a);
         if (status.equals("OK")) {
             return ResourceBundle.getBundle("/messages").getString("ActividadActualizada");
         } else {
             throw new Exception(status);
         }
+    }
+
+    @Transactional(readOnly = true)
+    public List<Actividad> obtenerActividadesAcademicas() {
+
+        return actividadDAO.executeNamedQuery("Actividad.findAcademicas");
+
+    }
+
+    @Transactional(readOnly = true)
+    public List<Actividad> obtenerActividadesAdministrativas() {
+
+        return actividadDAO.executeNamedQuery("Actividad.findAdministrativas");
+
     }
 }

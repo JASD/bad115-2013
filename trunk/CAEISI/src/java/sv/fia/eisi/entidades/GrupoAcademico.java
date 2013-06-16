@@ -27,9 +27,12 @@ import javax.validation.constraints.Size;
 @Table(name = "grupo_academico")
 @NamedQueries({
     @NamedQuery(name = "GrupoAcademico.findAll", query = "SELECT g FROM GrupoAcademico g"),
-    @NamedQuery(name = "GrupoAcademico.findHabilitar", 
-        query = "SELECT g FROM GrupoAcademico g "
-        + "WHERE g.grupo.tipoGrupo <> 'TESIS'")})
+    @NamedQuery(name = "GrupoAcademico.findHabilitar",
+            query = "SELECT g FROM GrupoAcademico g "
+            + "WHERE g.grupo.tipoGrupo <> 'TESIS'"),
+    @NamedQuery(name = "GrupoAcademico.findAsignar",
+            query = "SELECT g FROM GrupoAcademico g "
+            + "WHERE g.grupo.tipoGrupo <> 'TESIS'")})
 public class GrupoAcademico implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -127,6 +130,6 @@ public class GrupoAcademico implements Serializable {
 
     @Override
     public String toString() {
-        return "sv.fia.eisi.entidades.GrupoAcademico[ codigoGrupo=" + codigoGrupo + " ]";
+        return codigoGrupo;
     }
 }
