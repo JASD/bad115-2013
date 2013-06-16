@@ -7,7 +7,7 @@
     
     <grid apply="sv.fia.eisi.controladores.ActividadController" 
           mold="paging" pageSize="10" id="activityList" style="margin:10px;" 
-          emptyMessage="Informacion no disponible" id="activitiesList">
+          emptyMessage="Informacion no disponible">
         <auxhead>
             <auxheader label="Actividades" colspan="5" rowspan="1" />
         </auxhead>
