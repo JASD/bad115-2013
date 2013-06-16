@@ -29,7 +29,10 @@
                 <row>
                     <cell>Tipo de la Actividad:</cell>
                     <cell>
-                        <textbox id="tipoActivity" maxlength="16" constraint="no empty:Ingrese un tipo" />
+                        <combobox id="tipoActivity" constraint="no empty:Elija un tipo">
+		     		<comboitem label="Administrativo" value="ADMINISTRATIVA" />
+                                <comboitem label="Academico" value="ACADEMICA" />
+	                </combobox>
                     </cell>
                 </row>
             </rows>           
