@@ -39,8 +39,8 @@ public class ActividadDAO extends AbstractDAO<Actividad> {
 
     @Override
     public String edit(Actividad entity) {
-        String call=ResourceBundle.getBundle("/procedures").getString("ActualizarActividad");
-        Query q=sessionFactory.getCurrentSession().createSQLQuery(call);
+        String call = ResourceBundle.getBundle("/procedures").getString("ActualizarActividad");
+        Query q = sessionFactory.getCurrentSession().createSQLQuery(call);
         q.setString("codigo", entity.getCodigoActividad().toUpperCase());
         q.setString("nombre", entity.getNombreActividad().toUpperCase());
         q.setShort("horas", entity.getNumeroHoras());
@@ -60,5 +60,11 @@ public class ActividadDAO extends AbstractDAO<Actividad> {
 
     public List<Actividad> getActivities() {
         return (List<Actividad>) sessionFactory.getCurrentSession().getNamedQuery("Actividad.findAll").list();
+    }
+
+    public List<Actividad> executeNamedQuery(String namedQuery) {
+
+        return (List<Actividad>) sessionFactory.getCurrentSession()
+                .getNamedQuery(namedQuery).list();
     }
 }

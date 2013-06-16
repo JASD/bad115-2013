@@ -30,8 +30,12 @@ import javax.validation.constraints.Size;
 @Entity
 @Table(name = "empleado_docente")
 @NamedQueries({
-    @NamedQuery(name = "EmpleadoDocente.findAll", query = "SELECT e FROM EmpleadoDocente e")})
+    @NamedQuery(name = "EmpleadoDocente.findAll", query = "SELECT e FROM EmpleadoDocente e"),
+    @NamedQuery(name = "EmpleadoDocente.findActives", query = "SELECT e FROM EmpleadoDocente e "
+        + "WHERE e.estaActivoDocente = TRUE")})
+
 public class EmpleadoDocente implements Serializable {
+
     private static final long serialVersionUID = 1L;
     @Id
     @Basic(optional = false)
@@ -61,7 +65,7 @@ public class EmpleadoDocente implements Serializable {
     @ManyToOne(optional = false, fetch = FetchType.LAZY)
     private Usuario nombreUsuario;
     @JoinColumn(name = "isss_empleado", referencedColumnName = "isss_empleado", insertable = false, updatable = false)
-    @OneToOne(optional = false, fetch = FetchType.LAZY)
+    @OneToOne(optional = false, fetch = FetchType.EAGER)
     private Empleado empleado;
     @JoinColumn(name = "codigo_departamento", referencedColumnName = "codigo_departamento")
     @ManyToOne(fetch = FetchType.LAZY)
@@ -215,7 +219,7 @@ public class EmpleadoDocente implements Serializable {
 
     @Override
     public String toString() {
-        return "sv.fia.eisi.entidades.EmpleadoDocente[ isssEmpleado=" + isssEmpleado + " ]";
+        return empleado.getPrimerApellidoEmpleado() + ", " + empleado.getPrimerNombreEmpleado();
     }
     
 }

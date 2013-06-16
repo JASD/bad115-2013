@@ -26,8 +26,13 @@ import javax.validation.constraints.Size;
 @Entity
 @Table(name = "actividad")
 @NamedQueries({
-    @NamedQuery(name = "Actividad.findAll", query = "SELECT a FROM Actividad a")})
+    @NamedQuery(name = "Actividad.findAll", query = "SELECT a FROM Actividad a"),
+    @NamedQuery(name = "Actividad.findAcademicas", query = "SELECT a FROM Actividad a "
+            + "WHERE a.tipoActividad = 'ACADEMICA'"),
+    @NamedQuery(name = "Actividad.findAdministrativas", query = "SELECT a FROM Actividad a "
+            + "WHERE a.tipoActividad = 'ADMINISTRATIVA'")})
 public class Actividad implements Serializable {
+
     private static final long serialVersionUID = 1L;
     @Id
     @Basic(optional = false)
@@ -138,7 +143,6 @@ public class Actividad implements Serializable {
 
     @Override
     public String toString() {
-        return "sv.fia.eisi.entidades.Actividad[ codigoActividad=" + codigoActividad + " ]";
+        return nombreActividad;
     }
-    
 }
