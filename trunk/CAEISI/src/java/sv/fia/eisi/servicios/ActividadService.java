@@ -36,4 +36,14 @@ public class ActividadService {
             throw new Exception(status);
         }
     }
+
+    @Transactional
+    public String actualizarActividad(Actividad a) throws Exception{
+       String status=actividadDAO.edit(a);
+        if (status.equals("OK")) {
+            return ResourceBundle.getBundle("/messages").getString("ActividadActualizada");
+        } else {
+            throw new Exception(status);
+        }
+    }
 }

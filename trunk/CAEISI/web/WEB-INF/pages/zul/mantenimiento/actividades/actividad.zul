@@ -6,7 +6,8 @@
     </hbox>
     
     <grid apply="sv.fia.eisi.controladores.ActividadController" 
-          mold="paging" pageSize="10" id="activityList" style="margin:10px;" emptyMessage="Informacion no disponible">
+          mold="paging" pageSize="10" id="activityList" style="margin:10px;" 
+          emptyMessage="Informacion no disponible" id="activitiesList">
         <auxhead>
             <auxheader label="Actividades" colspan="5" rowspan="1" />
         </auxhead>
@@ -20,11 +21,12 @@
         <template name="model">
             <row>
                 <label value="${each.codigoActividad}" />
-                <label value="${each.nombreActividad}" />
-                <label value="${each.numeroHoras}" />
+                <texbox value="${each.nombreActividad}" inplace="true"
+                        constraint="no empty:Ingrese un Nombre" />
+                <spinner value="${each.numeroHoras}" constraint="no zero,no empty,no negative" />
                 <label value="${each.tipoActividad}" />
                 <div style="text-align:center;">
-                    <button label="" image="/public/img/pencil.png" />
+                    <button id="actualizarActivity" image="/public/img/tick.png" disabled="true" />
                 </div>
             </row>            
         </template>
