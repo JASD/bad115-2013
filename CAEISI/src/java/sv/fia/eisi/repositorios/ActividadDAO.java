@@ -39,7 +39,13 @@ public class ActividadDAO extends AbstractDAO<Actividad> {
 
     @Override
     public String edit(Actividad entity) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        String call=ResourceBundle.getBundle("/procedures").getString("ActualizarActividad");
+        Query q=sessionFactory.getCurrentSession().createSQLQuery(call);
+        q.setString("codigo", entity.getCodigoActividad());
+        q.setString("nombre", entity.getNombreActividad());
+        q.setShort("horas", entity.getNumeroHoras());
+        q.setString("tipo", entity.getTipoActividad());
+        return (String) q.uniqueResult();
     }
 
     @Override
