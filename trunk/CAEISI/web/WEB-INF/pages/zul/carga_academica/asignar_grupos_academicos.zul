@@ -1,6 +1,6 @@
 <?page id="crv" title="Asignar Grupos CAEISI"?>
 <?init class="org.zkoss.zk.ui.util.Composition" arg0="/WEB-INF/pages/templates/template.zul" ?>
-<window self="@{define(body)}" title='Asignar Grupos a Docentes'>
+<window self="@{define(body)}" title='Asignar Grupos Académicos a Docentes'>
     <vlayout>
         <grid apply="sv.fia.eisi.controladores.AsignacionGrupoAcademicoController">
             <columns>

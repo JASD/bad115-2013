@@ -16,7 +16,7 @@
         <template name="model">
             <row>
                 <label value="${each.codigoGrupo}"/>
-                <label value="${each.codigoCurso}"/>
+                <label value="${each.codigoCurso.codigoCurso}"/>
                 <label value="${each.grupo.tipoGrupo}"/>
                 <label value="${each.numeroGrupoAcademico}"/>
                 <checkbox checked="${each.grupo.estaCerradoGrupo}"/>

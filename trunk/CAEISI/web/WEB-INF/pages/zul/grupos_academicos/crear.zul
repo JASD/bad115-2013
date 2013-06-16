@@ -16,7 +16,9 @@
                 <row>
                     <cell sclass="row-title">Seleccione un curso:</cell>
                     <cell>
-                        <combobox id="cursos" constraint="no empty: Elija un Curso">
+                        <combobox id="cursos" autodrop="true" mold="rounded" 
+                                  buttonVisible="false"
+                                  constraint="no empty: Elija un Curso">
                             <template name="model">
                                 <comboitem label="${each}" />
                             </template>
