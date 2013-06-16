@@ -37,10 +37,16 @@ public class FrontController {
         return new ModelAndView("/administracion/cerrar_ciclo");
     }
 
-    @RequestMapping(value = "/carga-academica/asignar-grupo")
-    public ModelAndView asignarGrupos(HttpServletRequest request, HttpServletResponse response)
+    @RequestMapping(value = "/carga-academica/asignar-academico")
+    public ModelAndView asignarGruposAcademicos(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        return new ModelAndView("/carga_academica/asignar_grupos");
+        return new ModelAndView("/carga_academica/asignar_grupos_academicos");
+    }
+    
+    @RequestMapping(value = "/carga-academica/asignar-admin")
+    public ModelAndView asignarGruposAdminis(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        return new ModelAndView("/carga_academica/asignar_grupos_adminis");
     }
 
     @RequestMapping(value = "/carga-academica/asignar-coordinacion")

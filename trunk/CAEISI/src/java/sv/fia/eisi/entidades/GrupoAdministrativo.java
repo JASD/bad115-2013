@@ -25,8 +25,11 @@ import javax.validation.constraints.Size;
 @Entity
 @Table(name = "grupo_administrativo")
 @NamedQueries({
-    @NamedQuery(name = "GrupoAdministrativo.findAll", query = "SELECT g FROM GrupoAdministrativo g")})
+    @NamedQuery(name = "GrupoAdministrativo.findAll", query = "SELECT g FROM GrupoAdministrativo g"),
+    @NamedQuery(name = "GrupoAdministrativo.findActives", query = "SELECT g "
+        + "FROM GrupoAdministrativo g WHERE g.grupo.estaCerradoGrupo = FALSE")})
 public class GrupoAdministrativo implements Serializable {
+
     private static final long serialVersionUID = 1L;
     @Id
     @Basic(optional = false)
@@ -112,7 +115,7 @@ public class GrupoAdministrativo implements Serializable {
 
     @Override
     public String toString() {
-        return "sv.fia.eisi.entidades.GrupoAdministrativo[ codigoGrupo=" + codigoGrupo + " ]";
+        return nombreGrupoAdministrativo;
     }
     
 }

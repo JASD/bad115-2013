@@ -41,8 +41,14 @@
                             <menubar id="menubar" orient="vertical" autodrop="true" >
                                 <menu label="Carga Académica" >
                                     <menupopup>
-                                        <menuitem label="Asignar Grupos" 
-                                                  href="/carga-academica/asignar-grupo.html"/>
+                                        <menu label="Asignar Grupos">
+                                            <menupopup>                                                
+                                                <menuitem label="Académicos" 
+                                                          href="/carga-academica/asignar-academico.html"/>
+                                                <menuitem label="Administrativos" 
+                                                          href="/carga-academica/asignar-admin.html"/>
+                                            </menupopup>
+                                        </menu>
                                         <menuitem label="Asignar Horarios" 
                                                   href="/carga-academica/asignar-horarios.html"/>
                                         <menuitem label="Asignar Coordinación de Cursos" 
