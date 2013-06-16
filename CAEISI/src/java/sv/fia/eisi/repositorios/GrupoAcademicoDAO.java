@@ -10,6 +10,7 @@ import org.hibernate.Query;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+import sv.fia.eisi.entidades.AsignacionGrupoPK;
 import sv.fia.eisi.entidades.GrupoAcademico;
 
 /**
@@ -48,6 +49,17 @@ public class GrupoAcademicoDAO extends AbstractDAO<GrupoAcademico> {
                 .createSQLQuery(call);
         q.setString("codigo", entity.getCodigoGrupo());
         q.setBoolean("estado", entity.getGrupo().getEstaCerradoGrupo());
+        return (String) q.uniqueResult();
+    }
+    
+    public String asignar(AsignacionGrupoPK ag) {
+        String call = ResourceBundle.getBundle("/procedures")
+                .getString("AsignarCargaAcademica");
+        Query q = sessionFactory.getCurrentSession()
+                .createSQLQuery(call);
+        q.setString("grupo", ag.getCodigoGrupo());
+        q.setString("actividad", ag.getCodigoActividad());
+        q.setString("docente", ag.getIsssEmpleado());
         return (String) q.uniqueResult();
     }
 
