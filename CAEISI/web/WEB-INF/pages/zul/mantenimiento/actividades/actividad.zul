@@ -21,7 +21,7 @@
         <template name="model">
             <row>
                 <label value="${each.codigoActividad}" />
-                <texbox value="${each.nombreActividad}" inplace="true"
+                <textbox value="${each.nombreActividad}" inplace="true"
                         constraint="no empty:Ingrese un Nombre" />
                 <spinner value="${each.numeroHoras}" constraint="no zero,no empty,no negative" />
                 <label value="${each.tipoActividad}" />
