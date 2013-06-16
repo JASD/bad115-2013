@@ -55,7 +55,7 @@ public class ActividadController extends SelectorComposer<Component> {
         Clients.showNotification("Guardar Cambios", Clients.NOTIFICATION_TYPE_WARNING, b, "top_center", 2000, true);
     }
 
-    @Listen("onClick = actualizarActivity")
+    @Listen("onClick = #actualizarActivity")
     public void guardarCambios(Event e) {
         Row row = (Row) e.getTarget().getParent();
         int position = row.getIndex();
