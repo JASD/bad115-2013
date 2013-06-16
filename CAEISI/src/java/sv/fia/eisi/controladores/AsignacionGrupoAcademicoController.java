@@ -27,11 +27,11 @@ import sv.fia.eisi.servicios.GrupoAcademicoService;
 public class AsignacionGrupoAcademicoController extends SelectorComposer<Component>{
     
     @Wire
-    private Combobox grupos;
+    private Combobox gruposAca;
     @Wire
-    private Combobox docentes;
+    private Combobox docentesAca;
     @Wire
-    private Combobox actividades;
+    private Combobox actividadesAca;
     @WireVariable
     private GrupoAcademicoService grupoAcademicoService;
     @WireVariable
@@ -42,20 +42,20 @@ public class AsignacionGrupoAcademicoController extends SelectorComposer<Compone
     @Override
     public void doAfterCompose(Component comp) throws Exception {
         super.doAfterCompose(comp);
-        docentes.setModel(new ListModelList<EmpleadoDocente>
+        docentesAca.setModel(new ListModelList<EmpleadoDocente>
                 (docenteService.obtenerDocentesActivos()));
-        actividades.setModel(new ListModelList<Actividad>(actividadService
+        actividadesAca.setModel(new ListModelList<Actividad>(actividadService
                 .obtenerActividadesAcademicas()));
-        grupos.setModel(new ListModelList<GrupoAcademico>(
+        gruposAca.setModel(new ListModelList<GrupoAcademico>(
                 grupoAcademicoService.obtenerGruposActivos()));
     }
 
-    @Listen("onClick=#guardarAsig")
+    @Listen("onClick=#guardarAsigAca")
     public void asignarCarga() {
         AsignacionGrupoPK pk = new AsignacionGrupoPK();
-        GrupoAcademico ga = (GrupoAcademico) grupos.getSelectedItem().getValue();
-        Actividad a = (Actividad) actividades.getSelectedItem().getValue();
-        EmpleadoDocente ed = (EmpleadoDocente) docentes.getSelectedItem().getValue();
+        GrupoAcademico ga = (GrupoAcademico) gruposAca.getSelectedItem().getValue();
+        Actividad a = (Actividad) actividadesAca.getSelectedItem().getValue();
+        EmpleadoDocente ed = (EmpleadoDocente) docentesAca.getSelectedItem().getValue();
         pk.setCodigoGrupo(ga.getCodigoGrupo());
         pk.setIsssEmpleado(ed.getIsssEmpleado());
         pk.setCodigoActividad(a.getCodigoActividad());
