@@ -19,6 +19,7 @@
                         <combobox id="tipo" constraint="no empty: Elija un Tipo">
                             <comboitem label="Comisión" value="COMISION"/>
                             <comboitem label="Comité" value="COMITE"/>
+                            <comboitem label="Investigación" value="INVEST"/>
                         </combobox>
                     </cell>
                 </row>

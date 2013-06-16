@@ -48,4 +48,9 @@ public class GrupoAcademicoService {
     public List<GrupoAcademico> obtenerGruposDisponibles() {
         return grupoAcademicoDAO.findForEnable();
     }
+    
+    @Transactional(readOnly = true)
+    public List<GrupoAcademico> obtenerGruposActivos(){
+        return grupoAcademicoDAO.executeNamedQuery("GrupoAcademico.findAsignar");
+    }
 }

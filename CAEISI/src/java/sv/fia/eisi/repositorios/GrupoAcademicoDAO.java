@@ -67,4 +67,11 @@ public class GrupoAcademicoDAO extends AbstractDAO<GrupoAcademico> {
                 .getNamedQuery("GrupoAcademico.findHabilitar").list();
     
     }
+    
+    public List<GrupoAcademico> executeNamedQuery(String namedQuery) {
+
+        return (List<GrupoAcademico>) sessionFactory.getCurrentSession()
+                .getNamedQuery(namedQuery).list();
+
+    }
 }

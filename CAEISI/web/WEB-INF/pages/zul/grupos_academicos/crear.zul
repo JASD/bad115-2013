@@ -31,7 +31,6 @@
                             <comboitem label="Discusión" value="DISC"/>
                             <comboitem label="Laboratorio" value="LAB"/>
                             <comboitem label="Tesis" value="TESIS"/>
-                            <comboitem label="Investigación" value="INVEST"/>
                         </combobox>
                     </cell>
                 </row>
