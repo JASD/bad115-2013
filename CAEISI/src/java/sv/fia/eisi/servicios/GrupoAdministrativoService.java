@@ -18,10 +18,10 @@ import sv.fia.eisi.repositorios.GrupoAdministrativoDAO;
  */
 @Service
 public class GrupoAdministrativoService {
-
+    
     @Autowired
     private GrupoAdministrativoDAO grupoAdministrativoDAO;
-
+    
     @Transactional
     public String guardarGrupoAdministrativo(GrupoAdministrativo ga) throws Exception {
         String status = grupoAdministrativoDAO.create(ga);
@@ -32,7 +32,7 @@ public class GrupoAdministrativoService {
             throw new Exception(status);
         }
     }
-
+    
     @Transactional
     public String actualizarGrupoAdministrativo(GrupoAdministrativo ga) throws Exception {
         String status = grupoAdministrativoDAO.edit(ga);
@@ -43,7 +43,7 @@ public class GrupoAdministrativoService {
             throw new Exception(status);
         }
     }
-
+    
     @Transactional
     public String actualizarEstadoGrupoAdministrativo(GrupoAdministrativo ga) throws Exception {
         String status = grupoAdministrativoDAO.actualizarEstado(ga);
@@ -54,9 +54,14 @@ public class GrupoAdministrativoService {
             throw new Exception(status);
         }
     }
-
+    
     @Transactional(readOnly = true)
     public List<GrupoAdministrativo> obtenerGruposDisponibles() {
         return grupoAdministrativoDAO.findForEnable();
+    }
+    
+    @Transactional(readOnly = true)
+    public List<GrupoAdministrativo> obtenerGruposActivos() {
+        return grupoAdministrativoDAO.executeNamedQuery("GrupoAdministrativo.findActives");
     }
 }

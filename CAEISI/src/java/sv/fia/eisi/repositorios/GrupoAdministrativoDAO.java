@@ -70,6 +70,10 @@ public class GrupoAdministrativoDAO extends AbstractDAO<GrupoAdministrativo> {
     public GrupoAdministrativo find(Object id) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
+    
+    public List<GrupoAdministrativo> executeNamedQuery(String namedQuery) {
+        return sessionFactory.getCurrentSession().getNamedQuery(namedQuery).list();
+    }
 
     public List<GrupoAdministrativo> findForEnable() {
 

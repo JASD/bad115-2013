@@ -1,0 +1,58 @@
+<?page id="crv" title="Asignar Grupos CAEISI"?>
+<?init class="org.zkoss.zk.ui.util.Composition" arg0="/WEB-INF/pages/templates/template.zul" ?>
+<window self="@{define(body)}" title='Asignar Grupos a Docentes'>
+    <vlayout>
+        <grid apply="sv.fia.eisi.controladores.AsignacionGrupoAdminController">
+            <columns>
+                <column align="right" hflex="min"/>
+                <column/>
+            </columns>
+           
+            <rows>
+                <row>
+                    <cell sclass="row-title">Seleccione un grupo:</cell>
+                    <cell>
+                        <combobox id="grupos" autodrop="true" mold="rounded" 
+                                  buttonVisible="false"
+                                  constraint="no empty: Elija un grupo">
+                            <template name="model">
+                                <comboitem label="${each}" />
+                            </template>
+                        </combobox>
+                    </cell>
+                </row>
+                
+                <row>
+                    <cell sclass="row-title">Seleccione una actividad:</cell>
+                    <cell>
+                        <combobox id="actividades" autodrop="true" 
+                                  mold="rounded" buttonVisible="false"
+                                  constraint="no empty: Elija una actividad">
+                            <template name="model">
+                                <comboitem label="${each}" />
+                            </template>
+                        </combobox>
+                    </cell>
+                </row>
+                
+                <row>
+                    <cell sclass="row-title">Seleccione un docente:</cell>
+                    <cell>
+                        <combobox id="docentes" autodrop="true" mold="rounded"
+                                  buttonVisible="false"
+                                  constraint="no empty: Elija un docente">
+                            <template name="model">
+                                <comboitem label="${each}" />
+                            </template>
+                        </combobox>
+                    </cell>
+                </row>
+            </rows>
+           
+        </grid>
+       
+        <hlayout>
+            <button id="guardarAsig" label="Asignar"/>
+        </hlayout>
+    </vlayout>
+</window>
