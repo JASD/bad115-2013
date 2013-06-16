@@ -11,6 +11,7 @@ import org.zkoss.zk.ui.select.annotation.Listen;
 import org.zkoss.zk.ui.select.annotation.Wire;
 import org.zkoss.zk.ui.select.annotation.WireVariable;
 import org.zkoss.zk.ui.util.Clients;
+import org.zkoss.zul.Combobox;
 import org.zkoss.zul.Spinner;
 import org.zkoss.zul.Textbox;
 import sv.fia.eisi.entidades.Actividad;
@@ -30,7 +31,7 @@ public class ActividadHController extends SelectorComposer<Component> {
     @Wire
     private Spinner horasActivity;
     @Wire
-    private Textbox tipoActivity;
+    private Combobox tipoActivity;
     @WireVariable
     private ActividadService actividadService;
 
@@ -45,7 +46,7 @@ public class ActividadHController extends SelectorComposer<Component> {
         actividad.setCodigoActividad(codActivity.getValue());
         actividad.setNombreActividad(nomActivity.getValue());
         actividad.setNumeroHoras(horasActivity.getValue().shortValue());
-        actividad.setTipoActividad(tipoActivity.getValue());
+        actividad.setTipoActividad(tipoActivity.getSelectedItem().getValue().toString());
         String message = null;
         String type = null;
         try {
