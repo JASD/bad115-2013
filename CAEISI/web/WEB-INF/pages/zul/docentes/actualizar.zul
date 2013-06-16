@@ -5,7 +5,7 @@
         <button label="Nuevo Docente" style="margin:10px;" />
     </hbox>
     
-    <grid apply="sv.fia.eisi.controladores.ActualizarController" 
+    <grid apply="sv.fia.eisi.controladores.ActualizarDocenteController" 
           mold="paging" pageSize="10" id="activityList" style="margin:10px;" emptyMessage="Informacion no disponible">
         <auxhead>
             <auxheader label="Docentes" colspan="5" rowspan="1" />
