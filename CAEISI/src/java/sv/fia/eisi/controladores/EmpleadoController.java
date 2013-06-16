@@ -67,10 +67,8 @@ public class EmpleadoController extends SelectorComposer<Component> {
     @Override
     public void doAfterCompose(Component comp) throws Exception {
         super.doAfterCompose(comp);
-
         tipo.setModel(new ListModelList<Contrato>(contratoService.findActives()));
         depto.setModel(new ListModelList<Departamento>(departamentoService.findActives()));
-        categoria.setModel(new ListModelList<EmpleadoDocente>(empleadodocenteService.findActives()));
     }
 
     @Listen("onClick=#guardarEmpleado")
