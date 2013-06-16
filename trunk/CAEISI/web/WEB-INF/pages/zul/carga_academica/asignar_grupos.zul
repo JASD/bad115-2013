@@ -1,0 +1,124 @@
+<?page id="crv" title="Asignar Grupos CAEISI"?>
+<?init class="org.zkoss.zk.ui.util.Composition" arg0="/WEB-INF/pages/templates/template.zul" ?>
+<window self="@{define(body)}" title='Asignar Grupos Académicos a Docentes'>
+    <tabbox>
+        <tabs id="tabs">
+            <tab id="A" label="Grupos Académicos" />
+            <tab id="B" label="Grupos Administrativos" />
+        </tabs>
+        <tabpanels>
+            <tabpanel>
+                <vlayout>
+                    <grid apply="sv.fia.eisi.controladores.AsignacionGrupoAcademicoController">
+                        <columns>
+                            <column align="right" hflex="min"/>
+                            <column/>
+                        </columns>
+           
+                        <rows>
+                            <row>
+                                <cell sclass="row-title">Seleccione un grupo:</cell>
+                                <cell>
+                                    <combobox id="gruposAca" autodrop="true" mold="rounded" 
+                                              buttonVisible="false"
+                                              constraint="no empty: Elija un grupo">
+                                        <template name="model">
+                                            <comboitem label="${each}" />
+                                        </template>
+                                    </combobox>
+                                </cell>
+                            </row>
+                
+                            <row>
+                                <cell sclass="row-title">Seleccione una actividad:</cell>
+                                <cell>
+                                    <combobox id="actividadesAca" autodrop="true" 
+                                              mold="rounded" buttonVisible="false"
+                                              constraint="no empty: Elija una actividad">
+                                        <template name="model">
+                                            <comboitem label="${each}" />
+                                        </template>
+                                    </combobox>
+                                </cell>
+                            </row>
+                
+                            <row>
+                                <cell sclass="row-title">Seleccione un docente:</cell>
+                                <cell>
+                                    <combobox id="docentesAca" autodrop="true" mold="rounded"
+                                              buttonVisible="false"
+                                              constraint="no empty: Elija un docente">
+                                        <template name="model">
+                                            <comboitem label="${each}" />
+                                        </template>
+                                    </combobox>
+                                </cell>
+                            </row>
+                        </rows>
+           
+                    </grid>
+       
+                    <hlayout>
+                        <button id="guardarAsigAca" label="Asignar"/>
+                    </hlayout>
+                </vlayout>
+            </tabpanel>
+            <tabpanel>
+                <vlayout>
+                    <grid apply="sv.fia.eisi.controladores.AsignacionGrupoAdminController">
+                        <columns>
+                            <column align="right" hflex="min"/>
+                            <column/>
+                        </columns>
+           
+                        <rows>
+                            <row>
+                                <cell sclass="row-title">Seleccione un grupo:</cell>
+                                <cell>
+                                    <combobox id="gruposAdmin" autodrop="true" mold="rounded" 
+                                  buttonVisible="false"
+                                  constraint="no empty: Elija un grupo">
+                                        <template name="model">
+                                            <comboitem label="${each}" />
+                                        </template>
+                                    </combobox>
+                                </cell>
+                            </row>
+                
+                            <row>
+                                <cell sclass="row-title">Seleccione una actividad:</cell>
+                                <cell>
+                                    <combobox id="actividadesAdmin" autodrop="true" 
+                                  mold="rounded" buttonVisible="false"
+                                  constraint="no empty: Elija una actividad">
+                                        <template name="model">
+                                            <comboitem label="${each}" />
+                                        </template>
+                                    </combobox>
+                                </cell>
+                            </row>
+                
+                            <row>
+                                <cell sclass="row-title">Seleccione un docente:</cell>
+                                <cell>
+                                    <combobox id="docentesAdmin" autodrop="true" mold="rounded"
+                                  buttonVisible="false"
+                                  constraint="no empty: Elija un docente">
+                                        <template name="model">
+                                            <comboitem label="${each}" />
+                                        </template>
+                                    </combobox>
+                                </cell>
+                            </row>
+                        </rows>
+           
+                    </grid>
+       
+                    <hlayout>
+                        <button id="guardarAsigAdmin" label="Asignar"/>
+                    </hlayout>
+                </vlayout>
+            </tabpanel>
+        </tabpanels>
+    </tabbox>
+</window>

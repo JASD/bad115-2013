@@ -27,11 +27,11 @@ import sv.fia.eisi.servicios.GrupoAdministrativoService;
 public class AsignacionGrupoAdminController extends SelectorComposer<Component> {
 
     @Wire
-    private Combobox grupos;
+    private Combobox gruposAdmin;
     @Wire
-    private Combobox docentes;
+    private Combobox docentesAdmin;
     @Wire
-    private Combobox actividades;
+    private Combobox actividadesAdmin;
     @WireVariable
     private GrupoAdministrativoService grupoAdministrativoService;
     @WireVariable
@@ -42,19 +42,19 @@ public class AsignacionGrupoAdminController extends SelectorComposer<Component> 
     @Override
     public void doAfterCompose(Component comp) throws Exception {
         super.doAfterCompose(comp);
-        docentes.setModel(new ListModelList<EmpleadoDocente>(docenteService.obtenerDocentesActivos()));
-        actividades.setModel(new ListModelList<Actividad>(actividadService
+        docentesAdmin.setModel(new ListModelList<EmpleadoDocente>(docenteService.obtenerDocentesActivos()));
+        actividadesAdmin.setModel(new ListModelList<Actividad>(actividadService
                 .obtenerActividadesAdministrativas()));
-        grupos.setModel(new ListModelList<GrupoAdministrativo>(
+        gruposAdmin.setModel(new ListModelList<GrupoAdministrativo>(
                 grupoAdministrativoService.obtenerGruposActivos()));
     }
     
-    @Listen("onClick=#guardarAsig")
+    @Listen("onClick=#guardarAsigAdmin")
     public void asignarCarga() {
         AsignacionGrupoPK pk = new AsignacionGrupoPK();
-        GrupoAdministrativo ga = (GrupoAdministrativo) grupos.getSelectedItem().getValue();
-        Actividad a = (Actividad) actividades.getSelectedItem().getValue();
-        EmpleadoDocente ed = (EmpleadoDocente) docentes.getSelectedItem().getValue();
+        GrupoAdministrativo ga = (GrupoAdministrativo) gruposAdmin.getSelectedItem().getValue();
+        Actividad a = (Actividad) actividadesAdmin.getSelectedItem().getValue();
+        EmpleadoDocente ed = (EmpleadoDocente) docentesAdmin.getSelectedItem().getValue();
         pk.setCodigoGrupo(ga.getCodigoGrupo());
         pk.setIsssEmpleado(ed.getIsssEmpleado());
         pk.setCodigoActividad(a.getCodigoActividad());
