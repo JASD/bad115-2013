@@ -1,7 +1,6 @@
 /*
  * To change this template, choose Tools | Templates
  * and open the template in the editor.*/
- 
 package sv.fia.eisi.controladores;
 
 import org.springframework.stereotype.Controller;
@@ -25,9 +24,8 @@ import sv.fia.eisi.servicios.EmpleadoDocenteService;
 import sv.fia.eisi.servicios.EmpleadoService;
 
 
- /*
+/*
  * @author Adolfo*/
- 
 @Controller
 public class EmpleadoController extends SelectorComposer<Component> {
 
@@ -57,54 +55,55 @@ public class EmpleadoController extends SelectorComposer<Component> {
     private Textbox usuar;
     @Wire
     private Textbox contra;
-    
     @WireVariable
     private ContratoService contratoService;
-    
     @WireVariable
     private DepartamentoService departamentoService;
-
     @WireVariable
     private EmpleadoDocenteService empleadodocenteService;
-
     @WireVariable
     private EmpleadoService empleadoService;
 
- @Override
-public void doAfterCompose(Component comp) throws Exception {
-super.doAfterCompose(comp);
+    @Override
+    public void doAfterCompose(Component comp) throws Exception {
+        super.doAfterCompose(comp);
 
-tipo.setModel(new ListModelList<Contrato>(contratoService.findActives()));
-depto.setModel(new ListModelList<Departamento>(departamentoService.findActives()));
-categoria.setModel(new ListModelList<EmpleadoDocente>(empleadodocenteService.findActives()));
-}
+        tipo.setModel(new ListModelList<Contrato>(contratoService.findActives()));
+        depto.setModel(new ListModelList<Departamento>(departamentoService.findActives()));
+        categoria.setModel(new ListModelList<EmpleadoDocente>(empleadodocenteService.findActives()));
+    }
 
-    
     @Listen("onClick=#guardarEmpleado")
     public void guardarEmpleado() {
-        
+        // ESTAS SON LAS TABLAS CON LAS QUE REALCIONA DOCENTE
+        Contrato c = new Contrato();
         Empleado e = new Empleado();
-        
-        
+        EmpleadoDocente ed = new EmpleadoDocente();
+        Usuario u = new Usuario();
+        Departamento d = new Departamento();
+
         e.setIsssEmpleado(isss.getValue());
         e.setPrimerNombreEmpleado(primer.getValue());
         e.setSegundoNombreEmpleado(segundo.getValue());
         e.setPrimerApellidoEmpleado(primerapellido.getValue());
         e.setSegundoApellidoEmpleado(segundoapellido.getValue());
         e.setGradoAcademicoEmpleado(grado.getValue());
-        e.setCodigoContrato((Contrato) tipo.getSelectedItem().getValue());
+        // codigo de contrato es de la tabla contrato
+        c.setCodigoContrato(tipo.getSelectedItem().getValue().toString());
+        e.setCodigoContrato(c);
         e.setCorreoEmpleado(correo.getValue());
-        
-        
-        EmpleadoDocente ed = new EmpleadoDocente();
-        ed.setCategoriaDocente((String) categoria.getSelectedItem().getValue());
-        ed.setCodigoDepartamento((Departamento) depto.getSelectedItem().getValue());
-        ed.setNombreUsuario((String) usuar.getValue());
-        ed.setCargoDocente((String) cargo.getValue());
 
-        Usuario u = new Usuario();
-        u.setContrasenaUsuario((String) contra.getValue());
-       
+        // isss  de la tabla de empleado
+        ed.setIsssEmpleado(e.getIsssEmpleado());
+        // nombre de usuario es de la tbla usuario
+        u.setNombreUsuario(usuar.getValue().toString());
+        ed.setNombreUsuario(u);
+        // codigo departamento es de la tabla deprtamento
+        d.setCodigoDepartamento(depto.getSelectedItem().getValue().toString());
+        ed.setCodigoDepartamento(d);
+        ed.setCategoriaDocente(categoria.getSelectedItem().getValue().toString());
+        ed.setCargoDocente((String) cargo.getValue());
+        
         String message = null;
         String type = null;
         try {
@@ -116,9 +115,9 @@ categoria.setModel(new ListModelList<EmpleadoDocente>(empleadodocenteService.fin
         } finally {
             Clients.showNotification(message, type, this.getSelf(), "top_center", 2000, true);
         }
-         
 
-     
-         
+
+
+
     }
 }
