@@ -6,7 +6,7 @@
     String selectedPosition = "end_before";
 ]]>
         </zscript>
-        <grid >
+        <grid apply="sv.fia.eisi.controladores.EmpleadoController">
             <columns>
                 <column align="right" hflex="min"/>
                 <column/>
