@@ -39,7 +39,7 @@ public class ActividadController extends SelectorComposer<Component> {
         activityList.setModel(new ListModelList<Actividad>(actividadService.obtenerActividades()));
     }
 
-    @Listen("onSelect = spinner")
+    @Listen("onChanging = spinner")
     public void enabledGuardar(InputEvent ie) {
         Row row = (Row) ie.getTarget().getParent();
         Button b = (Button) row.getChildren().get(BUTTON_GUARDAR);
