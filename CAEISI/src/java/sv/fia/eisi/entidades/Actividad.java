@@ -30,7 +30,9 @@ import javax.validation.constraints.Size;
     @NamedQuery(name = "Actividad.findAcademicas", query = "SELECT a FROM Actividad a "
             + "WHERE a.tipoActividad = 'ACADEMICA'"),
     @NamedQuery(name = "Actividad.findAdministrativas", query = "SELECT a FROM Actividad a "
-            + "WHERE a.tipoActividad = 'ADMINISTRATIVA'")})
+            + "WHERE a.tipoActividad = 'ADMINISTRATIVA'"),
+    @NamedQuery(name = "Actividad.findCoordinativas", query = "SELECT a FROM Actividad a "
+            + "WHERE a.tipoActividad = 'COORDINATIVAS'")})
 public class Actividad implements Serializable {
 
     private static final long serialVersionUID = 1L;

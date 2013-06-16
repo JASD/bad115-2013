@@ -30,7 +30,8 @@ import javax.validation.constraints.Size;
 @Table(name = "curso")
 @NamedQueries({
     @NamedQuery(name = "Curso.findAll", query = "SELECT c FROM Curso c"),
-    @NamedQuery(name = "Curso.findActives", query = "SELECT c FROM Curso c WHERE c.estaActivoCurso = true")})
+    @NamedQuery(name = "Curso.findActives", query = "SELECT c FROM Curso c "
+        + "WHERE c.estaActivoCurso = TRUE ORDER BY c.codigoCurso")})
 public class Curso implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -150,6 +151,6 @@ public class Curso implements Serializable {
 
     @Override
     public String toString() {
-        return codigoCurso;
+        return codigoCurso + " - " + nombreCurso;
     }
 }

@@ -60,4 +60,11 @@ public class ActividadService {
         return actividadDAO.executeNamedQuery("Actividad.findAdministrativas");
 
     }
+
+    @Transactional(readOnly = true)
+    public List<Actividad> obtenerActividadesCoordinativas() {
+
+        return actividadDAO.executeNamedQuery("Actividad.findCoordinativas");
+
+    }
 }
