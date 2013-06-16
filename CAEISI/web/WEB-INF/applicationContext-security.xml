@@ -32,6 +32,8 @@
                                 access="IS_AUTHENTICATED_ANONYMOUSLY" />
         <security:intercept-url pattern="/home.html" 
                                 access="IS_AUTHENTICATED_FULLY" />
+         <security:intercept-url pattern="/administracion/**" 
+                                access="ROLE_ADMIN" />
 
         <!--
                 Especifica el proceso de autenticación mediante un formulario:
