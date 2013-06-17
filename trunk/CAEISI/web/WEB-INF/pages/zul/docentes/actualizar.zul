@@ -1,37 +1,31 @@
 <?page id="crv" title="Actividades CAEISI"?>
 <?init class="org.zkoss.zk.ui.util.Composition" arg0="/WEB-INF/pages/templates/template.zul" ?>
 <window self="@{define(body)}" title='Actualizar Información de Docente'>
-    <hbox>
-        <button label="Nuevo Docente" style="margin:10px;" />
-    </hbox>
     
     <grid apply="sv.fia.eisi.controladores.ActualizarDocenteController" 
-          mold="paging" pageSize="10" id="activityList" style="margin:10px;" emptyMessage="Informacion no disponible">
+          mold="paging" pageSize="10" id="docentesList"
+          style="clear:right;float:left; margin:10px"
+          emptyMessage="Información no disponible">
         <auxhead>
-            <auxheader label="Docentes" colspan="5" rowspan="1" />
+            <auxheader label="Docentes" colspan="6" rowspan="1" 
+            style="text-align:center"/>
         </auxhead>
         <columns>
-            <column hflex="5">N° ISSS</column>
-            <column hflex="9">Nombre</column>
-            <column hflex="9">Apellido</column>
-            <column hflex="5">Categoría</column>
-            <column hflex="8">Departamento</column>
-            <column hflex="6">Grado Académico</column>
-            <column hflex="3">Estado</column>
-            <column hflex="4">Actualizar</column>
+            <column hflex="10">N° ISSS</column>
+            <column hflex="20">Nombre</column>
+            <column hflex="20">Apellido</column>
+            <column hflex="10">Categoría</column>
+            <column hflex="10">Cargo</column>
+            <column hflex="5">Activo</column>
         </columns>
         <template name="model">
             <row>
-                <label value="${each.isss}" />
-                <label value="${each.nombre}" />
-                <label value="${each.apellido}" />
-                <label value="${each.categoria}" />
-                <label value="${each.depto}" />                       
-                <label value="${each.grado}" />
-                <label value="${each.estado}" /> 
-                <div style="text-align:center;">
-                    <button label="" image="/public/img/pencil.png" />
-                </div>
+                <label value="${each.isssEmpleado}" />
+                <label value="${each.empleado.primerNombreEmpleado}" />
+                <label value="${each.empleado.primerApellidoEmpleado}" />
+                <label value="${each.categoriaDocente}" />                      
+                <label value="${each.cargoDocente}" />
+                <checkbox checked="${each.estaActivoDocente}"/>
             </row>            
         </template>
     </grid>

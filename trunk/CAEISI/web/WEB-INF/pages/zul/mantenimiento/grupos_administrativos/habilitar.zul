@@ -1,12 +1,14 @@
 <?page id="crv" title="Grupos Administrativos Disponibles CAEISI"?>
 <?init class="org.zkoss.zk.ui.util.Composition" arg0="/WEB-INF/pages/templates/template.zul" ?>
 <window self="@{define(body)}" title='Habilitar Grupo Administrativo'>
-    <auxhead>
-        <auxheader colspan="5" label="Grupos Administrativos Disponibles" style="text-align:center"/>
-    </auxhead>
+    
     <grid id="gruposDes"  apply="sv.fia.eisi.controladores.GrupoAdministrativoHController"
           mold="paging" pageSize="10" emptyMessage="Información no disponible"
           style="clear:right;float:left; margin:10px">
+        <auxhead>
+            <auxheader style="text-align:center"
+                       colspan="6" label="Grupos Administrativos"/>
+        </auxhead>
         <columns sizable="true">
             <column hflex="10" label="Código" />
             <column hflex="10" label="Tipo" />
