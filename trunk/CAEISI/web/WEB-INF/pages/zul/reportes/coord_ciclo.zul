@@ -1,4 +1,5 @@
 <?page id="crv" title="Coordinaciones de Curso CAEISI"?>
+<?taglib uri="http://www.zkoss.org/zkspring/security" prefix="sec"?>
 <?init class="org.zkoss.zk.ui.util.Composition" arg0="/WEB-INF/pages/templates/template.zul" ?>
 <window self="@{define(body)}" title='Coordinaciones de Curso'  id="win"
         apply="sv.fia.eisi.controladores.CoordinacionCicloController">
@@ -19,7 +20,9 @@
             <column hflex="40" label="Curso"  />
             <column hflex="40" label="Docente"  />
             <column hflex="40" label="Actividad" />
-            <column hflex="10" label="Eliminar" />
+            <zk if="${sec:isAllGranted('ROLE_JEFE')}">
+                <column hflex="10" label="Eliminar" />
+            </zk>
         </columns>
         <template name="model">
             <row>
@@ -27,7 +30,9 @@
                 <label value="${each.curso}" />
                 <label value="${each.docente}" />
                 <label value="${each.actividad}" />
-                <button image="/public/img/cross.png"/>
+                <zk if="${sec:isAllGranted('ROLE_JEFE')}">
+                    <button image="/public/img/cross.png"/>
+                </zk>
             </row>
         </template>
     </grid>

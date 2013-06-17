@@ -1,4 +1,5 @@
 <?page id="crv" title="Carga Ciclo CAEISI"?>
+<?taglib uri="http://www.zkoss.org/zkspring/security" prefix="sec"?>
 <?init class="org.zkoss.zk.ui.util.Composition" arg0="/WEB-INF/pages/templates/template.zul" ?>
 <window self="@{define(body)}" title='Carga Académica Ciclo Vigente'
         apply="sv.fia.eisi.controladores.CargaCicloController">
@@ -10,8 +11,10 @@
         </tabs>
         <tabpanels>
             <tabpanel id="tabAcad">
+               
                 <button style="margin:20px 20px 10px 10px;float:right" id="caPDF"
                         label="Descargar en PDF"/>
+            
                 <grid id="caGrid"  
                       mold="paging" 
                       pageSize="10" 
@@ -28,7 +31,9 @@
                         <column hflex="10" label="N°Grupo" align="right"/>
                         <column hflex="40" label="Actividad" />
                         <column hflex="10" label="Horas" align="right"/>
-                        <column hflex="10" label="Eliminar" />
+                        <zk if="${sec:isAllGranted('ROLE_JEFE')}">
+                            <column hflex="10" label="Eliminar" />
+                        </zk>
                     </columns>
                     <template name="model">
                         <row>
@@ -38,7 +43,9 @@
                             <label value="${each.numeroGrupo}" />
                             <label value="${each.actividad}" />
                             <label value="${each.horas}" />
-                            <button image="/public/img/cross.png"/>
+                            <zk if="${sec:isAllGranted('ROLE_JEFE')}">
+                                <button image="/public/img/cross.png"/>
+                            </zk>
                         </row>
                     </template>
                 </grid>
@@ -61,7 +68,9 @@
                         <column hflex="30" label="Grupo" />
                         <column hflex="30" label="Actividad" />
                         <column hflex="10" label="Horas" align="right"/>
-                        <column hflex="10" label="Eliminar" />
+                        <zk if="${sec:isAllGranted('ROLE_JEFE')}">
+                            <column hflex="10" label="Eliminar" />
+                        </zk>
                     </columns>
                     <template name="model">
                         <row>
@@ -70,7 +79,9 @@
                             <label value="${each.nombreGrupo}" />
                             <label value="${each.actividad}" />
                             <label value="${each.horas}" />
-                            <button image="/public/img/cross.png"/>
+                            <zk if="${sec:isAllGranted('ROLE_JEFE')}">
+                                <button image="/public/img/cross.png"/>
+                            </zk>
                         </row>
                     </template>
                 </grid>
