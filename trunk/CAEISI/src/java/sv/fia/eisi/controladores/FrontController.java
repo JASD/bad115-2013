@@ -144,6 +144,12 @@ public class FrontController {
             throws ServletException, IOException {
         return new ModelAndView("/reportes/carga_por_ciclo");
     }
+    
+    @RequestMapping(value = "/reportes/coord-ciclo")
+    public ModelAndView verCoordCiclo(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        return new ModelAndView("/reportes/coord_ciclo");
+    }
 
     @RequestMapping(value = "/reportes/carga-docente")
     public ModelAndView verCargaDocente(HttpServletRequest request, HttpServletResponse response)

@@ -1,0 +1,35 @@
+<?page id="crv" title="Coordinaciones de Curso CAEISI"?>
+<?init class="org.zkoss.zk.ui.util.Composition" arg0="/WEB-INF/pages/templates/template.zul" ?>
+<window self="@{define(body)}" title='Coordinaciones de Curso' 
+        apply="sv.fia.eisi.controladores.CoordinacionCicloController">
+    
+    <button style="margin:20px 20px 10px 10px;float:right" id="cPDF"
+            label="Descargar en PDF"/>
+    <grid id="cGrid"  
+          mold="paging" 
+          pageSize="10" 
+          emptyMessage="Información no disponible" 
+          style="clear:right;float:left; margin:10px">
+        <auxhead>
+            <auxheader style="text-align:center"
+                       colspan="5" label="Coordinaciones de Curso"/>
+        </auxhead>
+        <columns>
+            <column hflex="10" label="Código"  />
+            <column hflex="40" label="Curso"  />
+            <column hflex="40" label="Docente"  />
+            <column hflex="40" label="Actividad" />
+            <column hflex="10" label="Eliminar" />
+        </columns>
+        <template name="model">
+            <row>
+                <label value="${each.codigo}" />
+                <label value="${each.curso}" />
+                <label value="${each.docente}" />
+                <label value="${each.actividad}" />
+                <button image="/public/img/cross.png"/>
+            </row>
+        </template>
+    </grid>
+    
+</window>

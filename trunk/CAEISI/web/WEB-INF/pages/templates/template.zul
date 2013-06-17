@@ -64,6 +64,8 @@
                                                   href="/reportes/carga-ciclo.html"/>
                                         <menuitem label="Carga Académica Docente" 
                                                   href="/reportes/carga-docente.html"/>
+                                        <menuitem label="Coordinaciones Ciclo" 
+                                                  href="/reportes/coord-ciclo.html"/>
                                     </menupopup>
                                 </menu>
                                 <menu label="Docentes">

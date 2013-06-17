@@ -4,7 +4,6 @@
  */
 package sv.fia.eisi.repositorios;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
 import org.hibernate.Query;
@@ -13,6 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import sv.fia.eisi.entidades.AsignacionGrupo;
 import sv.fia.eisi.entidades.Ciclo;
+import sv.fia.eisi.entidades.CoordinacionCurso;
 import sv.fia.eisi.entidades.EmpleadoDocente;
 import sv.fia.eisi.entidades.reportes.CargaCicloAcad;
 import sv.fia.eisi.entidades.reportes.CargaCicloAdmin;
@@ -146,5 +146,12 @@ public class CicloAcademicoDAO extends AbstractDAO<Ciclo> {
         q.setString("docente", cca.getIsssEmpleado());
         return (String) q.uniqueResult();
     
+    }
+    
+    public List<CoordinacionCurso> obtenerCoordinacionesCiclo(Ciclo c){
+        Query q = sessionFactory.getCurrentSession()
+                .getNamedQuery("CoordinacionCurso.findAllCiclo");
+        q.setParameter("ciclo", c);
+        return q.list();
     }
 }
