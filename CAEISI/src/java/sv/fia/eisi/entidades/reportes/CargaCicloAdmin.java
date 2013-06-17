@@ -10,12 +10,11 @@ import java.io.Serializable;
  *
  * @author Antonio
  */
-public class CargaCiclo implements Serializable {
-
+public class CargaCicloAdmin implements Serializable{
+    
     private String docente;
-    private String codigoCurso;
     private String tipoGrupo;
-    private String numeroGrupo;
+    private String nombreGrupo;
     private String actividad;
     private Float horas;
 
@@ -27,14 +26,6 @@ public class CargaCiclo implements Serializable {
         this.docente = docente;
     }
 
-    public String getCodigoCurso() {
-        return codigoCurso;
-    }
-
-    public void setCodigoCurso(String codigoCurso) {
-        this.codigoCurso = codigoCurso;
-    }
-
     public String getTipoGrupo() {
         return tipoGrupo;
     }
@@ -43,12 +34,12 @@ public class CargaCiclo implements Serializable {
         this.tipoGrupo = tipoGrupo;
     }
 
-    public String getNumeroGrupo() {
-        return numeroGrupo;
+    public String getNombreGrupo() {
+        return nombreGrupo;
     }
 
-    public void setNumeroGrupo(String numeroGrupo) {
-        this.numeroGrupo = numeroGrupo;
+    public void setNombreGrupo(String nombreGrupo) {
+        this.nombreGrupo = nombreGrupo;
     }
 
     public String getActividad() {
@@ -66,4 +57,5 @@ public class CargaCiclo implements Serializable {
     public void setHoras(Float horas) {
         this.horas = horas;
     }
+    
 }
