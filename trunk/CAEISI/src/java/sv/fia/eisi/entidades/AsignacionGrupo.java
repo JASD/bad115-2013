@@ -33,7 +33,7 @@ import javax.validation.constraints.NotNull;
             + " WHERE a.ciclo = :ciclo AND a.grupo.tipoGrupo IN ('DISC', 'TEO', 'LAB', 'TESIS')"
         + "ORDER BY a.empleadoDocente"),
     @NamedQuery(name = "AsignacionGrupo.findByCicloAdminis", query = "SELECT a FROM AsignacionGrupo a"
-            + " WHERE a.ciclo = :ciclo AND a.grupo.tipoGrupo IN :tiposAdminis "
+            + " WHERE a.ciclo = :ciclo AND a.grupo.tipoGrupo IN ('INVEST', 'COMISION', 'COMITE')"
         + "ORDER BY a.empleadoDocente")})
 public class AsignacionGrupo implements Serializable {
 

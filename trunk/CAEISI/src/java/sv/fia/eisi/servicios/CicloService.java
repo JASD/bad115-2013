@@ -12,7 +12,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import sv.fia.eisi.entidades.AsignacionGrupo;
 import sv.fia.eisi.entidades.Ciclo;
-import sv.fia.eisi.entidades.reportes.CargaCiclo;
+import sv.fia.eisi.entidades.reportes.CargaCicloAcad;
+import sv.fia.eisi.entidades.reportes.CargaCicloAdmin;
 import sv.fia.eisi.repositorios.CicloAcademicoDAO;
 
 /**
@@ -48,17 +49,36 @@ public class CicloService {
     }
     
     @Transactional(readOnly = true)
-    public List<CargaCiclo> obtenerCargaAcadCiclo(){
+    public List<CargaCicloAcad> obtenerCargaAcadCiclo(){
     
         List<AsignacionGrupo> agList = cicloAcademicoDAO.obtenerCargaAcademicaCiclo();
-        List<CargaCiclo> ccList = new ArrayList<CargaCiclo>();
+        List<CargaCicloAcad> ccList = new ArrayList<CargaCicloAcad>();
         for(AsignacionGrupo ag: agList){
-            CargaCiclo cc = new CargaCiclo();
+            CargaCicloAcad cc = new CargaCicloAcad();
             cc.setDocente(ag.getEmpleadoDocente().getEmpleado().getPrimerNombreEmpleado() 
                     + " " + ag.getEmpleadoDocente().getEmpleado().getPrimerApellidoEmpleado());
             cc.setCodigoCurso(ag.getGrupo().getGrupoAcademico().getCodigoCurso().getCodigoCurso());
             cc.setTipoGrupo(ag.getGrupo().getTipoGrupo());
             cc.setNumeroGrupo(String.valueOf(ag.getGrupo().getGrupoAcademico().getNumeroGrupoAcademico()));
+            cc.setActividad(ag.getActividad().getNombreActividad());
+            cc.setHoras(Float.valueOf(ag.getActividad().getNumeroHoras()));
+            ccList.add(cc);
+        }
+        return ccList;
+        
+    }
+    
+    @Transactional(readOnly = true)
+    public List<CargaCicloAdmin> obtenerCargaAdminCiclo(){
+    
+        List<AsignacionGrupo> agList = cicloAcademicoDAO.obtenerCargaAdminisCiclo();
+        List<CargaCicloAdmin> ccList = new ArrayList<CargaCicloAdmin>();
+        for(AsignacionGrupo ag: agList){
+            CargaCicloAdmin cc = new CargaCicloAdmin();
+            cc.setDocente(ag.getEmpleadoDocente().getEmpleado().getPrimerNombreEmpleado() 
+                    + " " + ag.getEmpleadoDocente().getEmpleado().getPrimerApellidoEmpleado());
+            cc.setTipoGrupo(ag.getGrupo().getTipoGrupo());
+            cc.setNombreGrupo(ag.getGrupo().getGrupoAdministrativo().getNombreGrupoAdministrativo());
             cc.setActividad(ag.getActividad().getNombreActividad());
             cc.setHoras(Float.valueOf(ag.getActividad().getNumeroHoras()));
             ccList.add(cc);
