@@ -18,10 +18,7 @@ import sv.fia.eisi.entidades.EmpleadoDocente;
 import sv.fia.eisi.entidades.Contrato;
 import sv.fia.eisi.entidades.Departamento;
 import sv.fia.eisi.entidades.Usuario;
-import sv.fia.eisi.servicios.ContratoService;
-import sv.fia.eisi.servicios.DepartamentoService;
-import sv.fia.eisi.servicios.EmpleadoDocenteService;
-import sv.fia.eisi.servicios.EmpleadoService;
+import sv.fia.eisi.servicios.DocenteService;
 
 
 /*
@@ -51,61 +48,40 @@ public class EmpleadoController extends SelectorComposer<Component> {
     private Combobox depto;
     @Wire
     private Textbox cargo;
-    @Wire
-    private Textbox usuar;
-    @Wire
-    private Textbox contra;
     @WireVariable
-    private ContratoService contratoService;
-    @WireVariable
-    private DepartamentoService departamentoService;
-    @WireVariable
-    private EmpleadoDocenteService empleadodocenteService;
-    @WireVariable
-    private EmpleadoService empleadoService;
+    private DocenteService docenteService;
 
     @Override
     public void doAfterCompose(Component comp) throws Exception {
         super.doAfterCompose(comp);
-        tipo.setModel(new ListModelList<Contrato>(contratoService.findActives()));
-        depto.setModel(new ListModelList<Departamento>(departamentoService.findActives()));
+        depto.setModel(new ListModelList<Departamento>(docenteService.getDepartamentos()));
+        tipo.setModel(new ListModelList<Contrato>(docenteService.getTiposContratos()));
     }
 
-    @Listen("onClick=#guardarEmpleado")
+    @Listen("onClick=#guardarDocente")
     public void guardarEmpleado() {
-        // ESTAS SON LAS TABLAS CON LAS QUE REALCIONA DOCENTE
-        Contrato c = new Contrato();
+
         Empleado e = new Empleado();
         EmpleadoDocente ed = new EmpleadoDocente();
-        Usuario u = new Usuario();
-        Departamento d = new Departamento();
-
         e.setIsssEmpleado(isss.getValue());
         e.setPrimerNombreEmpleado(primer.getValue());
         e.setSegundoNombreEmpleado(segundo.getValue());
         e.setPrimerApellidoEmpleado(primerapellido.getValue());
         e.setSegundoApellidoEmpleado(segundoapellido.getValue());
         e.setGradoAcademicoEmpleado(grado.getValue());
-        // codigo de contrato es de la tabla contrato
-        c.setCodigoContrato(tipo.getSelectedItem().getValue().toString());
-        e.setCodigoContrato(c);
+        e.setCodigoContrato((Contrato) tipo.getSelectedItem().getValue());
         e.setCorreoEmpleado(correo.getValue());
-
-        // isss  de la tabla de empleado
-        ed.setIsssEmpleado(e.getIsssEmpleado());
-        // nombre de usuario es de la tbla usuario
-        u.setNombreUsuario(usuar.getValue().toString());
-        ed.setNombreUsuario(u);
-        // codigo departamento es de la tabla deprtamento
-        d.setCodigoDepartamento(depto.getSelectedItem().getValue().toString());
-        ed.setCodigoDepartamento(d);
+        ed.setEmpleado(e);
+        Departamento d = (Departamento) depto.getSelectedItem().getValue();
+        if (d != null) {
+            ed.setCodigoDepartamento(d);
+        }
         ed.setCategoriaDocente(categoria.getSelectedItem().getValue().toString());
         ed.setCargoDocente((String) cargo.getValue());
-        
         String message = null;
         String type = null;
         try {
-            message = empleadoService.guardarEmpleado(e);
+            message = docenteService.guardarDocente(ed);
             type = Clients.NOTIFICATION_TYPE_INFO;
         } catch (Exception ex) {
             message = ex.getMessage();

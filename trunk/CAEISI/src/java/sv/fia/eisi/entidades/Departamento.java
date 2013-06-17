@@ -124,7 +124,7 @@ public class Departamento implements Serializable {
 
     @Override
     public String toString() {
-        return "sv.fia.eisi.entidades.Departamento[ codigoDepartamento=" + codigoDepartamento + " ]";
+        return nombreDepartamento;
     }
     
 }
