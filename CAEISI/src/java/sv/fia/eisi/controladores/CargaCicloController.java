@@ -22,6 +22,7 @@ import org.zkoss.zul.Filedownload;
 import org.zkoss.zul.Grid;
 import org.zkoss.zul.ListModelList;
 import sv.fia.eisi.controladores.util.JasperExporter;
+import sv.fia.eisi.entidades.Ciclo;
 import sv.fia.eisi.entidades.reportes.CargaCicloAcad;
 import sv.fia.eisi.entidades.reportes.CargaCicloAdmin;
 import sv.fia.eisi.servicios.CicloService;
@@ -38,6 +39,7 @@ public class CargaCicloController extends SelectorComposer<Component> {
     private Grid cadGrid;
     @WireVariable
     private CicloService cicloService;
+    private Ciclo c;
     private List<CargaCicloAcad> cargaAcadCicloList;
     private List<CargaCicloAdmin> cargaAdminCicloList;
     private static final String JASPER_PATH_ACAD = "/WEB-INF/resources/jasper/cargaAcademicaCiclo.jasper";
@@ -46,8 +48,9 @@ public class CargaCicloController extends SelectorComposer<Component> {
     @Override
     public void doAfterCompose(Component comp) throws Exception {
         super.doAfterCompose(comp);
-        cargaAcadCicloList = cicloService.obtenerCargaAcadCiclo();
-        cargaAdminCicloList = cicloService.obtenerCargaAdminCiclo();
+        c = cicloService.obtenerCicloActual();
+        cargaAcadCicloList = cicloService.obtenerCargaAcadCiclo(c);
+        cargaAdminCicloList = cicloService.obtenerCargaAdminCiclo(c);
         caGrid.setModel(new ListModelList<CargaCicloAcad>(cargaAcadCicloList));
         cadGrid.setModel(new ListModelList<CargaCicloAdmin>(cargaAdminCicloList));
 
@@ -61,8 +64,8 @@ public class CargaCicloController extends SelectorComposer<Component> {
         HttpServletRequest request = (HttpServletRequest) exec.getNativeRequest();
         String realPath = request.getServletContext().getRealPath(JASPER_PATH_ACAD);
         HashMap<String, Object> params = new HashMap<String, Object>();
-        params.put("anioCiclo", "2013");
-        params.put("numCiclo", "1");
+        params.put("anioCiclo", String.valueOf(c.getCicloPK().getAnoCiclo()));
+        params.put("numCiclo", String.valueOf(c.getCicloPK().getNumeroCiclo()));
         String format = JasperExporter.EXTENSION_TYPE_PDF;
         String type = JasperExporter.MEDIA_TYPE_PDF;
         File report = File.createTempFile("CargaAcademicaCiclo", format);
@@ -78,8 +81,8 @@ public class CargaCicloController extends SelectorComposer<Component> {
         HttpServletRequest request = (HttpServletRequest) exec.getNativeRequest();
         String realPath = request.getServletContext().getRealPath(JASPER_PATH_ADMIN);
         HashMap<String, Object> params = new HashMap<String, Object>();
-        params.put("anioCiclo", "2013");
-        params.put("numCiclo", "1");
+         params.put("anioCiclo", String.valueOf(c.getCicloPK().getAnoCiclo()));
+        params.put("numCiclo", String.valueOf(c.getCicloPK().getNumeroCiclo()));
         String format = JasperExporter.EXTENSION_TYPE_PDF;
         String type = JasperExporter.MEDIA_TYPE_PDF;
         File report = File.createTempFile("CargaAdministrativaCiclo", format);

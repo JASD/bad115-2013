@@ -49,9 +49,9 @@ public class CicloService {
     }
     
     @Transactional(readOnly = true)
-    public List<CargaCicloAcad> obtenerCargaAcadCiclo(){
+    public List<CargaCicloAcad> obtenerCargaAcadCiclo(Ciclo c){
     
-        List<AsignacionGrupo> agList = cicloAcademicoDAO.obtenerCargaAcademicaCiclo();
+        List<AsignacionGrupo> agList = cicloAcademicoDAO.obtenerCargaAcademicaCiclo(c);
         List<CargaCicloAcad> ccList = new ArrayList<CargaCicloAcad>();
         for(AsignacionGrupo ag: agList){
             CargaCicloAcad cc = new CargaCicloAcad();
@@ -69,9 +69,9 @@ public class CicloService {
     }
     
     @Transactional(readOnly = true)
-    public List<CargaCicloAdmin> obtenerCargaAdminCiclo(){
+    public List<CargaCicloAdmin> obtenerCargaAdminCiclo(Ciclo c){
     
-        List<AsignacionGrupo> agList = cicloAcademicoDAO.obtenerCargaAdminisCiclo();
+        List<AsignacionGrupo> agList = cicloAcademicoDAO.obtenerCargaAdminisCiclo(c);
         List<CargaCicloAdmin> ccList = new ArrayList<CargaCicloAdmin>();
         for(AsignacionGrupo ag: agList){
             CargaCicloAdmin cc = new CargaCicloAdmin();
@@ -105,5 +105,10 @@ public class CicloService {
     @Transactional(readOnly = true)
     public String findUltimoFechai() {
         return cicloAcademicoDAO.findUltimoFechai().toString();
+    }
+    
+    @Transactional(readOnly = true)
+    public Ciclo obtenerCicloActual(){
+        return cicloAcademicoDAO.obtenerCicloActual();
     }
 }
