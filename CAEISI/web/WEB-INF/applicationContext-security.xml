@@ -18,7 +18,7 @@
             caracteristica puede sobreescribirse especificando mediante XML dichos
             elementos.
     -->
-    <security:http auto-config="true">
+    <security:http auto-config="true" use-expressions="true">
 
         <!--
                 Especifica el patrón URL y el tipo de acceso de cada interceptor
@@ -28,12 +28,25 @@
                 org.springframework.security.access.vote.AuthenticatedVoter.IS_AUTHENTICATED_REMEMBERED
                 org.springframework.security.access.vote.AuthenticatedVoter.IS_AUTHENTICATED_ANONYMOUSLY
         -->
+        
         <security:intercept-url pattern="/index.html" 
-                                access="IS_AUTHENTICATED_ANONYMOUSLY" />
+                                access="isAnonymous()" />
         <security:intercept-url pattern="/home.html" 
-                                access="IS_AUTHENTICATED_FULLY" />
-         <security:intercept-url pattern="/administracion/**" 
-                                access="ROLE_ADMIN" />
+                                access="isFullyAuthenticated()" />
+        <security:intercept-url pattern="/administracion/**" 
+                                access="hasAnyRole('ROLE_ADMIN', 'ROLE_JEFE')" />
+        <security:intercept-url pattern="/carga-academica/**" 
+                                access="hasAnyRole('ROLE_ADMIN', 'ROLE_SECRETARIO')" />
+        <security:intercept-url pattern="/docente/**" 
+                                access="hasAnyRole('ROLE_ADMIN', 'ROLE_SECRETARIO')" />
+        <security:intercept-url pattern="/grp-acad/**" 
+                                access="hasAnyRole('ROLE_ADMIN', 'ROLE_SECRETARIO')" />
+        <security:intercept-url pattern="/mantenimiento/**" 
+                                access="hasAnyRole('ROLE_ADMIN', 'ROLE_SECRETARIO')" />
+        <security:intercept-url pattern="/reportes/**" 
+                                access="hasAnyRole('ROLE_ADMIN', 'ROLE_SECRETARIO', 'ROLE_JEFE')" />
+        <security:intercept-url pattern="/seguridad/**" 
+                                access="hasRole('ROLE_ADMIN')" />
 
         <!--
                 Especifica el proceso de autenticación mediante un formulario:
