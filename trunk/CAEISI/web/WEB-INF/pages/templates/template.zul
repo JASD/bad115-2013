@@ -62,8 +62,6 @@
                                     <menupopup>
                                         <menuitem label="Carga Académica Ciclo" 
                                                   href="/reportes/carga-ciclo.html"/>
-                                        <menuitem label="Carga Académica Curso" 
-                                                  href="/reportes/carga-curso.html"/>
                                         <menuitem label="Carga Académica Docente" 
                                                   href="/reportes/carga-docente.html"/>
                                     </menupopup>
@@ -92,12 +90,18 @@
                                             <menupopup>                                                
                                                 <menuitem label="Crear actividades" 
                                                           href="/mantenimiento/actividad/nueva.html"/>
-                                                <menuitem label="Mostrar actividades" 
+                                                <menuitem label="Actualizar Actividades" 
                                                             href="/mantenimiento/actividad.html"/>
                                             </menupopup>
-                                        </menu>                                        
-                                        <menuitem label="Cursos" 
-                                                  href="/mantenimiento/curso.html"/>
+                                        </menu>
+                                         <menu label="Cursos">
+                                            <menupopup>                                                
+                                                <menuitem label="Crear curso" 
+                                                          href="/mantenimiento/cursos/nuevo.html"/>
+                                                <menuitem label="Habilitar Cursos" 
+                                                            href="/mantenimiento/cursos.html"/>
+                                            </menupopup>
+                                        </menu>
                                         <menu label="Grupos Administrativos">
                                             <menupopup>
                                                 <menuitem label="Crear Grupo" 
