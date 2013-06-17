@@ -16,6 +16,7 @@ import sv.fia.eisi.entidades.CoordinacionCurso;
 import sv.fia.eisi.entidades.EmpleadoDocente;
 import sv.fia.eisi.entidades.reportes.CargaCicloAcad;
 import sv.fia.eisi.entidades.reportes.CargaCicloAdmin;
+import sv.fia.eisi.entidades.reportes.CoordinacionesCiclo;
 //import sv.fia.eisi.entidades.GrupoAcademico;
 
 /**
@@ -153,5 +154,16 @@ public class CicloAcademicoDAO extends AbstractDAO<Ciclo> {
                 .getNamedQuery("CoordinacionCurso.findAllCiclo");
         q.setParameter("ciclo", c);
         return q.list();
+    }
+    
+    public String eliminarCoordCiclo(CoordinacionesCiclo cc){
+        String call = ResourceBundle.getBundle("/procedures")
+                .getString("EliminarCoordinacionCurso");
+        Query q = sessionFactory.getCurrentSession()
+                .createSQLQuery(call);
+        q.setString("curso", cc.getCodigoCurso());
+        q.setString("actividad", cc.getCodigoActividad());
+        q.setString("docente", cc.getIsssDocente());
+        return (String) q.uniqueResult();
     }
 }

@@ -163,9 +163,23 @@ public class CicloService {
                     .getPrimerNombreEmpleado() + " " + cc.getEmpleadoDocente()
                     .getEmpleado().getPrimerApellidoEmpleado());
             coorCiclo.setActividad(cc.getActividad().getNombreActividad());
+            coorCiclo.setCodigoCurso(cc.getCurso().getCodigoCurso());
+            coorCiclo.setCodigoActividad(cc.getActividad().getCodigoActividad());
+            coorCiclo.setIsssDocente(cc.getEmpleadoDocente().getIsssEmpleado());
             ccList.add(coorCiclo);
         }
         return ccList;
+    }
+    
+    @Transactional
+    public String eliminarCoordinacionCiclo(CoordinacionesCiclo cc) throws Exception{
+        String status = cicloAcademicoDAO.eliminarCoordCiclo(cc);
+        if (status.equals("OK")) {
+            return ResourceBundle.getBundle("/messages")
+                    .getString("CoordinacionEliminada");
+        } else {
+            throw new Exception(status);
+        }
     }
 
     @Transactional(readOnly = true)
