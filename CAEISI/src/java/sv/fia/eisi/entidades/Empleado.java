@@ -65,7 +65,7 @@ public class Empleado implements Serializable {
     @OneToOne(cascade = CascadeType.ALL, mappedBy = "empleado", fetch = FetchType.LAZY)
     private EmpleadoDocente empleadoDocente;
     @JoinColumn(name = "codigo_contrato", referencedColumnName = "codigo_contrato")
-    @ManyToOne(optional = false, fetch = FetchType.LAZY)
+    @ManyToOne(optional = false, fetch = FetchType.EAGER)
     private Contrato codigoContrato;
 
     public Empleado() {
