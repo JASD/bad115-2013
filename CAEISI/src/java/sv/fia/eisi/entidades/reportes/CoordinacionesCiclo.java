@@ -16,6 +16,9 @@ public class CoordinacionesCiclo implements Serializable{
     private String curso;
     private String docente;
     private String actividad;
+    private String codigoCurso;
+    private String isssDocente;
+    private String codigoActividad;
 
     public String getCodigo() {
         return codigo;
@@ -48,5 +51,28 @@ public class CoordinacionesCiclo implements Serializable{
     public void setActividad(String actividad) {
         this.actividad = actividad;
     }
-    
+
+    public String getCodigoCurso() {
+        return codigoCurso;
+    }
+
+    public void setCodigoCurso(String codigoCurso) {
+        this.codigoCurso = codigoCurso;
+    }
+
+    public String getIsssDocente() {
+        return isssDocente;
+    }
+
+    public void setIsssDocente(String isssDocente) {
+        this.isssDocente = isssDocente;
+    }
+
+    public String getCodigoActividad() {
+        return codigoActividad;
+    }
+
+    public void setCodigoActividad(String codigoActividad) {
+        this.codigoActividad = codigoActividad;
+    }
 }

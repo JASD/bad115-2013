@@ -19,10 +19,12 @@ import org.zkoss.zk.ui.select.SelectorComposer;
 import org.zkoss.zk.ui.select.annotation.Listen;
 import org.zkoss.zk.ui.select.annotation.Wire;
 import org.zkoss.zk.ui.select.annotation.WireVariable;
+import org.zkoss.zk.ui.util.Clients;
 import org.zkoss.zul.Button;
 import org.zkoss.zul.Filedownload;
 import org.zkoss.zul.Grid;
 import org.zkoss.zul.ListModelList;
+import org.zkoss.zul.Row;
 import sv.fia.eisi.controladores.util.JasperExporter;
 import sv.fia.eisi.entidades.Ciclo;
 import sv.fia.eisi.entidades.reportes.CoordinacionesCiclo;
@@ -70,9 +72,30 @@ public class CoordinacionCicloController extends SelectorComposer<Component> {
                 format, report);
         Filedownload.save(report, type);
     }
-   
+
     @Listen("onClick = button")
     public void eliminarCoord(Event e) {
-        
+        Row row = (Row) e.getTarget().getParent();
+        Grid g = (Grid) row.getGrid();
+        int posicion = row.getIndex();
+        String message = null;
+        String type = null;
+        CoordinacionesCiclo cc = (CoordinacionesCiclo) cGrid.getModel()
+                .getElementAt(posicion);
+        try {
+            message = cicloService.eliminarCoordinacionCiclo(cc);
+            type = Clients.NOTIFICATION_TYPE_INFO;
+            ccList = cicloService.obtenerCoordinacionesCiclo(c);
+            cGrid.setModel(new ListModelList<CoordinacionesCiclo>(ccList));
+            if (ccList.isEmpty()) {
+                cPDF.setDisabled(true);
+            }
+        } catch (Exception ex) {
+            message = ex.getMessage();
+            type = Clients.NOTIFICATION_TYPE_ERROR;
+        } finally {
+            Clients.showNotification(message,
+                    type, this.getSelf(), "top_center", 2000, true);
+        }
     }
 }
