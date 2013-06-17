@@ -9,7 +9,6 @@ import java.util.ResourceBundle;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import sv.fia.eisi.entidades.AsignacionGrupo;
 import sv.fia.eisi.entidades.AsignacionGrupoPK;
 import sv.fia.eisi.entidades.GrupoAcademico;
 import sv.fia.eisi.repositorios.GrupoAcademicoDAO;

@@ -35,7 +35,6 @@
                                  width="200px"/>
                     </cell>
                 </row>
-                
                 <row>
                     <cell sclass="row-title">Primer Apellido :</cell>
                     <cell>
@@ -43,8 +42,6 @@
                                  constraint="no empty: Ingrese el Primer Apellido" width="200px"/>
                     </cell>
                 </row>
-                
-                
                 <row>
                     <cell sclass="row-title">Segundo Apellido :</cell>
                     <cell>
@@ -52,7 +49,6 @@
                                  width="200px"/>
                     </cell>
                 </row>
-                
                 <row>
                     <cell sclass="row-title">Grado Académico :</cell>
                     <cell>
@@ -60,53 +56,43 @@
                                  constraint="no empty: Ingrese el Grado Académico" width="200px"/>
                     </cell>
                 </row>
-                
                 <row>
                     <cell sclass="row-title">Categoría :</cell>
                     <cell>
-                        <combobox id="categoria">
+                        <combobox id="categoria" constraint="no empty: Elija una categoria">
                             <comboitem label="Profesor Universitario I" value="PUI"/>
                             <comboitem label="Profesor Universitario II" value="PUII"/>
                             <comboitem label="Profesor Universitario III" value="PUIII"/>
                         </combobox>
                     </cell>
-                </row>
-                
-                              
-                                
+                </row>      
                 <row>
                     <cell sclass="row-title">Tipo de Contratación :</cell>
                     <cell>
-                        <combobox id="tipo">
-                            <comboitem label="Completo" value="com"/>
-                            <comboitem label="Medio" value="med"/>
-                            <comboitem label="Cuarto" value="cua"/>
+                        <combobox id="tipo"  constraint="no empty: Elija un tipo contrato">
+                            <template name="model">
+                                <comboitem label="${each}" />
+                            </template>
                         </combobox>
                     </cell>
                 </row> 
-                
-                  
                 <row>
                     <cell sclass="row-title">Correo Eléctronico :</cell>
                     <cell>
                         <textbox id="correo" maxlength="32"
                                  constraint="no empty: Ingrese el Correo Eléctronico" width="200px"/>
                     </cell>
-                </row>  
-                
+                </row> 
                 <row>
                     <cell sclass="row-title">Departamento :</cell>
                     <cell>
-                        <combobox id="depto">
-                            <comboitem label="TRABAJOS DE GRADUACION" value="TRGRA"/>
-                            <comboitem label="ADMINISTRACION" value="ADMIN"/>
-                            <comboitem label="DESARROLLO DE SISTEMAS" value="DESSI"/>
-                            <comboitem label="PROGRAMACION Y MANEJO DE DATOS" value="PROGR"/>
-                            <comboitem label="COMUNICACIONES Y CIENCIAS DE LA COMPUTACION" value="COMUN"/>
+                        <combobox id="depto" >
+                            <template name="model">
+                                <comboitem label="${each}" />
+                            </template>
                         </combobox>
                     </cell>
                 </row>
-                
                 <row>
                     <cell sclass="row-title">Cargo :</cell>
                     <cell>
@@ -114,28 +100,12 @@
                                  width="200px"/>
                     </cell>
                 </row>
-                
-                <row>
-                    <cell sclass="row-title">Usuario :</cell>
-                    <cell>
-                        <textbox id="usuar" maxlength="16"
-                                 width="200px"/>
-                    </cell>
-                </row>
-                <row>
-                    <cell sclass="row-title">Contraseña :</cell>
-                    <cell>
-                        <textbox id="contra" maxlength="128"
-                                 width="200px"/>
-                    </cell>
-                </row>
-                
             </rows>
            
         </grid>
         
         <hlayout>
-            <button id="guardarGrupoAcad" label="Guardar"/>
+            <button id="guardarDocente" label="Guardar"/>
         </hlayout>
     </vlayout>
 </window>

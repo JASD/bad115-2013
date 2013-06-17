@@ -114,7 +114,7 @@ public class Contrato implements Serializable {
 
     @Override
     public String toString() {
-        return "sv.fia.eisi.entidades.Contrato[ codigoContrato=" + codigoContrato + " ]";
+        return getTiempoContrato();
     }
     
 }
