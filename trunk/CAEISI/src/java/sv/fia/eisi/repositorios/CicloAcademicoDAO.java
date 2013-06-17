@@ -14,6 +14,8 @@ import org.springframework.stereotype.Repository;
 import sv.fia.eisi.entidades.AsignacionGrupo;
 import sv.fia.eisi.entidades.Ciclo;
 import sv.fia.eisi.entidades.EmpleadoDocente;
+import sv.fia.eisi.entidades.reportes.CargaCicloAcad;
+import sv.fia.eisi.entidades.reportes.CargaCicloAdmin;
 //import sv.fia.eisi.entidades.GrupoAcademico;
 
 /**
@@ -120,5 +122,29 @@ public class CicloAcademicoDAO extends AbstractDAO<Ciclo> {
         q.setParameter("ciclo", c);
         q.setParameter("docente", e);
         return q.list();
+    }
+    
+    public String eliminarAsignacionAcadCiclo(CargaCicloAcad cca){
+        String call = ResourceBundle.getBundle("/procedures")
+                .getString("EliminarCargaAcademica");
+        Query q = sessionFactory.getCurrentSession()
+                .createSQLQuery(call);
+        q.setString("grupo", cca.getCodigoGrupo());
+        q.setString("actividad", cca.getCodigoActividad());
+        q.setString("docente", cca.getIsssEmpleado());
+        return (String) q.uniqueResult();
+    
+    }
+    
+    public String eliminarAsignacionAdminCiclo(CargaCicloAdmin cca){
+        String call = ResourceBundle.getBundle("/procedures")
+                .getString("EliminarCargaAcademica");
+        Query q = sessionFactory.getCurrentSession()
+                .createSQLQuery(call);
+        q.setString("grupo", cca.getCodigoGrupo());
+        q.setString("actividad", cca.getCodigoActividad());
+        q.setString("docente", cca.getIsssEmpleado());
+        return (String) q.uniqueResult();
+    
     }
 }

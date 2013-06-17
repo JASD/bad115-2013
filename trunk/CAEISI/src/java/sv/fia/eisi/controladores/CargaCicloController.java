@@ -14,13 +14,17 @@ import net.sf.jasperreports.engine.data.JRBeanCollectionDataSource;
 import org.zkoss.zk.ui.Component;
 import org.zkoss.zk.ui.Execution;
 import org.zkoss.zk.ui.Executions;
+import org.zkoss.zk.ui.event.Event;
 import org.zkoss.zk.ui.select.SelectorComposer;
 import org.zkoss.zk.ui.select.annotation.Listen;
 import org.zkoss.zk.ui.select.annotation.Wire;
 import org.zkoss.zk.ui.select.annotation.WireVariable;
+import org.zkoss.zk.ui.util.Clients;
 import org.zkoss.zul.Filedownload;
 import org.zkoss.zul.Grid;
 import org.zkoss.zul.ListModelList;
+import org.zkoss.zul.Row;
+import org.zkoss.zul.Tabpanel;
 import sv.fia.eisi.controladores.util.JasperExporter;
 import sv.fia.eisi.entidades.Ciclo;
 import sv.fia.eisi.entidades.reportes.CargaCicloAcad;
@@ -37,6 +41,10 @@ public class CargaCicloController extends SelectorComposer<Component> {
     private Grid caGrid;
     @Wire
     private Grid cadGrid;
+    @Wire
+    private Tabpanel tabAcad;
+    @Wire
+    private Tabpanel tabAdmin;
     @WireVariable
     private CicloService cicloService;
     private Ciclo c;
@@ -60,18 +68,18 @@ public class CargaCicloController extends SelectorComposer<Component> {
     @Listen("onClick = #caPDF")
     public void generarReporteAcad() throws JRException, IOException {
 
-        Execution exec = Executions.getCurrent();
-        HttpServletRequest request = (HttpServletRequest) exec.getNativeRequest();
-        String realPath = request.getServletContext().getRealPath(JASPER_PATH_ACAD);
-        HashMap<String, Object> params = new HashMap<String, Object>();
-        params.put("anioCiclo", String.valueOf(c.getCicloPK().getAnoCiclo()));
-        params.put("numCiclo", String.valueOf(c.getCicloPK().getNumeroCiclo()));
-        String format = JasperExporter.EXTENSION_TYPE_PDF;
-        String type = JasperExporter.MEDIA_TYPE_PDF;
-        File report = File.createTempFile("CargaAcademicaCiclo", format);
-        JasperExporter.export(realPath, params, new JRBeanCollectionDataSource(cargaAcadCicloList),
-                format, report);
-        Filedownload.save(report, type);
+            Execution exec = Executions.getCurrent();
+            HttpServletRequest request = (HttpServletRequest) exec.getNativeRequest();
+            String realPath = request.getServletContext().getRealPath(JASPER_PATH_ACAD);
+            HashMap<String, Object> params = new HashMap<String, Object>();
+            params.put("anioCiclo", String.valueOf(c.getCicloPK().getAnoCiclo()));
+            params.put("numCiclo", String.valueOf(c.getCicloPK().getNumeroCiclo()));
+            String format = JasperExporter.EXTENSION_TYPE_PDF;
+            String type = JasperExporter.MEDIA_TYPE_PDF;
+            File report = File.createTempFile("CargaAcademicaCiclo", format);
+            JasperExporter.export(realPath, params, new JRBeanCollectionDataSource(cargaAcadCicloList),
+                    format, report);
+            Filedownload.save(report, type);
     }
 
     @Listen("onClick = #cadPDF")
@@ -81,7 +89,7 @@ public class CargaCicloController extends SelectorComposer<Component> {
         HttpServletRequest request = (HttpServletRequest) exec.getNativeRequest();
         String realPath = request.getServletContext().getRealPath(JASPER_PATH_ADMIN);
         HashMap<String, Object> params = new HashMap<String, Object>();
-         params.put("anioCiclo", String.valueOf(c.getCicloPK().getAnoCiclo()));
+        params.put("anioCiclo", String.valueOf(c.getCicloPK().getAnoCiclo()));
         params.put("numCiclo", String.valueOf(c.getCicloPK().getNumeroCiclo()));
         String format = JasperExporter.EXTENSION_TYPE_PDF;
         String type = JasperExporter.MEDIA_TYPE_PDF;
@@ -89,5 +97,50 @@ public class CargaCicloController extends SelectorComposer<Component> {
         JasperExporter.export(realPath, params, new JRBeanCollectionDataSource(cargaAdminCicloList),
                 format, report);
         Filedownload.save(report, type);
+    }
+
+    @Listen("onClick = button")
+    public void eliminarAsignacion(Event e) {
+
+        if (e.getTarget().getParent().equals(tabAdmin) || e.getTarget().getParent().equals(tabAcad)) {
+            //do nothing
+        } else {
+            Row row = (Row) e.getTarget().getParent();
+            Grid g = (Grid) row.getGrid();
+            int posicion = row.getIndex();
+            String message = null;
+            String type = null;
+            if (g.equals(caGrid)) {
+                CargaCicloAcad cca = (CargaCicloAcad) caGrid.getModel().getElementAt(posicion);
+                try {
+                    message = cicloService.eliminarCargaAcad(cca);
+                    type = Clients.NOTIFICATION_TYPE_INFO;
+                    cargaAcadCicloList = cicloService.obtenerCargaAcadCiclo(c);
+                    caGrid.setModel(new ListModelList<CargaCicloAcad>(cargaAcadCicloList));
+                } catch (Exception ex) {
+                    message = ex.getMessage();
+                    type = Clients.NOTIFICATION_TYPE_ERROR;
+                } finally {
+                    Clients.showNotification(message,
+                            type, this.getSelf(), "top_center", 2000, true);
+                }
+            } else {
+                CargaCicloAdmin cca = (CargaCicloAdmin) cadGrid.getModel().getElementAt(posicion);
+                try {
+                    message = cicloService.eliminarCargaAdmin(cca);
+                    type = Clients.NOTIFICATION_TYPE_INFO;
+                    cargaAdminCicloList = cicloService.obtenerCargaAdminCiclo(c);
+                    cadGrid.setModel(new ListModelList<CargaCicloAdmin>(cargaAdminCicloList));
+                } catch (Exception ex) {
+                    message = ex.getMessage();
+                    type = Clients.NOTIFICATION_TYPE_ERROR;
+                } finally {
+                    Clients.showNotification(message,
+                            type, this.getSelf(), "top_center", 2000, true);
+                }
+            }
+        }
+
+
     }
 }

@@ -64,6 +64,9 @@ public class CicloService {
             cc.setNumeroGrupo(String.valueOf(ag.getGrupo().getGrupoAcademico().getNumeroGrupoAcademico()));
             cc.setActividad(ag.getActividad().getNombreActividad());
             cc.setHoras(Float.valueOf(ag.getActividad().getNumeroHoras()));
+            cc.setCodigoGrupo(ag.getGrupo().getCodigoGrupo());
+            cc.setCodigoActividad(ag.getActividad().getCodigoActividad());
+            cc.setIsssEmpleado(ag.getEmpleadoDocente().getIsssEmpleado());
             ccList.add(cc);
         }
         return ccList;
@@ -83,6 +86,9 @@ public class CicloService {
             cc.setNombreGrupo(ag.getGrupo().getGrupoAdministrativo().getNombreGrupoAdministrativo());
             cc.setActividad(ag.getActividad().getNombreActividad());
             cc.setHoras(Float.valueOf(ag.getActividad().getNumeroHoras()));
+            cc.setCodigoGrupo(ag.getGrupo().getCodigoGrupo());
+            cc.setCodigoActividad(ag.getActividad().getCodigoActividad());
+            cc.setIsssEmpleado(ag.getEmpleadoDocente().getIsssEmpleado());
             ccList.add(cc);
         }
         return ccList;
@@ -116,9 +122,30 @@ public class CicloService {
             cdList.add(cd);
         }
         return cdList;
+    }
+    
+    @Transactional
+    public String eliminarCargaAcad(CargaCicloAcad cca) throws Exception {
 
+        String status = cicloAcademicoDAO.eliminarAsignacionAcadCiclo(cca);
+        if (status.equals("OK")) {
+            return ResourceBundle.getBundle("/messages")
+                    .getString("AsignacionEliminada");
+        } else {
+            throw new Exception(status);
+        }
+    }
+    
+    @Transactional
+    public String eliminarCargaAdmin(CargaCicloAdmin cca) throws Exception {
 
-
+        String status = cicloAcademicoDAO.eliminarAsignacionAdminCiclo(cca);
+        if (status.equals("OK")) {
+            return ResourceBundle.getBundle("/messages")
+                    .getString("AsignacionEliminada");
+        } else {
+            throw new Exception(status);
+        }
     }
 
     @Transactional(readOnly = true)
