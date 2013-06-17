@@ -12,10 +12,12 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import sv.fia.eisi.entidades.AsignacionGrupo;
 import sv.fia.eisi.entidades.Ciclo;
+import sv.fia.eisi.entidades.CoordinacionCurso;
 import sv.fia.eisi.entidades.EmpleadoDocente;
 import sv.fia.eisi.entidades.reportes.CargaCicloAcad;
 import sv.fia.eisi.entidades.reportes.CargaCicloAdmin;
 import sv.fia.eisi.entidades.reportes.CargaDocente;
+import sv.fia.eisi.entidades.reportes.CoordinacionesCiclo;
 import sv.fia.eisi.repositorios.CicloAcademicoDAO;
 
 /**
@@ -123,7 +125,7 @@ public class CicloService {
         }
         return cdList;
     }
-    
+
     @Transactional
     public String eliminarCargaAcad(CargaCicloAcad cca) throws Exception {
 
@@ -135,7 +137,7 @@ public class CicloService {
             throw new Exception(status);
         }
     }
-    
+
     @Transactional
     public String eliminarCargaAdmin(CargaCicloAdmin cca) throws Exception {
 
@@ -146,6 +148,24 @@ public class CicloService {
         } else {
             throw new Exception(status);
         }
+    }
+
+    @Transactional(readOnly = true)
+    public List<CoordinacionesCiclo> obtenerCoordinacionesCiclo(Ciclo c) {
+        List<CoordinacionCurso> cCurso = cicloAcademicoDAO
+                .obtenerCoordinacionesCiclo(c);
+        List<CoordinacionesCiclo> ccList = new ArrayList<CoordinacionesCiclo>();
+        for (CoordinacionCurso cc : cCurso) {
+            CoordinacionesCiclo coorCiclo = new CoordinacionesCiclo();
+            coorCiclo.setCodigo(cc.getCurso().getCodigoCurso());
+            coorCiclo.setCurso(cc.getCurso().getNombreCurso());
+            coorCiclo.setDocente(cc.getEmpleadoDocente().getEmpleado()
+                    .getPrimerNombreEmpleado() + " " + cc.getEmpleadoDocente()
+                    .getEmpleado().getPrimerApellidoEmpleado());
+            coorCiclo.setActividad(cc.getActividad().getNombreActividad());
+            ccList.add(coorCiclo);
+        }
+        return ccList;
     }
 
     @Transactional(readOnly = true)

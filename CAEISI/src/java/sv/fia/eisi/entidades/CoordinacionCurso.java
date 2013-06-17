@@ -28,8 +28,11 @@ import javax.validation.constraints.NotNull;
 @Entity
 @Table(name = "coordinacion_curso")
 @NamedQueries({
-    @NamedQuery(name = "CoordinacionCurso.findAll", query = "SELECT c FROM CoordinacionCurso c")})
+    @NamedQuery(name = "CoordinacionCurso.findAll", query = "SELECT c FROM CoordinacionCurso c"),
+    @NamedQuery(name = "CoordinacionCurso.findAllCiclo", query = "SELECT c "
+            + "FROM CoordinacionCurso c WHERE c.ciclo = :ciclo ORDER BY c.curso.codigoCurso")})
 public class CoordinacionCurso implements Serializable {
+
     private static final long serialVersionUID = 1L;
     @EmbeddedId
     protected CoordinacionCursoPK coordinacionCursoPK;
@@ -141,5 +144,4 @@ public class CoordinacionCurso implements Serializable {
     public String toString() {
         return "sv.fia.eisi.entidades.CoordinacionCurso[ coordinacionCursoPK=" + coordinacionCursoPK + " ]";
     }
-    
 }
