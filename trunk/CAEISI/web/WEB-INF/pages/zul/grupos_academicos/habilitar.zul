@@ -5,7 +5,8 @@
         <auxheader colspan="5" label="Grupos Académicos Disponibles" style="text-align:center"/>
     </auxhead>
     <grid id="gruposDes"  apply="sv.fia.eisi.controladores.GrupoAcademicoHController"
-          mold="paging" pageSize="10" emptyMessage="Información no disponible">
+          mold="paging" pageSize="10" emptyMessage="Información no disponible" 
+          style="clear:right;float:left; margin:10px">
         <columns sizable="true">
             <column hflex="20" label="Código" />
             <column hflex="10" label="Curso" />

@@ -3,7 +3,8 @@
 <window self="@{define(body)}" title='Actividades'>
     <grid apply="sv.fia.eisi.controladores.ActividadController" 
           mold="paging" pageSize="10" id="activityList"  
-          emptyMessage="Informacion no disponible">
+          emptyMessage="Informacion no disponible"
+          style="clear:right;float:left; margin:10px">
         <columns>
             <column hflex="1">Codigo de actividad</column>
             <column hflex="2">Nombre de actividad</column>
