@@ -34,27 +34,43 @@ public class DocenteService {
     public List<EmpleadoDocente> obtenerDocentesActivos() {
         return docenteDAO.obtenerDisponibles();
     }
-    
+
     @Transactional(readOnly = true)
-    public List<Departamento> getDepartamentos(){
+    public List<Departamento> getDepartamentos() {
         return departamentoDAO.findAll();
     }
-    
+
     @Transactional(readOnly = true)
-    public List<Contrato> getTiposContratos(){
+    public List<Contrato> getTiposContratos() {
         return contratoDAO.findAll();
     }
-    
+
     @Transactional
     public String guardarDocente(EmpleadoDocente e) throws Exception {
         String status = docenteDAO.create(e);
         if (status.equals("OK")) {
             return ResourceBundle.getBundle("/messages")
-                    .getString("GrupoAdministrativoGuardado");
+                    .getString("DocenteGuardado");
         } else {
             throw new Exception(status);
         }
     }
-    
-    
+
+    @Transactional(readOnly = true)
+    public List<EmpleadoDocente> findAll() {
+        return docenteDAO.findAll();
+    }
+
+    @Transactional
+    public String cambiarEstadoDocente(EmpleadoDocente e) throws Exception {
+
+        String status = docenteDAO.edit(e);
+        if (status.equals("OK")) {
+            return ResourceBundle.getBundle("/messages")
+                    .getString("DocenteActualizado");
+        } else {
+            throw new Exception(status);
+        }
+
+    }
 }

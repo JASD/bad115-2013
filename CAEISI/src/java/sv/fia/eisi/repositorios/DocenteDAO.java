@@ -48,7 +48,13 @@ public class DocenteDAO extends AbstractDAO<EmpleadoDocente> {
 
     @Override
     public String edit(EmpleadoDocente entity) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        String call = ResourceBundle.getBundle("/procedures")
+                .getString("ActualizarEstadoDocente");
+        Query q = sessionFactory.getCurrentSession()
+                .createSQLQuery(call);
+        q.setString("isss", entity.getEmpleado().getIsssEmpleado());
+        q.setBoolean("estado", entity.getEstaActivoDocente());
+        return (String) q.uniqueResult();
     }
 
     @Override
@@ -62,5 +68,9 @@ public class DocenteDAO extends AbstractDAO<EmpleadoDocente> {
     }
     public List<EmpleadoDocente> obtenerDisponibles(){
         return sessionFactory.getCurrentSession().getNamedQuery("EmpleadoDocente.findActives").list();
+    }
+    
+    public List<EmpleadoDocente> findAll(){
+        return sessionFactory.getCurrentSession().getNamedQuery("EmpleadoDocente.findAll").list();
     }
 }

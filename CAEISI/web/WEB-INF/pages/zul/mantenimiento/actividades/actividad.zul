@@ -5,6 +5,10 @@
           mold="paging" pageSize="10" id="activityList"  
           emptyMessage="Informacion no disponible"
           style="clear:right;float:left; margin:10px">
+        <auxhead>
+            <auxheader style="text-align:center"
+                                   colspan="5" label="Actividades"/>
+        </auxhead>
         <columns>
             <column hflex="1">Codigo de actividad</column>
             <column hflex="2">Nombre de actividad</column>
