@@ -4,12 +4,14 @@
  */
 package sv.fia.eisi.repositorios;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
 import org.hibernate.Query;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+import sv.fia.eisi.entidades.AsignacionGrupo;
 import sv.fia.eisi.entidades.Ciclo;
 //import sv.fia.eisi.entidades.GrupoAcademico;
 
@@ -81,5 +83,30 @@ public class CicloAcademicoDAO extends AbstractDAO<Ciclo> {
     public List<Ciclo> findUltimoFechai() {
         return (List<Ciclo>) sessionFactory.getCurrentSession()
                 .getNamedQuery("CicloFechai.ultimo").list();
+    }
+    
+    public List<AsignacionGrupo> obtenerCargaAcademicaCiclo() {
+        Ciclo c = (Ciclo) sessionFactory.getCurrentSession()
+                .getNamedQuery("Ciclo.actual").uniqueResult();
+        List<String> tiposAca = new ArrayList<String>();
+        tiposAca.add("TEO");
+        tiposAca.add("LAB");
+        tiposAca.add("DISC");
+        tiposAca.add("TESIS");
+        Query q = sessionFactory.getCurrentSession().
+                getNamedQuery("AsignacionGrupo.findByCicloAcademico");
+        q.setParameter("ciclo", c);
+        //q.setParameter("tiposAcademicos", tiposAca);
+        return q.list();
+    }
+    
+    public List<AsignacionGrupo> obtenerCargaAdminisCiclo() {
+        Ciclo c = (Ciclo) sessionFactory.getCurrentSession()
+                .getNamedQuery("Ciclo.actual").uniqueResult();
+        Query q = sessionFactory.getCurrentSession().
+                getNamedQuery("AsignacionGrupo.findByCicloAdminis");
+        q.setParameter("ciclo", c);
+        return q.list();
+
     }
 }

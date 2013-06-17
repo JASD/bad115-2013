@@ -1,5 +1,36 @@
 <?page id="crv" title="Carga Ciclo CAEISI"?>
 <?init class="org.zkoss.zk.ui.util.Composition" arg0="/WEB-INF/pages/templates/template.zul" ?>
-<window self="@{define(body)}" title='Carga Académica Ciclo Vigente'>
-    
+<window self="@{define(body)}" title='Carga Académica Ciclo Vigente'
+    apply="sv.fia.eisi.controladores.CargaCicloController">
+   
+    <button style="margin:20px 20px 10px 10px;float:right" id="downloadButton"
+             label="Descargar en PDF"/>
+    <grid id="caGrid"  
+          mold="paging" 
+          pageSize="10" 
+          emptyMessage="Información no disponible" 
+          style="clear:right;float:left; margin:10px">
+        <auxhead>
+            <auxheader style="text-align:center"
+                       colspan="5" label="Carga Académica"/>
+        </auxhead>
+        <columns>
+            <column hflex="40" label="Docente"  />
+            <column hflex="10" label="Código"  />
+            <column hflex="10" label="Grupo"  />
+            <column hflex="10" label="N°Grupo" align="right"/>
+            <column hflex="40" label="Actividad" />
+            <column hflex="10" label="Horas" align="right"/>
+        </columns>
+        <template name="model">
+            <row>
+                <label value="${each.docente}" />
+                <label value="${each.codigoCurso}" />
+                <label value="${each.tipoGrupo}" />
+                <label value="${each.numeroGrupo}" />
+                <label value="${each.actividad}" />
+                <label value="${each.horas}" />
+            </row>
+        </template>
+    </grid>
 </window>
