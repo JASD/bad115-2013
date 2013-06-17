@@ -85,9 +85,9 @@ public class CicloAcademicoDAO extends AbstractDAO<Ciclo> {
                 .getNamedQuery("CicloFechai.ultimo").list();
     }
     
-    public List<AsignacionGrupo> obtenerCargaAcademicaCiclo() {
-        Ciclo c = (Ciclo) sessionFactory.getCurrentSession()
-                .getNamedQuery("Ciclo.actual").uniqueResult();
+    public List<AsignacionGrupo> obtenerCargaAcademicaCiclo(Ciclo c) {
+        //Ciclo c = (Ciclo) sessionFactory.getCurrentSession()
+          //      .getNamedQuery("Ciclo.actual").uniqueResult();
         List<String> tiposAca = new ArrayList<String>();
         tiposAca.add("TEO");
         tiposAca.add("LAB");
@@ -96,17 +96,21 @@ public class CicloAcademicoDAO extends AbstractDAO<Ciclo> {
         Query q = sessionFactory.getCurrentSession().
                 getNamedQuery("AsignacionGrupo.findByCicloAcademico");
         q.setParameter("ciclo", c);
-        //q.setParameter("tiposAcademicos", tiposAca);
         return q.list();
     }
     
-    public List<AsignacionGrupo> obtenerCargaAdminisCiclo() {
-        Ciclo c = (Ciclo) sessionFactory.getCurrentSession()
-                .getNamedQuery("Ciclo.actual").uniqueResult();
+    public List<AsignacionGrupo> obtenerCargaAdminisCiclo(Ciclo c) {
+        //Ciclo c = (Ciclo) sessionFactory.getCurrentSession()
+          //      .getNamedQuery("Ciclo.actual").uniqueResult();
         Query q = sessionFactory.getCurrentSession().
                 getNamedQuery("AsignacionGrupo.findByCicloAdminis");
         q.setParameter("ciclo", c);
         return q.list();
 
+    }
+    
+    public Ciclo obtenerCicloActual(){
+        return (Ciclo) sessionFactory.getCurrentSession()
+                .getNamedQuery("Ciclo.actual").uniqueResult();
     }
 }
