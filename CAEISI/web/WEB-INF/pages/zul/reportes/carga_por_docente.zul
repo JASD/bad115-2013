@@ -3,7 +3,9 @@
 <window self="@{define(body)}" title='Carga Académica por Docente' 
         apply="sv.fia.eisi.controladores.CargaDocenteController">
     
-    <combobox id="docentes" constraint="no empty: Elija un Docente"
+    <combobox id="docentes" autodrop="true" mold="rounded" 
+              buttonVisible="false"
+              constraint="no empty: Elija un Docente"
               style="margin:20px 20px 10px 10px" >
         <template name="model">
             <comboitem label="${each}" />

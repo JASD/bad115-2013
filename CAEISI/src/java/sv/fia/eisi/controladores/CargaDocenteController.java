@@ -64,7 +64,9 @@ public class CargaDocenteController extends SelectorComposer<Component> {
         e = docentes.getSelectedItem().getValue();
         cdList = cicloService.obtenerCargaDocente(e, c);
         caGrid.setModel(new ListModelList<CargaDocente>(cdList));
-        caPDF.setDisabled(false);
+        if (!cdList.isEmpty()) {
+            caPDF.setDisabled(false);
+        }
 
     }
 
