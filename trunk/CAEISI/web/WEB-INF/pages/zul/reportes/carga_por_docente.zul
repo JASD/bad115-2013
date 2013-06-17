@@ -1,5 +1,42 @@
 <?page id="crv" title="Carga Docente CAEISI"?>
 <?init class="org.zkoss.zk.ui.util.Composition" arg0="/WEB-INF/pages/templates/template.zul" ?>
-<window self="@{define(body)}" title='Carga Académica por Docente'>
+<window self="@{define(body)}" title='Carga Académica por Docente' 
+        apply="sv.fia.eisi.controladores.CargaDocenteController">
+    
+    <combobox id="docentes" constraint="no empty: Elija un Docente"
+              style="margin:20px 20px 10px 10px" >
+        <template name="model">
+            <comboitem label="${each}" />
+        </template>
+    </combobox> 
+    
+    <button style="margin:20px 20px 10px 10px;float:right" id="caPDF"
+            label="Descargar en PDF" disabled="true"/>
+    <grid id="caGrid"  
+          mold="paging" 
+          pageSize="10" 
+          emptyMessage="Información no disponible" 
+          style="clear:right;float:left; margin:10px">
+        <auxhead>
+            <auxheader style="text-align:center"
+                       colspan="5" label="Carga Académica"/>
+        </auxhead>
+        <columns>
+            <column hflex="10" label="Código"  />
+            <column hflex="40" label="Grupo"  />
+            <column hflex="10" label="Tipo"  />
+            <column hflex="40" label="Actividad" />
+            <column hflex="10" label="Horas" align="right"/>
+        </columns>
+        <template name="model">
+            <row>
+                <label value="${each.codigoGrupo}" />
+                <label value="${each.grupo}" />
+                <label value="${each.tipoGrupo}" />
+                <label value="${each.actividad}" />
+                <label value="${each.horas}" />
+            </row>
+        </template>
+    </grid>
     
 </window>

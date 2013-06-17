@@ -31,10 +31,18 @@ import javax.validation.constraints.NotNull;
     @NamedQuery(name = "AsignacionGrupo.findAll", query = "SELECT a FROM AsignacionGrupo a"),
     @NamedQuery(name = "AsignacionGrupo.findByCicloAcademico", query = "SELECT a FROM AsignacionGrupo a"
             + " WHERE a.ciclo = :ciclo AND a.grupo.tipoGrupo IN ('DISC', 'TEO', 'LAB', 'TESIS')"
-        + "ORDER BY a.empleadoDocente"),
+            + "ORDER BY a.empleadoDocente"),
     @NamedQuery(name = "AsignacionGrupo.findByCicloAdminis", query = "SELECT a FROM AsignacionGrupo a"
             + " WHERE a.ciclo = :ciclo AND a.grupo.tipoGrupo IN ('INVEST', 'COMISION', 'COMITE')"
-        + "ORDER BY a.empleadoDocente")})
+            + "ORDER BY a.empleadoDocente"),
+    @NamedQuery(name = "AsignacionGrupo.findByCicloDocenteAcad", query = "SELECT a FROM AsignacionGrupo a"
+            + " WHERE a.ciclo = :ciclo AND a.empleadoDocente = :docente AND "
+            + "a.grupo.tipoGrupo IN ('DISC', 'TEO', 'LAB', 'TESIS') "
+            + "ORDER BY a.grupo.codigoGrupo"),
+    @NamedQuery(name = "AsignacionGrupo.findByCicloDocenteAdmin", query = "SELECT a FROM AsignacionGrupo a"
+            + " WHERE a.ciclo = :ciclo AND a.empleadoDocente = :docente AND "
+            + "a.grupo.tipoGrupo IN ('INVEST', 'COMISION', 'COMITE') "
+            + "ORDER BY a.grupo.codigoGrupo")})
 public class AsignacionGrupo implements Serializable {
 
     private static final long serialVersionUID = 1L;
