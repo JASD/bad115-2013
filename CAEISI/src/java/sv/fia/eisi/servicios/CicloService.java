@@ -12,8 +12,10 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import sv.fia.eisi.entidades.AsignacionGrupo;
 import sv.fia.eisi.entidades.Ciclo;
+import sv.fia.eisi.entidades.EmpleadoDocente;
 import sv.fia.eisi.entidades.reportes.CargaCicloAcad;
 import sv.fia.eisi.entidades.reportes.CargaCicloAdmin;
+import sv.fia.eisi.entidades.reportes.CargaDocente;
 import sv.fia.eisi.repositorios.CicloAcademicoDAO;
 
 /**
@@ -47,15 +49,15 @@ public class CicloService {
             throw new Exception(status);
         }
     }
-    
+
     @Transactional(readOnly = true)
-    public List<CargaCicloAcad> obtenerCargaAcadCiclo(Ciclo c){
-    
+    public List<CargaCicloAcad> obtenerCargaAcadCiclo(Ciclo c) {
+
         List<AsignacionGrupo> agList = cicloAcademicoDAO.obtenerCargaAcademicaCiclo(c);
         List<CargaCicloAcad> ccList = new ArrayList<CargaCicloAcad>();
-        for(AsignacionGrupo ag: agList){
+        for (AsignacionGrupo ag : agList) {
             CargaCicloAcad cc = new CargaCicloAcad();
-            cc.setDocente(ag.getEmpleadoDocente().getEmpleado().getPrimerNombreEmpleado() 
+            cc.setDocente(ag.getEmpleadoDocente().getEmpleado().getPrimerNombreEmpleado()
                     + " " + ag.getEmpleadoDocente().getEmpleado().getPrimerApellidoEmpleado());
             cc.setCodigoCurso(ag.getGrupo().getGrupoAcademico().getCodigoCurso().getCodigoCurso());
             cc.setTipoGrupo(ag.getGrupo().getTipoGrupo());
@@ -65,17 +67,17 @@ public class CicloService {
             ccList.add(cc);
         }
         return ccList;
-        
+
     }
-    
+
     @Transactional(readOnly = true)
-    public List<CargaCicloAdmin> obtenerCargaAdminCiclo(Ciclo c){
-    
+    public List<CargaCicloAdmin> obtenerCargaAdminCiclo(Ciclo c) {
+
         List<AsignacionGrupo> agList = cicloAcademicoDAO.obtenerCargaAdminisCiclo(c);
         List<CargaCicloAdmin> ccList = new ArrayList<CargaCicloAdmin>();
-        for(AsignacionGrupo ag: agList){
+        for (AsignacionGrupo ag : agList) {
             CargaCicloAdmin cc = new CargaCicloAdmin();
-            cc.setDocente(ag.getEmpleadoDocente().getEmpleado().getPrimerNombreEmpleado() 
+            cc.setDocente(ag.getEmpleadoDocente().getEmpleado().getPrimerNombreEmpleado()
                     + " " + ag.getEmpleadoDocente().getEmpleado().getPrimerApellidoEmpleado());
             cc.setTipoGrupo(ag.getGrupo().getTipoGrupo());
             cc.setNombreGrupo(ag.getGrupo().getGrupoAdministrativo().getNombreGrupoAdministrativo());
@@ -84,7 +86,39 @@ public class CicloService {
             ccList.add(cc);
         }
         return ccList;
-        
+
+    }
+
+    @Transactional(readOnly = true)
+    public List<CargaDocente> obtenerCargaDocente(EmpleadoDocente e, Ciclo c) {
+
+        List<AsignacionGrupo> agAcadList = cicloAcademicoDAO.obtenerCargaAcadDocente(e, c);
+        List<AsignacionGrupo> agAdminList = cicloAcademicoDAO.obtenerCargaAdminDocente(e, c);
+        List<CargaDocente> cdList = new ArrayList<CargaDocente>();
+
+        for (AsignacionGrupo ag : agAcadList) {
+            CargaDocente cd = new CargaDocente();
+            cd.setCodigoGrupo(ag.getGrupo().getCodigoGrupo());
+            cd.setGrupo(ag.getGrupo().getGrupoAcademico().getCodigoCurso().getCodigoCurso());
+            cd.setTipoGrupo(ag.getGrupo().getTipoGrupo());
+            cd.setActividad(ag.getActividad().getNombreActividad());
+            cd.setHoras(Float.valueOf(ag.getActividad().getNumeroHoras()));
+            cdList.add(cd);
+        }
+
+        for (AsignacionGrupo ag : agAdminList) {
+            CargaDocente cd = new CargaDocente();
+            cd.setCodigoGrupo(ag.getGrupo().getCodigoGrupo());
+            cd.setGrupo(ag.getGrupo().getGrupoAdministrativo().getNombreGrupoAdministrativo());
+            cd.setTipoGrupo(ag.getGrupo().getTipoGrupo());
+            cd.setActividad(ag.getActividad().getNombreActividad());
+            cd.setHoras(Float.valueOf(ag.getActividad().getNumeroHoras()));
+            cdList.add(cd);
+        }
+        return cdList;
+
+
+
     }
 
     @Transactional(readOnly = true)
@@ -106,9 +140,9 @@ public class CicloService {
     public String findUltimoFechai() {
         return cicloAcademicoDAO.findUltimoFechai().toString();
     }
-    
+
     @Transactional(readOnly = true)
-    public Ciclo obtenerCicloActual(){
+    public Ciclo obtenerCicloActual() {
         return cicloAcademicoDAO.obtenerCicloActual();
     }
 }

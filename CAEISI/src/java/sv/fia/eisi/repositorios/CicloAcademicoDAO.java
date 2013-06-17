@@ -13,6 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import sv.fia.eisi.entidades.AsignacionGrupo;
 import sv.fia.eisi.entidades.Ciclo;
+import sv.fia.eisi.entidades.EmpleadoDocente;
 //import sv.fia.eisi.entidades.GrupoAcademico;
 
 /**
@@ -86,13 +87,6 @@ public class CicloAcademicoDAO extends AbstractDAO<Ciclo> {
     }
     
     public List<AsignacionGrupo> obtenerCargaAcademicaCiclo(Ciclo c) {
-        //Ciclo c = (Ciclo) sessionFactory.getCurrentSession()
-          //      .getNamedQuery("Ciclo.actual").uniqueResult();
-        List<String> tiposAca = new ArrayList<String>();
-        tiposAca.add("TEO");
-        tiposAca.add("LAB");
-        tiposAca.add("DISC");
-        tiposAca.add("TESIS");
         Query q = sessionFactory.getCurrentSession().
                 getNamedQuery("AsignacionGrupo.findByCicloAcademico");
         q.setParameter("ciclo", c);
@@ -100,8 +94,6 @@ public class CicloAcademicoDAO extends AbstractDAO<Ciclo> {
     }
     
     public List<AsignacionGrupo> obtenerCargaAdminisCiclo(Ciclo c) {
-        //Ciclo c = (Ciclo) sessionFactory.getCurrentSession()
-          //      .getNamedQuery("Ciclo.actual").uniqueResult();
         Query q = sessionFactory.getCurrentSession().
                 getNamedQuery("AsignacionGrupo.findByCicloAdminis");
         q.setParameter("ciclo", c);
@@ -112,5 +104,21 @@ public class CicloAcademicoDAO extends AbstractDAO<Ciclo> {
     public Ciclo obtenerCicloActual(){
         return (Ciclo) sessionFactory.getCurrentSession()
                 .getNamedQuery("Ciclo.actual").uniqueResult();
+    }
+    
+    public List<AsignacionGrupo>obtenerCargaAcadDocente(EmpleadoDocente e, Ciclo c){
+        Query q = sessionFactory.getCurrentSession().
+                getNamedQuery("AsignacionGrupo.findByCicloDocenteAcad");
+        q.setParameter("ciclo", c);
+        q.setParameter("docente", e);
+        return q.list();
+    }
+    
+    public List<AsignacionGrupo>obtenerCargaAdminDocente(EmpleadoDocente e, Ciclo c){
+        Query q = sessionFactory.getCurrentSession().
+                getNamedQuery("AsignacionGrupo.findByCicloDocenteAdmin");
+        q.setParameter("ciclo", c);
+        q.setParameter("docente", e);
+        return q.list();
     }
 }
