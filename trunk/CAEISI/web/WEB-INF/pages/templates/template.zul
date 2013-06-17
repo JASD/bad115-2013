@@ -14,7 +14,7 @@
         text-decoration: none; cursor: pointer; }
 </style>
     <div >
-        <borderlayout sclass="complex-layout" height="700px">
+        <borderlayout sclass="complex-layout" height="600px">
             <north size="90px" border="0">
                 <div>
                     <div style="float:right; text-color:white; margin-top: 55px">
