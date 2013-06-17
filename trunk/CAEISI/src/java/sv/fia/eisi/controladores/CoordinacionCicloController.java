@@ -42,7 +42,7 @@ public class CoordinacionCicloController extends SelectorComposer<Component> {
     private CicloService cicloService;
     private List<CoordinacionesCiclo> ccList;
     private Ciclo c;
-    private static final String JASPER_PATH = "/WEB-INF/resources/jasper/cargaDocenteCiclo.jasper";
+    private static final String JASPER_PATH = "/WEB-INF/resources/jasper/coordCursos.jasper";
 
     @Override
     public void doAfterCompose(Component comp) throws Exception {
@@ -57,7 +57,6 @@ public class CoordinacionCicloController extends SelectorComposer<Component> {
 
     @Listen("onClick = #cPDF")
     public void generarReporteCoord() throws JRException, IOException {
-
         Execution exec = Executions.getCurrent();
         HttpServletRequest request = (HttpServletRequest) exec.getNativeRequest();
         String realPath = request.getServletContext().getRealPath(JASPER_PATH);
@@ -66,7 +65,7 @@ public class CoordinacionCicloController extends SelectorComposer<Component> {
         params.put("numCiclo", String.valueOf(c.getCicloPK().getNumeroCiclo()));
         String format = JasperExporter.EXTENSION_TYPE_PDF;
         String type = JasperExporter.MEDIA_TYPE_PDF;
-        File report = File.createTempFile("CargaAcademicaCiclo", format);
+        File report = File.createTempFile("CoordinacionesCiclo", format);
         JasperExporter.export(realPath, params, new JRBeanCollectionDataSource(ccList),
                 format, report);
         Filedownload.save(report, type);
