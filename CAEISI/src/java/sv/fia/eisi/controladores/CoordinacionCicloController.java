@@ -25,6 +25,7 @@ import org.zkoss.zul.Filedownload;
 import org.zkoss.zul.Grid;
 import org.zkoss.zul.ListModelList;
 import org.zkoss.zul.Row;
+import org.zkoss.zul.Window;
 import sv.fia.eisi.controladores.util.JasperExporter;
 import sv.fia.eisi.entidades.Ciclo;
 import sv.fia.eisi.entidades.reportes.CoordinacionesCiclo;
@@ -40,6 +41,8 @@ public class CoordinacionCicloController extends SelectorComposer<Component> {
     private Grid cGrid;
     @Wire
     private Button cPDF;
+    @Wire
+    private Window win;
     @WireVariable
     private CicloService cicloService;
     private List<CoordinacionesCiclo> ccList;
@@ -75,27 +78,29 @@ public class CoordinacionCicloController extends SelectorComposer<Component> {
 
     @Listen("onClick = button")
     public void eliminarCoord(Event e) {
-        Row row = (Row) e.getTarget().getParent();
-        Grid g = (Grid) row.getGrid();
-        int posicion = row.getIndex();
-        String message = null;
-        String type = null;
-        CoordinacionesCiclo cc = (CoordinacionesCiclo) cGrid.getModel()
-                .getElementAt(posicion);
-        try {
-            message = cicloService.eliminarCoordinacionCiclo(cc);
-            type = Clients.NOTIFICATION_TYPE_INFO;
-            ccList = cicloService.obtenerCoordinacionesCiclo(c);
-            cGrid.setModel(new ListModelList<CoordinacionesCiclo>(ccList));
-            if (ccList.isEmpty()) {
-                cPDF.setDisabled(true);
+
+        if (!e.getTarget().getParent().equals(win)) {
+            Row row = (Row) e.getTarget().getParent();
+            int posicion = row.getIndex();
+            String message = null;
+            String type = null;
+            CoordinacionesCiclo cc = (CoordinacionesCiclo) cGrid.getModel()
+                    .getElementAt(posicion);
+            try {
+                message = cicloService.eliminarCoordinacionCiclo(cc);
+                type = Clients.NOTIFICATION_TYPE_INFO;
+                ccList = cicloService.obtenerCoordinacionesCiclo(c);
+                cGrid.setModel(new ListModelList<CoordinacionesCiclo>(ccList));
+                if (ccList.isEmpty()) {
+                    cPDF.setDisabled(true);
+                }
+            } catch (Exception ex) {
+                message = ex.getMessage();
+                type = Clients.NOTIFICATION_TYPE_ERROR;
+            } finally {
+                Clients.showNotification(message,
+                        type, this.getSelf(), "top_center", 2000, true);
             }
-        } catch (Exception ex) {
-            message = ex.getMessage();
-            type = Clients.NOTIFICATION_TYPE_ERROR;
-        } finally {
-            Clients.showNotification(message,
-                    type, this.getSelf(), "top_center", 2000, true);
         }
     }
 }

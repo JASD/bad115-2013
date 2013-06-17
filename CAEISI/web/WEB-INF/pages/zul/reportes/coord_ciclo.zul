@@ -1,6 +1,6 @@
 <?page id="crv" title="Coordinaciones de Curso CAEISI"?>
 <?init class="org.zkoss.zk.ui.util.Composition" arg0="/WEB-INF/pages/templates/template.zul" ?>
-<window self="@{define(body)}" title='Coordinaciones de Curso' 
+<window self="@{define(body)}" title='Coordinaciones de Curso'  id="win"
         apply="sv.fia.eisi.controladores.CoordinacionCicloController">
     
     <button style="margin:20px 20px 10px 10px;float:right" id="cPDF"
