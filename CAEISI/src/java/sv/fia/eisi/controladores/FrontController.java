@@ -103,13 +103,13 @@ public class FrontController {
         return new ModelAndView("/mantenimiento/conocimientos/nuevo");
     }
 
-    @RequestMapping(value = "/mantenimiento/curso")
+    @RequestMapping(value = "/mantenimiento/cursos")
     public ModelAndView verCursos(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         return new ModelAndView("/mantenimiento/cursos/cursos");
     }
 
-    @RequestMapping(value = "/mantenimiento/curso/nuevo")
+    @RequestMapping(value = "/mantenimiento/cursos/nuevo")
     public ModelAndView agregarCurso(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         return new ModelAndView("/mantenimiento/cursos/nuevo");
@@ -143,12 +143,6 @@ public class FrontController {
     public ModelAndView verCargaCiclo(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         return new ModelAndView("/reportes/carga_por_ciclo");
-    }
-
-    @RequestMapping(value = "/reportes/carga-curso")
-    public ModelAndView verCargaCurso(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        return new ModelAndView("/reportes/carga_por_curso");
     }
 
     @RequestMapping(value = "/reportes/carga-docente")
