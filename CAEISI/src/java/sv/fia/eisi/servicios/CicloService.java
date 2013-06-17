@@ -4,11 +4,15 @@
  */
 package sv.fia.eisi.servicios;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.ResourceBundle;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import sv.fia.eisi.entidades.AsignacionGrupo;
 import sv.fia.eisi.entidades.Ciclo;
+import sv.fia.eisi.entidades.reportes.CargaCiclo;
 import sv.fia.eisi.repositorios.CicloAcademicoDAO;
 
 /**
@@ -41,6 +45,26 @@ public class CicloService {
         } else {
             throw new Exception(status);
         }
+    }
+    
+    @Transactional(readOnly = true)
+    public List<CargaCiclo> obtenerCargaAcadCiclo(){
+    
+        List<AsignacionGrupo> agList = cicloAcademicoDAO.obtenerCargaAcademicaCiclo();
+        List<CargaCiclo> ccList = new ArrayList<CargaCiclo>();
+        for(AsignacionGrupo ag: agList){
+            CargaCiclo cc = new CargaCiclo();
+            cc.setDocente(ag.getEmpleadoDocente().getEmpleado().getPrimerNombreEmpleado() 
+                    + " " + ag.getEmpleadoDocente().getEmpleado().getPrimerApellidoEmpleado());
+            cc.setCodigoCurso(ag.getGrupo().getGrupoAcademico().getCodigoCurso().getCodigoCurso());
+            cc.setTipoGrupo(ag.getGrupo().getTipoGrupo());
+            cc.setNumeroGrupo(String.valueOf(ag.getGrupo().getGrupoAcademico().getNumeroGrupoAcademico()));
+            cc.setActividad(ag.getActividad().getNombreActividad());
+            cc.setHoras(Float.valueOf(ag.getActividad().getNumeroHoras()));
+            ccList.add(cc);
+        }
+        return ccList;
+        
     }
 
     @Transactional(readOnly = true)

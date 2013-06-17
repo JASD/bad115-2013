@@ -28,8 +28,15 @@ import javax.validation.constraints.NotNull;
 @Entity
 @Table(name = "asignacion_grupo")
 @NamedQueries({
-    @NamedQuery(name = "AsignacionGrupo.findAll", query = "SELECT a FROM AsignacionGrupo a")})
+    @NamedQuery(name = "AsignacionGrupo.findAll", query = "SELECT a FROM AsignacionGrupo a"),
+    @NamedQuery(name = "AsignacionGrupo.findByCicloAcademico", query = "SELECT a FROM AsignacionGrupo a"
+            + " WHERE a.ciclo = :ciclo AND a.grupo.tipoGrupo IN ('DISC', 'TEO', 'LAB', 'TESIS')"
+        + "ORDER BY a.empleadoDocente"),
+    @NamedQuery(name = "AsignacionGrupo.findByCicloAdminis", query = "SELECT a FROM AsignacionGrupo a"
+            + " WHERE a.ciclo = :ciclo AND a.grupo.tipoGrupo IN :tiposAdminis "
+        + "ORDER BY a.empleadoDocente")})
 public class AsignacionGrupo implements Serializable {
+
     private static final long serialVersionUID = 1L;
     @EmbeddedId
     protected AsignacionGrupoPK asignacionGrupoPK;
@@ -141,5 +148,4 @@ public class AsignacionGrupo implements Serializable {
     public String toString() {
         return "sv.fia.eisi.entidades.AsignacionGrupo[ asignacionGrupoPK=" + asignacionGrupoPK + " ]";
     }
-    
 }
