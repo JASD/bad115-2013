@@ -72,7 +72,7 @@
                                     <menupopup>
                                         
                                         <menuitem label="Registrar Nuevo" 
-                                                  href="/docente/nuevo.html"/>
+                                                  href="/docente/nuevos.html"/>
                                         <menuitem label="Actualizar Datos" 
                                                   href="/docente/actualizar.html"/>
                                       
@@ -95,15 +95,16 @@
                                                 <menuitem label="Actualizar Actividades" 
                                                             href="/mantenimiento/actividad.html"/>
                                             </menupopup>
-                                        </menu>
-                                         <menu label="Cursos">
+                                        </menu>   
+                                        <menu label="Cursos">
                                             <menupopup>                                                
-                                                <menuitem label="Crear curso" 
-                                                          href="/mantenimiento/cursos/nuevo.html"/>
-                                                <menuitem label="Habilitar Cursos" 
-                                                            href="/mantenimiento/cursos.html"/>
+                                                <menuitem label="Crear Cursos" 
+                                                          href="/cursos/nueva.html"/>
+                                                <menuitem label="Mostrar Cursos" 
+                                                            href="/cursos/curso.html"/>
                                             </menupopup>
-                                        </menu>
+                                        </menu>                                   
+                                        
                                         <menu label="Grupos Administrativos">
                                             <menupopup>
                                                 <menuitem label="Crear Grupo" 

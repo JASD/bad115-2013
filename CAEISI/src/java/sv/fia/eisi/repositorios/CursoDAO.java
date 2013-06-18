@@ -29,7 +29,15 @@ public class CursoDAO extends AbstractDAO<Curso> {
 
     @Override
     public String create(Curso entity) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        String call = ResourceBundle.getBundle("/procedures")
+                .getString("InsertarCurso");
+        Query q = sessionFactory.getCurrentSession()
+                .createSQLQuery(call);
+        q.setString("codigo", entity.getCodigoCurso());
+        q.setString("departamento", entity.getCodigoDepartamento().toString());
+        q.setString("nombre", entity.getNombreCurso());
+        
+        return (String) q.uniqueResult();
     }
 
     @Override

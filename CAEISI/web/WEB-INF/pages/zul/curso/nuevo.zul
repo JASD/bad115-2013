@@ -1,0 +1,44 @@
+<?page id="crv" title="Crear Cursos CAEISI"?>
+<?init class="org.zkoss.zk.ui.util.Composition" arg0="/WEB-INF/pages/templates/template.zul" ?>
+<window self="@{define(body)}" title='Crear un Curso Nuevo'>
+    <vlayout>
+        <grid apply="sv.fia.eisi.controladores.CursoController">
+            <columns>
+                <column align="right" hflex="min"/>
+                <column />
+            </columns>
+            <rows>
+                <row>	
+                    <cell sclass="row-title">Codigo del Curso:</cell>
+                    <cell>
+                        <textbox id="Codigo" maxlength="6"
+                                 constraint="no empty: Ingrese el Codigo del Curso" width="200px"/>
+                    </cell>
+                </row>
+                <row>	
+                    <cell sclass="row-title">Departamento :</cell>
+                    <cell>
+                        <combobox id="Departamento">
+                            <comboitem label="TRABAJOS DE GRADUACION" value="TRGRA"/>
+                            <comboitem label="ADMINISTRACION" value="ADMIN"/>
+                            <comboitem label="DESARROLLO DE SISTEMAS" value="DESSI"/>
+                            <comboitem label="PROGRAMACION Y MANEJO DE DATOS" value="PROGR"/>
+                            <comboitem label="COMUNICACIONES Y CIENCIAS DE LA COMPUTACION" value="COMUN"/>
+                        </combobox>
+                    </cell>
+                </row>
+                <row>
+                    <cell sclass="row-title">Nombre del Curso:</cell>
+                    <cell>
+                        <textbox id="Nombre" maxlength="64"
+                                 constraint="no empty: Ingrese el Nombre del Curso" width="200px"/>
+                    </cell>	
+                </row>
+                
+            </rows>
+        </grid>
+        <hlayout>
+            <button id="GuardarCurso" label="Guardar"/>
+        </hlayout>
+    </vlayout>
+</window>
