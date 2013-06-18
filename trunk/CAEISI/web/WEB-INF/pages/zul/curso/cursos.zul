@@ -1,0 +1,5 @@
+<?page id="crv" title="Consultar y Modificar Cursos CAEISI"?>
+<?init class="org.zkoss.zk.ui.util.Composition" arg0="/WEB-INF/pages/templates/template.zul" ?>
+<window self="@{define(body)}" title='Consultar y Modificar Cursos'>
+    
+</window>

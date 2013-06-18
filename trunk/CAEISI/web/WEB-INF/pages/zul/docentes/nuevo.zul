@@ -2,9 +2,7 @@
 <?init class="org.zkoss.zk.ui.util.Composition" arg0="/WEB-INF/pages/templates/template.zul" ?>
 <window self="@{define(body)}" title='Nuevo Docente'>
     <vlayout>
-        <zscript><![CDATA[
-    String selectedPosition = "end_before";
-]]>
+        <zscript><![CDATA[String selectedPosition = "end_before";]]>
         </zscript>
         <grid apply="sv.fia.eisi.controladores.EmpleadoController">
             <columns>
